@@ -1,0 +1,128 @@
+.listItem {
+  @apply relative flex items-center mb-2 transition-all py-1 px-4 rounded-lg capitalize
+  bg-primary-800 rounded-tl-none rounded-bl-none hover:bg-black hover:bg-opacity-25
+}
+
+.exotic {
+  @apply border-l-[3px] border-exotic text-exoticText
+}
+
+.legendary {
+  @apply border-l-[3px] border-legendary text-legendaryText
+}
+
+.epic {
+  @apply border-l-[3px] border-epic text-epicText
+}
+
+.rare {
+  @apply border-l-[3px] border-rare text-rareText
+}
+
+.uncommon {
+  @apply border-l-[3px] border-uncommon text-uncommonText
+}
+
+.common {
+  @apply border-l-[3px] border-common text-commonText
+}
+
+.listItem:hover > .moveDownButton, .listItem:hover > .moveUpButton {
+  @apply absolute -bottom-6 left-0 right-0 mx-auto block bg-transparent
+  border-none text-2xl cursor-pointer z-10
+}
+
+.listItem:hover > .moveUpButton {
+  @apply bottom-0 -top-6
+}
+
+.favoritesListItem {
+  @apply flex-col max-h-[150px]
+}
+
+.moveUpButton,
+.moveDownButton,
+.moveLeftButton,
+.moveRightButton {
+  @apply hidden transition-all w-fit h-fit
+}
+
+.moveUpButton:hover {
+  transform: translateY(-5%);
+}
+
+.moveDownButton:hover {
+  transform: translateY(5%);
+}
+
+.exotic > .moveUpButton,
+.exotic > .moveDownButton,
+.exotic > .moveRightButton,
+.exotic > .moveLeftButton {
+  @apply text-exotic
+}
+
+.legendary > .moveUpButton,
+.legendary > .moveDownButton,
+.legendary > .moveRightButton,
+.legendary > .moveLeftButton {
+  @apply text-legendary
+}
+
+.epic > .moveUpButton,
+.epic > .moveDownButton,
+.epic > .moveRightButton,
+.epic > .moveLeftButton {
+  @apply text-epic
+}
+
+.rare > .moveUpButton,
+.rare > .moveDownButton,
+.rare > .moveRightButton,
+.rare > .moveLeftButton {
+  @apply text-rare
+}
+.uncommon > .moveUpButton,
+.uncommon >.moveDownButton,
+.uncommon >.moveRightButton,
+.uncommon >.moveLeftButton {
+  @apply text-uncommon
+}
+
+.common > .moveUpButton,
+.common > .moveDownButton,
+.common > .moveRightButton,
+.common > .moveLeftButton {
+  @apply text-common
+}
+
+.favoritesListItem:hover > .moveRightButton,
+.favoritesListItem:hover > .moveLeftButton {
+  @apply absolute -right-6 top-0 bottom-0 mt-auto mb-auto min-w-[18px] block
+  bg-transparent border-none text-3xl cursor-pointer z-50
+}
+
+.favoritesListItem:hover > .moveLeftButton {
+  @apply right-0 -left-6
+}
+
+.image {
+  @apply ml-4 h-16 w-16 bg-black bg-opacity-25 p-2 rounded-full
+}
+
+.title {
+  @apply relative mb-0 ml-auto mr-8 text-xl font-medium transition-all
+}
+
+.favoritesListItem > .title {
+  @apply m-0 text-base text-center
+}
+
+.deleteBtn {
+  @apply bg-transparent border-transparent cursor-pointer text-xs my-0 mx-1
+  transition-all text-red-400 hover:text-red-700
+}
+
+.favoritesListItem > .btnContainer > .deleteBtn {
+  @apply absolute top-2 right-4
+}

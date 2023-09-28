@@ -1,0 +1,21 @@
+.header {
+  @apply sticky top-0 left-0 right-0 -mx-4 pt-4 px-8 pb-8 bg-primary-800 border-b-2
+  border-outline z-10
+}
+
+.title {
+  @apply bg-primary-700 text-secondary-400 rounded-lg text-3xl font-bold p-2
+  mt-6 text-center capitalize border border-outline
+}
+
+.form {
+  @apply flex flex-col gap-4;
+}
+
+.formControl {
+  @apply relative flex justify-center
+}
+
+.itemsList_Container {
+  @apply transition-all
+}

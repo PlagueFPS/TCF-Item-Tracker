@@ -1,0 +1,104 @@
+.footer {
+  @apply relative mt-auto bg-primary-800 w-full
+}
+
+.container {
+  @apply bg-primary-800 mx-auto py-8 px-4 max-w-[1600px]
+}
+
+.backToTop_Text {
+  @apply flex items-center justify-center p-2 text-xl text-secondary-400 bg-outline hover:bg-primary-600
+}
+
+.backToTop {
+  @apply text-secondary-300 font-normal
+}
+
+.content {
+  @apply text-center pb-8 mt-10 border-b border-secondary-500
+}
+
+.content > p {
+  @apply text-secondary-500 text-xl font-medium
+}
+
+.content > p > a {
+  @apply text-secondary-500 capitalize underline hover:text-secondary-700 hover:no-underline
+}
+
+.middleContainer {
+  @apply flex flex-col items-center lg:flex-row justify-evenly flex-wrap w-full py-12
+}
+
+.logoContainer {
+  @apply flex flex-col items-center w-full max-w-[360px]
+}
+
+.logo img {
+  @apply h-auto w-full
+}
+
+.list {
+  @apply flex flex-col list-none w-full max-w-[300px] m-8
+}
+
+.list dt {
+  @apply mb-4 ml-4 font-bold text-2xl uppercase text-secondary-600;
+}
+
+.list dd {
+  @apply flex mb-3
+}
+
+.list dd a {
+  @apply flex items-center p-4 w-full text-secondary-500 text-lg bg-primary-900 rounded-lg
+  transition-all hover:bg-primary-700
+}
+
+.list .listLink:hover svg {
+  @apply fill-secondary-500
+}
+
+.list dd a span {
+  @apply w-full font-semibold
+}
+
+.list .listLink svg {
+  @apply h-6 fill-secondary-600 transition-all
+}
+
+.bottomContainer {
+  @apply flex flex-col text-center lg:flex-row-reverse justify-between items-center border-t border-secondary-500 py-8
+}
+
+.socialsContainer {
+  @apply flex justify-center
+}
+
+.socialLink {
+  @apply flex justify-center items-center gap-5
+}
+
+.socialLink a {
+  @apply flex
+}
+
+.socialLink svg {
+  @apply h-8 fill-secondary-700 hover:fill-secondary-400
+}
+
+.updateLogLink {
+  @apply opacity-70
+}
+
+.copyrightContainer {
+  @apply flex flex-col text-left justify-center flex-grow p-0 m-8 text-xs text-secondary-500
+}
+
+.copyrightContainer span {
+  @apply max-w-lg
+}
+
+.copyrightContainer a {
+  @apply text-secondary-500 capitalize mr-2 hover:underline
+}

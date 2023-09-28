@@ -1,0 +1,4 @@
+.container {
+  @apply relative flex flex-col-reverse md:flex-row gap-4 flex-grow m-auto w-full bg-primary-900;
+  min-height: calc(100vh - (160px + 75px));
+}

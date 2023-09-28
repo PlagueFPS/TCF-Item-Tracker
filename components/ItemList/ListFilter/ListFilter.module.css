@@ -1,0 +1,9 @@
+.listBtnFilter_Container {
+  @apply flex justify-start items-center gap-2 mt-3
+}
+
+.listBtnFilter {
+  @apply border-none py-1 px-2 text-xl rounded font-medium text-secondary-600
+  bg-primary-700 transition-all hover:cursor-pointer hover:bg-secondary-600
+  hover:text-primary-800
+}

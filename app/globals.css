@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-primary-800
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-2xl bg-gray-400;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-200;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.korolevreputation,
+.icareputation,
+.osirisreputation,
+.km-9scrapper, 
+.hammer, 
+.heavyminingtool, 
+.pkrmaelstrom,
+.kbrlongshot,
+.kor-47,
+.komrad,
+.c-32boltaction,
+.bulldog,
+.icaguarantee,
+.lacerator,
+.kineticarbiter,
+.advocate,
+.scarab,
+.manticore,
+.phasiclancer,
+.aspflechette,
+.voltaicbrute,
+.basilisk {
+  height: 24px !important;
+}
+
+.slug .korolevreputation,
+.slug .icareputation,
+.slug .osirisreputation,
+.slug .km-9scrapper,
+.slug .kor-47,
+.slug .hammer, 
+.slug .heavyminingtool, 
+.slug .pkrmaelstrom,
+.slug .kbrlongshot,
+.slug .c-32boltaction,
+.slug .bulldog,
+.slug .icaguarantee,
+.slug .lacerator,
+.slug .kineticarbiter,
+.slug .advocate,
+.slug .scarab,
+.slug .manticore,
+.slug .phasiclancer,
+.slug .aspflechette,
+.slug .basilisk,
+.slug .komrad,
+.slug .voltaicbrute,
+.slug .zeusbeam {
+  width: 100% !important;
+  height: 54px !important;
+}

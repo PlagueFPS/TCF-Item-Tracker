@@ -1,0 +1,12 @@
+.navList {
+  @apply flex items-center px-4 h-full;
+}
+
+.link {
+  @apply flex items-center gap-2 h-full py-4 px-8 cursor-pointer text-lg
+  hover:bg-primary-900;
+}
+
+.link span {
+  @apply text-secondary-500 text-2xl font-medium;
+}

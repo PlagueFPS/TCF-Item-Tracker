@@ -1,0 +1,8 @@
+.suggestionsList {
+  @apply absolute left-0 top-9 right-20 lg:right-48 bg-secondary-500 rounded z-10 list-none
+}
+
+.suggestedItem {
+  @apply text-primary-800 font-semibold p-2 m-1 rounded cursor-pointer hover:text-secondary-400
+  hover:bg-primary-800
+}

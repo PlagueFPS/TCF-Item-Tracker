@@ -1,0 +1,16 @@
+.btnContainer {
+  @apply flex justify-between items-center w-full
+}
+
+.clearBtn, .switchBtn {
+  @apply flex items-center py-2 px-4 text-primary-800 text-xl font-semibold capitalize
+  rounded cursor-pointer transition-all mt-12 md:mt-0
+}
+
+.clearBtn {
+  @apply bg-red-400 hover:bg-red-700
+}
+
+.switchBtn {
+  @apply bg-secondary-400 hover:bg-secondary-700
+}

@@ -1,0 +1,75 @@
+.container {
+  @apply fixed top-0 right-0 left-0 bottom-0 z-[999] flex justify-center items-center
+}
+
+.blur {
+  @apply fixed top-0 right-0 left-0 bottom-0 opacity-100 transition-all
+  z-[99] supports-[backdrop-filter]:backdrop-blur backdrop-saturate-[30%]
+}
+
+.content {
+  @apply relative flex flex-col gap-4 items-center h-96 w-96 bg-primary-900 rounded-br-lg
+  rounded-bl-lg border-2 border-outline border-t-secondary-700 p-4 mx-auto z-[999] animate-bounceIn
+}
+
+.content.closing {
+  @apply animate-bounceOut
+}
+
+.closeBtn {
+  @apply absolute top-3 right-4 flex justify-center items-center rounded border-none bg-none bg-red-400
+  text-2xl text-primary-800 font-bold cursor-pointer transition-all hover:bg-red-700
+}
+
+.title {
+  @apply text-secondary-600 text-3xl font-semibold capitalize
+}
+
+.list {
+  @apply flex flex-col items-center gap-4 text-secondary-500 w-full
+  max-h-[400px] overflow-auto p-4
+}
+
+.listItem {
+  @apply relative flex justify-center items-center gap-4 w-full p-4 rounded-lg
+  bg-primary-900 border border-outline hover:bg-primary-800 cursor-pointer
+}
+
+.listName {
+  @apply text-secondary-400 text-2xl font-medium capitalize transition-all
+}
+
+.deleteBtn {
+  @apply absolute top-0 bottom-0 right-4 bg-none border-none text-red-400 cursor-pointer
+  transition-all hover:text-red-700;
+}
+
+.addListBtn {
+  @apply flex justify-center items-center gap-2 w-4/5 p-2 mt-auto rounded text-lg font-bold
+  text-primary-800 bg-greenLight hover:cursor-pointer
+}
+
+.active {
+  @apply border-secondary-700
+}
+
+.active .listName {
+  @apply font-semibold
+}
+
+.inputContainer {
+  @apply flex justify-center items-center w-full mt-auto
+}
+
+.input {
+  @apply p-1 pl-4 h-9 bg-primary-800 rounded-tl-md rounded-bl-md border border-secondary-400
+  text-xl text-secondary-500 outline-none focus:border-secondary-600 placeholder:text-secondary-400
+  placeholder:font-normal;
+  flex: 1 0 auto;
+}
+
+.createListBtn {
+  @apply bg-button text-lg border-none grid items-center p-1 capitalize rounded-tr-md
+  rounded-br-md cursor-pointer text-primary-800 transition-all font-medium
+  hover:bg-primary-600 hover:text-secondary-500;
+}

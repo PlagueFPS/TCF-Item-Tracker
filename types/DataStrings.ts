@@ -1,0 +1,1 @@
+export type DataStrings = "materials" | "missions" | "printing" | "personalQuarters" | "forgePerks" | "items" | "locations" | "cosmetics"

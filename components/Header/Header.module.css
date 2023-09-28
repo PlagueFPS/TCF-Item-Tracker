@@ -1,0 +1,21 @@
+.header {
+  @apply relative flex justify-center items-center w-full h-40 transition-all border-b border-outline
+}
+
+.header picture {
+  @apply flex justify-center items-center
+}
+
+.searchbar_container {
+  @apply relative flex justify-center items-center w-4/5 md:w-2/5 z-10
+}
+
+.title_container {
+  @apply flex justify-center items-center w-full
+}
+
+.title {
+  @apply relative text-secondary-400 text-center drop-shadow-title mx-1 font-semibold text-4xl md:text-5xl after:absolute after:bg-secondary-400 after:w-1/2
+  after:h-[3px] after:m-auto after:bottom-0 after:left-1/4 transition-all
+}
+

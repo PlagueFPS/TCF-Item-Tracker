@@ -1,0 +1,12 @@
+.itemsList {
+  @apply mt-4 list-none
+}
+
+.favoritesList {
+  @apply grid gap-8;
+  grid-template: auto/repeat(auto-fill, 150px);
+}
+
+.favoritesList img {
+  @apply ml-0
+}

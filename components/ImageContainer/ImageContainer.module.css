@@ -1,0 +1,36 @@
+.container {
+  @apply sticky top-0 grid gap-6 content-start flex-grow p-8
+  bg-primary-800 border-x-2 border-outline transition-all animate-fadeIn;
+  grid-template: auto / repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.title {
+  @apply text-center col-span-full bg-primary-700 rounded-lg text-2xl sm:text-3xl font-semibold
+  p-4 text-secondary-400 max-h-20 border border-outline
+}
+
+.image {
+  @apply flex justify-center items-center bg-primary-800 border-2 border-common
+  bg-itemcommon rounded-full p-4 cursor-pointer scale-100 transition-all hover:scale-105
+  hover:brightness-110 active:scale-95
+}
+
+.uncommon {
+  @apply border-uncommon bg-itemuncommon
+}
+
+.rare {
+  @apply border-rare bg-itemrare
+}
+
+.epic {
+  @apply border-epic bg-itemepic
+}
+
+.legendary {
+  @apply border-legendary bg-itemlegendary
+}
+
+.exotic {
+  @apply border-exotic bg-itemexotic
+}

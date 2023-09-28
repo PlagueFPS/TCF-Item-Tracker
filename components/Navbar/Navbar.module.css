@@ -1,0 +1,8 @@
+.navbar {
+  @apply relative top-0 z-[99] flex justify-between items-center w-full bg-primary-800 border-b border-outline
+    px-2 h-20;
+}
+
+.title {
+  @apply text-secondary-400 font-bold text-3xl hidden md:block
+}

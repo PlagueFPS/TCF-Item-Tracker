@@ -1,0 +1,13 @@
+.input {
+  @apply p-1 pl-4 bg-primary-800 rounded-tl-md rounded-bl-md border border-secondary-400
+  text-xl text-secondary-500 outline-none focus:border-secondary-600 placeholder:text-secondary-400
+  placeholder:font-normal;
+  flex: 1 0 auto;
+}
+
+.submitBtn {
+  @apply bg-button text-lg border-transparent grid items-center p-1 capitalize rounded-tr-md
+  rounded-br-md cursor-pointer text-primary-800 transition-all font-medium
+  hover:bg-primary-600 hover:text-secondary-500;
+  flex: 0 0 5rem;
+}

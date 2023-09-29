@@ -8,7 +8,6 @@ interface ToastContextProps {
   showToast: boolean
   toastAction: string
   toastItems: Material[]
-  closing: boolean
   setToast: React.Dispatch<React.SetStateAction<boolean>>
   setAction: React.Dispatch<React.SetStateAction<string>>
   setItems: React.Dispatch<React.SetStateAction<Material[]>>
@@ -72,7 +71,6 @@ export default function ToastContextProvider({ children }: Props) {
     showToast,
     toastAction,
     toastItems,
-    closing,
     setToast,
     setAction,
     setItems,
@@ -84,7 +82,7 @@ export default function ToastContextProvider({ children }: Props) {
   return (
     <ToastContext.Provider value={ ToastContextValues }>
       { children }
-      { showToast && <Toast /> }
+      { showToast && <Toast closing={ closing } /> }
     </ToastContext.Provider>
   )
 }

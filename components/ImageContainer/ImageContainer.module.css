@@ -16,21 +16,21 @@
 }
 
 .uncommon {
-  @apply border-uncommon bg-itemuncommon
+  @apply border-uncommon bg-imguncommon
 }
 
 .rare {
-  @apply border-rare bg-itemrare
+  @apply border-rare bg-imgrare
 }
 
 .epic {
-  @apply border-epic bg-itemepic
+  @apply border-epic bg-imgepic
 }
 
 .legendary {
-  @apply border-legendary bg-itemlegendary
+  @apply border-legendary bg-imglegendary
 }
 
 .exotic {
-  @apply border-exotic bg-itemexotic
+  @apply border-exotic bg-imgexotic
 }

@@ -1,9 +1,8 @@
 import styles from './ListSwitcher.module.css'
 import { List } from "@/interfaces/List"
-import { MouseEvent, useEffect, useRef, useState } from "react"
+import { MouseEvent, useEffect, useState } from "react"
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from '@/contexts/ToastContext'
-import useToggleModal from "@/hooks/useToggleModal"
 import { createErrorMessage, deleteErrorMessage } from '@/utils/constants'
 import { BsClipboard2Plus, BsTrashFill, BsX } from 'react-icons/bs'
 
@@ -18,13 +17,12 @@ const favoritesList: List = {
 }
 
 export default function ListSwitcher({ toggleOptionsModal }: Props) {
-  const modalRef = useRef<HTMLDivElement>(null)
   const { list, setList } = useItemsListContext()
   const { toast } = useToastContext()
-  const { closing, setClosing } = useToggleModal(modalRef, toggleOptionsModal)
   const [listNames, setListNames] = useState(['Items List', 'Favorites List'])
   const [showInput, setInput] = useState(false)
   const [inputValue, setValue] = useState('')
+  const [closing, setClosing] = useState(false)
 
   useEffect(() => {
     if (!localStorage.getItem('favoriteslist')) {
@@ -63,6 +61,7 @@ export default function ListSwitcher({ toggleOptionsModal }: Props) {
       localStorage.setItem('listNames', JSON.stringify(newListNames))
       toast(`Successfully Created List: ${newList.name}`)
       setListNames([...newListNames])
+      setInput(false)
     }
   }
 
@@ -86,7 +85,6 @@ export default function ListSwitcher({ toggleOptionsModal }: Props) {
     }
     else createNewList(inputValue)
 
-    setInput(false)
     setValue('')
   }
 
@@ -111,7 +109,7 @@ export default function ListSwitcher({ toggleOptionsModal }: Props) {
   return (
     <div className={ styles.container }>
       <div className={ styles.blur } />
-      <div className={ closing ? `${styles.content} ${styles.closing}` : styles.content } ref={ modalRef }>
+      <div className={ closing ? `${styles.content} ${styles.closing}` : styles.content }>
         <button className={ styles.closeBtn } onClick={ handleSwitcherClose }>
           <BsX />
         </button>

@@ -60,7 +60,7 @@
 }
 
 .listError .contentContainer {
-  @apply gap-3 rounded-tl-none rounded-bl-none border-none border-l-4 border-red-700
+  @apply gap-3 rounded-tl-none rounded-bl-none border-t-0 border-r-0 border-b-0 border-l-4 border-red-400
   p-4 bg-primary-900
 }
 
@@ -73,7 +73,7 @@
 }
 
 .listError .statusIcon {
-  @apply bg-red-700 py-1 px-2
+  @apply text-red-400 bg-transparent py-1 px-2
 }
 
 .info {

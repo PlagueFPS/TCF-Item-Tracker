@@ -1,12 +1,15 @@
-"use client"
 import styles from './Toast.module.css'
 import { useToastContext } from "@/contexts/ToastContext"
 import { createErrorMessage, deleteErrorMessage } from "@/utils/constants"
 import { BsCheck, BsXCircleFill } from 'react-icons/bs'
 import ToastImage from './ToastImage/ToastImage'
 
-export default function Toast() {
-  const { closing, toastItems, toastAction } = useToastContext()
+interface Props {
+  closing: boolean
+}
+
+export default function Toast({ closing }: Props) {
+  const { toastItems, toastAction } = useToastContext()
   const listCondition = toastAction === deleteErrorMessage || toastAction === createErrorMessage
 
   const classSelector = (className: "Container" | "Info") => {

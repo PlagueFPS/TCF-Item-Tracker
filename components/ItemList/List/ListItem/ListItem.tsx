@@ -18,6 +18,7 @@ export default function ListItem({ item }: Props) {
     itemToast(item, 'Item Removed')
     const newItems = list.items.filter(i => i.key !== item.key)
     localStorage.setItem('list', JSON.stringify({...list, items: newItems}))
+    localStorage.setItem(list.id, JSON.stringify({...list, items: newItems}))
     setList({...list, items: newItems })
   }
 

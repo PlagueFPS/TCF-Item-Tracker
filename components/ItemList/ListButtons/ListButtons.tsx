@@ -9,6 +9,7 @@ export default function ListButtons() {
 
   const clearItems = () => {
     localStorage.setItem('list', JSON.stringify({...list, items: []}))
+    localStorage.setItem(list.id, JSON.stringify({...list, items: []}))
     toast()
     setList(prevList => ({
       ...prevList,

@@ -1,6 +1,7 @@
 import styles from './Header.module.css'
 import { DataTypes } from "@/types/DataTypes"
 import Banner from '../Banner/Banner'
+import SettingsButton from '../Settings/SettingsButton/SettingsButton'
 
 interface SharedProps {
   bannerImage: string
@@ -37,7 +38,7 @@ export default function Header({ bannerImage, width, height, opacity, position, 
         opacity={ opacity ?? undefined }
         position={ position } 
       />
-      {/* <SettingsButton /> */}
+      <SettingsButton />
       { page &&
         <div className={ styles.searchbar_container }>
           {/* <SearchBar 

@@ -1,0 +1,54 @@
+.container {
+  @apply flex justify-center items-center fixed top-0 right-0 left-0 bottom-0 z-[999]
+}
+
+.blur {
+  @apply fixed top-0 right-0 left-0 bottom-0 opacity-100 backdrop-saturate-[30%]
+  supports-[backdrop-filter]:backdrop-blur
+}
+
+.content {
+  @apply relative flex flex-col gap-4 items-center h-80 bg-primary-900 rounded-br-lg
+  rounded-bl-lg border-2 border-outline border-t-secondary-700 py-4 px-8 mx-4 animate-bounceIn
+  z-[999]
+}
+
+.content.closing {
+  @apply animate-bounceOut
+}
+
+.closeBtn {
+  @apply absolute top-3 right-4 flex justify-center items-center border-none bg-transparent
+  bg-red-400 rounded text-primary-900 text-2xl cursor-pointer transition-all hover:bg-red-700
+}
+
+.title {
+  @apply text-secondary-500 text-3xl font-bold
+}
+
+.list {
+  @apply flex flex-col justify-center items-center gap-4 text-secondary-500 w-full
+}
+
+.setting {
+  @apply flex justify-center items-center gap-4 w-full p-4 rounded-lg bg-primary-900
+  border border-outline hover:bg-primary-700
+}
+
+.settingName {
+  @apply text-xl
+}
+
+
+.settingName[for="Item Names"] {
+  @apply cursor-pointer
+}
+
+.input[type="radio"] {
+  @apply cursor-pointer
+}
+
+.input[type="number"] {
+  @apply flex justify-center items-center bg-primary-800 rounded w-8 py-1 px-2
+  text-secondary-500 outline-0 border-none hover:border hover:border-secondary-500 ml-auto
+}

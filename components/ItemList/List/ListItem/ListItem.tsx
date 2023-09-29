@@ -2,6 +2,7 @@ import styles from './ListItem.module.css'
 import { Material } from "@/interfaces/Material"
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from '@/contexts/ToastContext'
+import { useEffect } from 'react'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp, FaTrash } from 'react-icons/fa6'
 import AmountContainer from './AmountContainer/AmountContainer'
 import ItemImage from '@/components/ImageContainer/ItemImage/ItemImage'
@@ -13,6 +14,10 @@ interface Props {
 export default function ListItem({ item }: Props) {
   const { list, setList, isNamesEnabled } = useItemsListContext()
   const { itemToast } = useToastContext()
+
+  useEffect(() => {
+    localStorage.setItem('namesEnabled', JSON.stringify(isNamesEnabled))
+  }, [isNamesEnabled])
 
   const deleteItem = () => {
     itemToast(item, 'Item Removed')

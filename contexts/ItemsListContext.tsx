@@ -4,6 +4,7 @@ import { List } from "@/interfaces/List"
 import { Material } from "@/interfaces/Material"
 import { useState, createContext, useContext, useEffect } from 'react'
 import ToastContextProvider from "./ToastContext"
+import Settings from "@/components/Settings/Settings"
 
 interface Props {
   children: React.ReactNode
@@ -55,6 +56,10 @@ export default function ItemsListContextProvider({ children }: Props) {
         const storedListSize = localStorage.getItem('listSize')
         storedListSize ? setListSize(JSON.parse(storedListSize)) : null
       }
+      if (localStorage.getItem('namesEnabled')) {
+        const storedValue = localStorage.getItem('namesEnabled')
+        storedValue ? setNamesEnabled(JSON.parse(storedValue)) : null
+      }
     }
 
     loadList()
@@ -101,6 +106,7 @@ export default function ItemsListContextProvider({ children }: Props) {
       <ToastContextProvider>
         { children }
         { listSwitcher && <ListSwitcher toggleOptionsModal={ toggleListSwitcher } /> }
+        { settings && <Settings /> }
       </ToastContextProvider>
     </ItemsListContext.Provider>
   )

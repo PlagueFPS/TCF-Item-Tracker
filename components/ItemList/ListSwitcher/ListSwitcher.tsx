@@ -61,7 +61,7 @@ export default function ListSwitcher({ toggleOptionsModal }: Props) {
       const newListNames = [...listNames, newList.name]
       localStorage.setItem(listID, JSON.stringify(newList))
       localStorage.setItem('listNames', JSON.stringify(newListNames))
-      toast(`Successfully Created List: ${list.name}`)
+      toast(`Successfully Created List: ${newList.name}`)
       setListNames([...newListNames])
     }
   }

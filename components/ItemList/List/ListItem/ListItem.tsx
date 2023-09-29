@@ -16,10 +16,9 @@ export default function ListItem({ item }: Props) {
 
   const deleteItem = () => {
     itemToast(item, 'Item Removed')
-    setList(prevList => {
-      const newItems = prevList.items.filter(i => i.key !== item.key)
-      return {...prevList, items: newItems }
-    })
+    const newItems = list.items.filter(i => i.key !== item.key)
+    localStorage.setItem('list', JSON.stringify({...list, items: newItems}))
+    setList({...list, items: newItems })
   }
 
   const handleMoveUpClick = () => {

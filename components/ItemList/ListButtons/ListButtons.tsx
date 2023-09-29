@@ -4,10 +4,11 @@ import { useItemsListContext } from '@/contexts/ItemsListContext'
 import { useToastContext } from '@/contexts/ToastContext'
 
 export default function ListButtons() {
-  const { setList, setListSwitcher } = useItemsListContext()
+  const { list, setList, setListSwitcher } = useItemsListContext()
   const { toast } = useToastContext()
 
   const clearItems = () => {
+    localStorage.setItem('list', JSON.stringify({...list, items: []}))
     toast()
     setList(prevList => ({
       ...prevList,

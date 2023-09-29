@@ -2,11 +2,11 @@
 import styles from './Toast.module.css'
 import { useToastContext } from "@/contexts/ToastContext"
 import { createErrorMessage, deleteErrorMessage } from "@/utils/constants"
-import { BsCheckCircleFill, BsXCircleFill } from 'react-icons/bs'
+import { BsCheck, BsXCircleFill } from 'react-icons/bs'
 import ToastImage from './ToastImage/ToastImage'
 
 export default function Toast() {
-  const { toastItems, toastAction } = useToastContext()
+  const { closing, toastItems, toastAction } = useToastContext()
   const listCondition = toastAction === deleteErrorMessage || toastAction === createErrorMessage
 
   const classSelector = (className: "Container" | "Info") => {
@@ -51,16 +51,20 @@ export default function Toast() {
   }
 
   return (
-    <div className={ classSelector('Container') }>
+    <div className={ closing ? `${classSelector('Container')} ${styles.closing}` : classSelector('Container') }>
       <div className={ contentClassSelector() }>
         <div className={ styles.imageContainer }>
           { toastItems.length <= 0 ? (
             <div className={ styles.statusIcon }>
-              { listCondition ? <BsXCircleFill /> : <BsCheckCircleFill /> }
+              { listCondition ? <BsXCircleFill /> : <BsCheck /> }
             </div>
           ) : (
             toastItems.map(item => <ToastImage key={ item.key } item={ item } />)
           )}
+        </div>
+        <div className={ classSelector('Info') }>
+          <div className={ styles.action }>{ toastAction }</div>
+          { toastItems.length === 1 && <div className={ styles.title }>{ toastItems[0].inGameName }</div> }
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import styles from './ToastImage.module.css'
 import { Material } from "@/interfaces/Material"
-import { BsCheckCircleFill } from 'react-icons/bs'
+import { BsCheck } from 'react-icons/bs'
 
 interface Props {
   item: Material
@@ -41,9 +41,9 @@ export default function ToastImage({ item }: Props) {
           className={ classSelector() }
           />
       </picture>
-      <div className={ `${styles.container} ${styles.success}`}>
+      <div className={ `${styles.statusContainer} ${styles.success}`}>
         <div className={ styles.statusIcon }>
-          <BsCheckCircleFill />
+          <BsCheck />
         </div>
       </div>
     </div>

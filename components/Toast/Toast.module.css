@@ -1,0 +1,98 @@
+.container {
+  @apply fixed left-0 right-0 bottom-0 flex justify-center items-center p-4 w-full z-[999]
+}
+
+.container.error {
+  @apply animate-shake
+}
+
+.container.success {
+  @apply animate-bounceIn
+}
+
+.container.closing {
+  @apply animate-bounceOut
+}
+
+.contentContainer {
+  @apply flex justify-center items-center py-2 px-4 w-full max-w-sm bg-primary-800
+  bg-default border-2 rounded-lg
+}
+
+.contentContainer.multiple {
+  @apply flex-col
+}
+
+.success .contentContainer {
+  @apply border-greenLight
+}
+
+.error .contentContainer {
+  @apply border-red-700
+}
+
+.contentContainer.exotic {
+  @apply border-exotic bg-toastexotic
+}
+
+.contentContainer.legendary {
+  @apply border-legendary bg-toastlegendary
+}
+.contentContainer.epic {
+  @apply border-epic bg-toastepic
+}
+
+.contentContainer.rare {
+  @apply border-rare bg-toastrare
+}
+
+.contentContainer.uncommon {
+  @apply border-uncommon bg-toastuncommon
+}
+
+.contentContainer.common {
+  @apply border-common bg-toastcommon
+}
+
+.contentContainer.clear {
+  @apply gap-3 rounded-tl-none rounded-bl-none border-t-0 border-r-0 border-b-0 border-l-4 border-greenLight
+  bg-none p-4 bg-primary-900
+}
+
+.listError .contentContainer {
+  @apply gap-3 rounded-tl-none rounded-bl-none border-none border-l-4 border-red-700
+  p-4 bg-primary-900
+}
+
+.imageContainer {
+  @apply flex justify-center items-center
+}
+
+.statusIcon {
+  @apply flex justify-center items-center h-full bg-uncommon text-white text-xl rounded-full p-1
+}
+
+.listError .statusIcon {
+  @apply bg-red-700 py-1 px-2
+}
+
+.info {
+  @apply flex flex-col justify-center flex-grow text-lg font-medium
+}
+
+.info.success .action {
+  @apply text-greenLight capitalize
+}
+
+.info.error .action {
+  @apply text-red-400 capitalize
+}
+
+.clear .action,
+.listError .action {
+  @apply text-xl capitalize
+}
+
+.title {
+  @apply text-secondary-300 font-semibold text-xl
+}

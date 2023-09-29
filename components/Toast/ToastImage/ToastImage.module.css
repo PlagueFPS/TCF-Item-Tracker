@@ -1,0 +1,48 @@
+.imageStatus {
+  @apply relative
+}
+
+.imageContainer {
+  @apply flex justify-center items-center
+}
+
+.image {
+  @apply mr-4 p-3 h-20 w-20 bg-primary-800 border-2 border-common bg-imgcommon
+  rounded-full
+}
+
+.image.uncommon {
+  @apply border-uncommon bg-imguncommon
+}
+
+.image.rare {
+  @apply border-rare bg-imgrare
+}
+
+.image.epic {
+  @apply border-epic bg-imgepic
+}
+
+.image.legendary {
+ @apply border-legendary bg-imglegendary
+}
+
+.image.exotic {
+  @apply border-exotic bg-imgexotic
+}
+
+.statusContainer {
+  @apply absolute right-2 bottom-2 w-6 h-6 rounded-full
+}
+
+.statusContainer.error {
+  @apply bg-red-400
+}
+
+.statusContainer.success {
+  @apply bg-uncommon
+}
+
+.statusIcon {
+  @apply flex justify-center items-center h-full text-white text-lg
+}

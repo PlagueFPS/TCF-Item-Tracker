@@ -3,6 +3,7 @@ import ListSwitcher from "@/components/ItemList/ListSwitcher/ListSwitcher"
 import { List } from "@/interfaces/List"
 import { Material } from "@/interfaces/Material"
 import { useState, createContext, useContext, useEffect } from 'react'
+import ToastContextProvider from "./ToastContext"
 
 interface Props {
   children: React.ReactNode
@@ -99,8 +100,10 @@ export default function ItemsListContextProvider({ children }: Props) {
 
   return (
     <ItemsListContext.Provider value={ itemsListContextValues }>
-      { children }
-      { listSwitcher && <ListSwitcher toggleOptionsModal={ toggleListSwitcher } /> }
+      <ToastContextProvider>
+        { children }
+        { listSwitcher && <ListSwitcher toggleOptionsModal={ toggleListSwitcher } /> }
+      </ToastContextProvider>
     </ItemsListContext.Provider>
   )
 }

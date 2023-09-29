@@ -17,7 +17,8 @@ export default function ListInput({ items }: Props) {
 
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    const item = items.find(item => item.inGameName.toLowerCase().replace(/\s/g, '') === inputValue)
+    const value = inputValue.toLowerCase().replace(/\s/g, '')
+    const item = items.find(item => item.inGameName.toLowerCase().replace(/\s/g, '') === value)
     if (item) {
       addItemToList(item)
       itemToast(item)

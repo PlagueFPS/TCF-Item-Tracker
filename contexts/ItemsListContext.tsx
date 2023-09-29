@@ -11,14 +11,12 @@ interface Props {
 
 interface ItemListContextProps {
   list: List
-  amount: number
   listSize: number
   isNamesEnabled: boolean
   showList: boolean
   listSwitcher: boolean
   settings: boolean
   setList: React.Dispatch<React.SetStateAction<List>>
-  setAmount: React.Dispatch<React.SetStateAction<number>>
   setListSize: React.Dispatch<React.SetStateAction<number>>
   setNamesEnabled: React.Dispatch<React.SetStateAction<boolean>>
   setShowList: React.Dispatch<React.SetStateAction<boolean>>
@@ -38,7 +36,6 @@ const ItemsListContext = createContext<ItemListContextProps | null>(null)
 
 export default function ItemsListContextProvider({ children }: Props) {
   const [list, setList] = useState(itemsList)
-  const [amount, setAmount] = useState(1)
   const [listSize, setListSize] = useState(30)
   const [isNamesEnabled, setNamesEnabled] = useState(true)
   const [showList, setShowList] = useState(false)
@@ -51,10 +48,12 @@ export default function ItemsListContextProvider({ children }: Props) {
         localStorage.setItem('itemslist', JSON.stringify(itemsList))
       }
       if (localStorage.getItem('list')) {
-        setList(JSON.parse(localStorage.getItem('list')!))
+        const storedList = localStorage.getItem('list')
+        storedList ? setList(JSON.parse(storedList)) : null
       }
       if (localStorage.getItem('listSize')) {
-        setListSize(JSON.parse(localStorage.getItem('listSize')!))
+        const storedListSize = localStorage.getItem('listSize')
+        storedListSize ? setListSize(JSON.parse(storedListSize)) : null
       }
     }
 
@@ -65,6 +64,7 @@ export default function ItemsListContextProvider({ children }: Props) {
     item.createdAt = Date.now()
     item.amount = 1
     localStorage.setItem(list.id, JSON.stringify({...list, items: [...list.items, item]}))
+    localStorage.setItem('list', JSON.stringify({...list, items: [...list.items, item]}))
     setList(prevList => {
       const oldItems = prevList.items.filter(i => i.key !== item.key)
       return {...prevList, items: [...oldItems, item] }
@@ -81,14 +81,12 @@ export default function ItemsListContextProvider({ children }: Props) {
 
   const itemsListContextValues: ItemListContextProps = {
     list,
-    amount,
     listSize,
     isNamesEnabled,
     showList,
     listSwitcher,
     settings,
     setList,
-    setAmount,
     setListSize,
     setNamesEnabled,
     setShowList,

@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function ItemImage({ item, className, clickable }: Props) {
-  const { list, amount, addItemToList, setList, setAmount } = useItemsListContext()
+  const { list, addItemToList, setList } = useItemsListContext()
   const { itemToast } = useToastContext()
   const inGameName = item.inGameName.toLowerCase().replaceAll(/\s/g, '')
   const itemImagePNG = `/images/${inGameName}.png`
@@ -20,12 +20,11 @@ export default function ItemImage({ item, className, clickable }: Props) {
     const itemInList = list.items.find(i => i.key === item.key)
     const currentItems = list.items
     if (itemInList && itemInList.amount) {
-      let itemAmount = amount
+      let itemAmount = itemInList.amount
       const index = currentItems.indexOf(item)
       const removedItem = currentItems.splice(index, 1)[0]
       const newItem = {...removedItem, amount: itemAmount += 1 }
       currentItems.splice(index, 0, newItem)
-      setAmount(prevAmount => prevAmount += 1)
       setList({
         ...list,
         items: [...currentItems]

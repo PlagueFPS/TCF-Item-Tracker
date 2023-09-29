@@ -1,14 +1,15 @@
 import styles from './AmountContainer.module.css'
 import { Material } from '@/interfaces/Material'
 import { useItemsListContext } from '@/contexts/ItemsListContext'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa6'
 interface Props {
   item: Material
 }
 
 export default function AmountContainer({ item }: Props) {
-  const { list, amount, setAmount } = useItemsListContext()
+  const { list } = useItemsListContext()
+  const [amount, setAmount] = useState(item.amount ?? 1)
   const inputRef = useRef<HTMLInputElement>(null)
   const currentItem = list.items.find(i => i.key === item.key)
 

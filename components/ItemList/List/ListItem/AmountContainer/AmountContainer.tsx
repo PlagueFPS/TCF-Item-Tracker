@@ -17,8 +17,19 @@ export default function AmountContainer({ item }: Props) {
     if (currentItem && currentItem.amount) setAmount(currentItem.amount)
   }, [currentItem, setAmount])
 
-  const incrementAmount = (e: any) => {
-    e.preventDefault()
+  useEffect(() => {
+    // keep location of updated item
+    if (currentItem && currentItem?.amount) {
+      currentItem.amount = amount
+      const index = list.items.indexOf(currentItem)
+      const newItems = list.items.filter(i => i.key !== currentItem?.key)
+      newItems.splice(index, 0, currentItem)
+      localStorage.setItem('list', JSON.stringify({...list, items: [...newItems]}))
+      localStorage.setItem(list.id, JSON.stringify({...list, items: [...newItems]}))
+    }
+  }, [amount, currentItem, list])
+
+  const incrementAmount = () => {
     if (inputRef.current) {
       inputRef.current.valueAsNumber = inputRef.current.valueAsNumber + 1
       if (inputRef.current.valueAsNumber > 999) inputRef.current.valueAsNumber = 999
@@ -27,8 +38,7 @@ export default function AmountContainer({ item }: Props) {
     }
   }
 
-  const decrementAmount = (e: any) => {
-    e.preventDefault()
+  const decrementAmount = () => {
     if (inputRef.current) {
       inputRef.current.valueAsNumber = inputRef.current.valueAsNumber - 1
       if (inputRef.current.valueAsNumber < 1) inputRef.current.valueAsNumber = 1

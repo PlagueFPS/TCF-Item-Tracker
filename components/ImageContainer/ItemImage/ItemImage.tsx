@@ -18,16 +18,15 @@ export default function ItemImage({ item, className, clickable }: Props) {
   
   const clickHandler = () => {
     const itemInList = list.items.find(i => i.key === item.key)
-    const currentItems = list.items
     if (itemInList && itemInList.amount) {
-      let itemAmount = itemInList.amount
-      const index = currentItems.indexOf(item)
-      const removedItem = currentItems.splice(index, 1)[0]
-      const newItem = {...removedItem, amount: itemAmount += 1 }
-      currentItems.splice(index, 0, newItem)
+      // keep location of updated item
+      const index = list.items.indexOf(itemInList)
+      const newItems = list.items.filter(i => i.key !== itemInList.key)
+      const newItem = {...itemInList, amount: itemInList.amount += 1 }
+      newItems.splice(index, 0, newItem)
       setList({
         ...list,
-        items: [...currentItems]
+        items: [...newItems]
       })
     }
     else if (!itemInList) {

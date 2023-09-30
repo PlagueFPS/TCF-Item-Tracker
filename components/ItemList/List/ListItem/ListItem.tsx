@@ -14,6 +14,7 @@ interface Props {
 export default function ListItem({ item }: Props) {
   const { list, setList, isNamesEnabled } = useItemsListContext()
   const { itemToast } = useToastContext()
+  const titleCondition = !isNamesEnabled && list.id === 'favoriteslist'
 
   useEffect(() => {
     localStorage.setItem('namesEnabled', JSON.stringify(isNamesEnabled))
@@ -103,7 +104,7 @@ export default function ListItem({ item }: Props) {
         </>
       )}
       <ItemImage item={ item } className={ styles.image } />
-      { isNamesEnabled && <p className={ styles.title }>{ item.inGameName }</p> }
+      { !titleCondition && <p className={ styles.title }>{ item.inGameName }</p> }
       <div className={ styles.btnContainer }>
         <button className={ styles.deleteBtn } onClick={ deleteItem }>
           <FaTrash />

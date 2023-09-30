@@ -42,6 +42,15 @@ export default function Settings() {
     }
   }
 
+  const toggleNamesClick = () => {
+    setNamesEnabled(prevState => !prevState)
+    if (inputRef.current) {
+      if (isNamesEnabled) inputRef.current.checked = false
+      else inputRef.current.checked = true
+    }
+    localStorage.setItem('namesEnabled', JSON.stringify(isNamesEnabled))
+  }
+
   return (
     <div className={ styles.container }>
       <div className={ styles.blur } />
@@ -51,7 +60,7 @@ export default function Settings() {
         </button>
         <h2 className={ styles.title }>Site Settings</h2>
         <ul className={ styles.list }>
-          <li className={ styles.setting }>
+          <li className={ `${styles.setting} ${styles.names}` } id='names' onClick={ toggleNamesClick }>
             <label htmlFor="Item Names" className={ styles.settingName }>
               { `Disable item names for "Your Favorites List"` }
             </label>
@@ -60,7 +69,6 @@ export default function Settings() {
               name="Item Names"
               className={ styles.input }
               ref={ inputRef }
-              onClick={ () => setNamesEnabled(prevState => !prevState) } 
             />
           </li>
           <li className={ styles.setting }>

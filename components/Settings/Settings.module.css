@@ -35,10 +35,13 @@
   border border-outline hover:bg-primary-700
 }
 
+.setting.names {
+  @apply cursor-pointer
+}
+
 .settingName {
   @apply text-xl
 }
-
 
 .settingName[for="Item Names"] {
   @apply cursor-pointer

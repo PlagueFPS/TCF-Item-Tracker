@@ -13,6 +13,7 @@ export const generateMetadata = async () => {
     title: title,
     description: description,
     openGraph: {
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}`,
       title: title,
       description: description
     },

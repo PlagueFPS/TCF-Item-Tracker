@@ -25,7 +25,6 @@ export const metadata: Metadata = {
     apple: '/images/favicon.png'
   },
   openGraph: {
-    url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}`,
     siteName: 'The Cycle: Frontier Items Tracker',
     type: 'website',
     images: [

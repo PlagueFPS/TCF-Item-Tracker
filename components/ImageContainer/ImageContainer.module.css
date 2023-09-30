@@ -12,7 +12,7 @@
 .image {
   @apply flex justify-center items-center bg-primary-800 border-2 border-common
   bg-itemcommon rounded-full p-4 cursor-pointer scale-100 transition-all hover:scale-105
-  hover:brightness-110 active:scale-95
+  hover:brightness-110 active:scale-95 aspect-square
 }
 
 .uncommon {

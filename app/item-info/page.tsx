@@ -5,7 +5,9 @@ import { Metadata } from 'next'
 import getGameData from '@/utils/getGameData'
 import { Material } from '@/interfaces/Material'
 import Header from '@/components/Header/Header'
+import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 import ItemList from '@/components/ItemList/ItemList'
+import ItemsContainer from '@/components/ItemsContainer/ItemsContainer'
 
 export const generateMetadata = async () => {
   const posts = await getPosts<TypeGeneralPagesSkeleton>({ content_type: 'generalPages', 'sys.id': '5ViHygmyrfsQO8LlNuQylP' })
@@ -36,6 +38,7 @@ export default async function ItemInfo() {
         bannerImage='iteminfobackground'
         width={ 1488 }
         height={ 970 }
+        opacity={ 0.65 }
         page='item-info'
         dataType='item'
         data={ items }
@@ -44,8 +47,8 @@ export default async function ItemInfo() {
       <div className={ styles.container }>
         <section className={ styles.contentContainer }>
           {/* ItemsSorter */}
-          {/* TriggerListButton */}
-          {/* ItemsContainer */}
+          <ToggleListButton className={ styles.button } />
+          <ItemsContainer />
         </section>
         <ItemList />
       </div>

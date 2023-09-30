@@ -144,6 +144,10 @@ const config: Config = {
       },
       dropShadow: {
         'title': '0 4px 10px rgba(0,0,0,1)'
+      },
+      gridTemplateColumns: {
+        itemscontainer: 'repeat(auto-fill, 375px)',
+        itemscontainerDesktop: 'repeat(auto-fill, 400px)',
       }
     },
   },

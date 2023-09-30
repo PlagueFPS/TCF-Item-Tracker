@@ -25,7 +25,7 @@ export default function ItemListWrapper({ children }: Props) {
   return (
     <>
       { (home && homeList || !home && showList) &&  
-        <section className={ classSelector() } style={{flexBasis: `${listSize}%`}}>
+        <section className={ classSelector() } style={{ flexBasis: `${listSize}%` }}>
           { children }
         </section>
       }

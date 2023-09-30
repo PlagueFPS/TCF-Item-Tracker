@@ -1,0 +1,166 @@
+.container {
+  @apply relative flex flex-col gap-4 justify-center items-center  bg-primary-800 cursor-pointer
+  bg-itemcommon shadow-secondary transition-all rounded-bl-2xl rounded-br-2xl border-2 border-outline
+  overflow-hidden hover:-translate-y-[5%]
+}
+
+.commonContainer {
+  @apply bg-itemcommon border-t-common
+}
+
+.uncommonContainer {
+  @apply bg-itemuncommon border-t-uncommon
+}
+
+.rareContainer {
+  @apply bg-itemrare border-t-rare
+}
+
+.epicContainer {
+  @apply bg-itemepic border-t-epic
+}
+
+.legendaryContainer {
+  @apply bg-itemlegendary border-t-legendary
+}
+
+.exoticContainer {
+  @apply bg-itemexotic border-t-exotic
+}
+
+.favoriteIcon {
+  @apply absolute top-3 right-4 flex justify-center items-center z-50 bg-orange-400
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center mt-4 -mb-8 z-0
+}
+
+.itemFrame {
+  @apply absolute top-0 bottom-0 left-0 right-0 my-0 mx-auto bg-black bg-opacity-25
+  w-24 rounded-full -z-[1]
+}
+
+.image {
+  @apply p-2 w-full h-24
+}
+
+.titleContainer {
+  @apply relative flex justify-center items-center w-full flex-grow
+}
+
+.title {
+  @apply relative text-center flex justify-center items-center text-2xl font-semibold mb-0
+  after:absolute after:-bottom-1 after:m-auto after:h-[2px] after:w-24 after:bg-common
+}
+
+.commonContainer .title {
+  @apply text-commonText
+}
+
+.uncommonContainer .title {
+  @apply text-uncommonText
+}
+
+.rareContainer .title {
+  @apply text-rareText
+}
+
+.epicContainer .title {
+  @apply text-epicText
+}
+
+.exoticContainer .title {
+  @apply text-exoticText
+}
+
+.legendaryContainer .title {
+  @apply text-legendaryText
+}
+
+.commonContainer .title::after {
+  @apply bg-common
+}
+
+.uncommonContainer .title::after {
+  @apply bg-uncommon
+}
+
+.rareContainer .title::after {
+  @apply bg-rare
+}
+
+.epicContainer .title::after {
+  @apply bg-epic
+}
+
+.exoticContainer .title::after {
+  @apply bg-exotic
+}
+
+.legendaryContainer .title::after {
+  @apply bg-legendary
+}
+
+.weightContainer,
+.repContainer,
+.valuePerWeight_Container,
+.priceContainer,
+.amountContainer,
+.rarityContainer {
+  @apply flex justify-center items-center gap-2 w-full text-xl
+}
+
+.weightText,
+.repText,
+.valuePerWeight_Text,
+.priceText,
+.amountText,
+.rarityText {
+  @apply text-secondary-400
+}
+
+.weight,
+.rep,
+.valuePerWeight,
+.price,
+.amount,
+.rarity {
+  @apply flex justify-center items-center gap-2 text-secondary-400 font-bold text-center mb-0
+}
+
+.rarity {
+  @apply capitalize
+}
+
+.commonContainer .rarity {
+  @apply text-common
+}
+
+.uncommonContainer .rarity {
+  @apply text-uncommon
+}
+
+.rareContainer .rarity {
+  @apply text-rare
+}
+
+.epicContainer .rarity {
+  @apply text-epic
+}
+
+.exoticContainer .rarity {
+  @apply text-exotic
+}
+
+.legendaryContainer .rarity {
+  @apply text-legendary
+}
+
+.descriptionContainer {
+  @apply flex justify-center items-center flex-grow w-full bg-primary-900 py-2 px-4 text-xl
+}
+
+.description {
+  @apply text-secondary-400 text-center mb-0
+}

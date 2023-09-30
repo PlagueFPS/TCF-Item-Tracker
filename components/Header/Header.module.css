@@ -1,5 +1,5 @@
 .header {
-  @apply relative flex justify-center items-center w-full h-40 transition-all border-b border-outline
+  @apply relative flex justify-center items-center w-full h-40 mt-20 xl:mt-0 transition-all border-b border-outline
 }
 
 .header picture {

@@ -19,8 +19,8 @@ export default function ListButtons() {
 
   return (
     <div className={ styles.btnContainer }>
-      <button className={ styles.clearBtn } onClick={ clearItems }>Clear Items</button>
-      <button className={ styles.switchBtn } onClick={ () => setListSwitcher(true) }>Switch List</button>
+      <button className={ styles.clearBtn } onClick={ clearItems } title='Clear Items'>Clear Items</button>
+      <button className={ styles.switchBtn } onClick={ () => setListSwitcher(true) } title='Switch List'>Switch List</button>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import ListSwitcher from "@/components/ItemList/ListSwitcher/ListSwitcher"
 import { List } from "@/interfaces/List"
 import { Material } from "@/interfaces/Material"
 import { useState, createContext, useContext, useEffect } from 'react'
+import { usePathname } from "next/navigation"
 import ToastContextProvider from "./ToastContext"
 import Settings from "@/components/Settings/Settings"
 
@@ -13,14 +14,18 @@ interface Props {
 interface ItemListContextProps {
   list: List
   listSize: number
+  listClosing: boolean
   isNamesEnabled: boolean
   showList: boolean
+  homeList: boolean
   listSwitcher: boolean
   settings: boolean
   setList: React.Dispatch<React.SetStateAction<List>>
   setListSize: React.Dispatch<React.SetStateAction<number>>
+  setListClosing: React.Dispatch<React.SetStateAction<boolean>>
   setNamesEnabled: React.Dispatch<React.SetStateAction<boolean>>
   setShowList: React.Dispatch<React.SetStateAction<boolean>>
+  setHomeList: React.Dispatch<React.SetStateAction<boolean>>
   setListSwitcher: React.Dispatch<React.SetStateAction<boolean>>
   setSettings: React.Dispatch<React.SetStateAction<boolean>>
   addItemToList: (item: Material) => void
@@ -40,8 +45,11 @@ export default function ItemsListContextProvider({ children }: Props) {
   const [listSize, setListSize] = useState(30)
   const [isNamesEnabled, setNamesEnabled] = useState(true)
   const [showList, setShowList] = useState(false)
+  const [homeList, setHomeList] = useState(true)
+  const [listClosing, setListClosing] = useState(false)
   const [listSwitcher, setListSwitcher] = useState(false)
   const [settings, setSettings] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const loadList = () => {
@@ -77,7 +85,30 @@ export default function ItemsListContextProvider({ children }: Props) {
   }
 
   const triggerList = () => {
-    setShowList(prevState => !prevState)
+    // allow time for animation to play on exit
+    const home = pathname === '/'
+    if (home) {
+      if (!listClosing) {
+        setListClosing(true)
+        const timeout = setTimeout(() => setHomeList(false), 250)
+        return () => clearTimeout(timeout)
+      }
+      else {
+        setListClosing(false)
+        setHomeList(true)
+      }
+    }
+    else {
+      if (!listClosing) {
+        setListClosing(true)
+        const timeout = setTimeout(() => setShowList(false), 250)
+        return () => clearTimeout(timeout)
+      }
+      else {
+        setListClosing(false)
+        setShowList(true)
+      }
+    }
   }
 
   const toggleListSwitcher = () => {
@@ -87,14 +118,18 @@ export default function ItemsListContextProvider({ children }: Props) {
   const itemsListContextValues: ItemListContextProps = {
     list,
     listSize,
+    listClosing,
     isNamesEnabled,
     showList,
+    homeList,
     listSwitcher,
     settings,
     setList,
     setListSize,
+    setListClosing,
     setNamesEnabled,
     setShowList,
+    setHomeList,
     setListSwitcher,
     setSettings,
     addItemToList,

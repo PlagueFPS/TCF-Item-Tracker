@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import ImageContainer from '@/components/ImageContainer/ImageContainer'
 import ItemList from '@/components/ItemList/ItemList'
+import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 
 export const generateMetadata = async () => {
   const posts = await getPosts<TypeGeneralPagesSkeleton>({ content_type: 'generalPages', 'sys.id': '5oSmEKkW3H2YbkApFvbimc' })
@@ -41,6 +42,7 @@ export default async function Home() {
         position='bottom'
       />
       <div className={ styles.container }>
+        <ToggleListButton className={ styles.button } home />
         <ImageContainer />
         <ItemList />
       </div>

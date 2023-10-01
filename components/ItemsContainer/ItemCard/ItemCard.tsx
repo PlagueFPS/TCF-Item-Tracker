@@ -40,7 +40,7 @@ export default function ItemCard({ item }: Props) {
       </div>
       <div className={ styles.valuePerWeight_Container }>
         <p className={ styles.valuePerWeight_Text }>Value/Weight:</p>
-        <p className={ styles.valuePerWeight }>{ calcValuePerWeight(item) }</p>
+        <p className={ styles.valuePerWeight }>{ calcValuePerWeight(item, true) }</p>
       </div>
       <div className={ styles.priceContainer }>
         <p className={ styles.priceText }>Sell Price:</p>

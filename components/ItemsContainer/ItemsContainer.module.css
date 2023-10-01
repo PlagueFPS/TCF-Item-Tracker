@@ -1,4 +1,4 @@
 .container {
-  @apply grid grid-cols-itemscontainer md:grid-cols-itemscontainerDesktop gap-y-12 gap-x-8 justify-center my-20 md:mx-4
-  w-full animate-fadeIn;
+  @apply relative grid grid-cols-itemscontainer gap-y-12 gap-x-8 justify-center my-24 px-4
+  w-full max-w-screen-2xl animate-fadeIn;
 }

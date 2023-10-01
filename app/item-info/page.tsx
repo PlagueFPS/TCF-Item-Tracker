@@ -46,7 +46,6 @@ export default async function ItemInfo() {
       />
       <div className={ styles.container }>
         <section className={ styles.contentContainer }>
-          {/* ItemsSorter */}
           <ToggleListButton className={ styles.button } />
           <ItemsContainer />
         </section>

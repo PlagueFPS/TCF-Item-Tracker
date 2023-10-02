@@ -4,6 +4,7 @@ import { TypeGeneralPagesSkeleton } from '@/contentful/types/contentful-types'
 import { Metadata } from 'next'
 import getGameData from '@/utils/getGameData'
 import { Material } from '@/interfaces/Material'
+import { Item } from '@/interfaces/Item'
 import Header from '@/components/Header/Header'
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 import ItemList from '@/components/ItemList/ItemList'
@@ -30,7 +31,8 @@ export const generateMetadata = async () => {
 }
 
 export default async function ItemInfo() {
-  const items = await getGameData('materials') as Material[]
+  const materials = await getGameData('materials') as Material[]
+  const items = await getGameData('items', true) as Item[]
 
   return (
     <>
@@ -41,13 +43,13 @@ export default async function ItemInfo() {
         opacity={ 0.65 }
         page='item-info'
         dataType='item'
-        data={ items }
+        data={ materials }
         placeHolder='Search for item...'
       />
       <div className={ styles.container }>
         <section className={ styles.contentContainer }>
           <ToggleListButton className={ styles.button } />
-          <ItemsContainer />
+          <ItemsContainer items={ items } />
         </section>
         <ItemList />
       </div>

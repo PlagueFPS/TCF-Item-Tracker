@@ -10,7 +10,7 @@
 }
 
 .selector.expanded {
-  @apply max-h-60;
+  @apply max-h-80;
 }
 
 .option {

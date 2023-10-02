@@ -9,6 +9,7 @@ import Header from '@/components/Header/Header'
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 import ItemList from '@/components/ItemList/ItemList'
 import ItemsContainer from '@/components/ItemsContainer/ItemsContainer'
+import { compareRarity } from '@/utils/GameUtils'
 
 export const generateMetadata = async () => {
   const posts = await getPosts<TypeGeneralPagesSkeleton>({ content_type: 'generalPages', 'sys.id': '5ViHygmyrfsQO8LlNuQylP' })
@@ -49,7 +50,7 @@ export default async function ItemInfo() {
       <div className={ styles.container }>
         <section className={ styles.contentContainer }>
           <ToggleListButton className={ styles.button } />
-          <ItemsContainer items={ items } />
+          <ItemsContainer items={ items.sort(compareRarity) } />
         </section>
         <ItemList />
       </div>

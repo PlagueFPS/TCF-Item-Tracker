@@ -1,5 +1,5 @@
 import styles from './ItemsSorter.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Item } from '@/interfaces/Item'
 import { compareName, comparePrice, compareRarity, compareValuePerWeight, compareWeight } from '@/utils/GameUtils'
 
@@ -10,30 +10,33 @@ interface Props {
 type Options = 'Rarity' | 'A-Z' | 'Price' | 'Value/Weight' | 'Weight'
 
 export default function ItemsSorter({ setItems }: Props) {
-  const options: Options[] = ['Rarity', 'A-Z', 'Price', 'Value/Weight', 'Weight']
   const [currentSort, setCurrentSort] = useState<Options>('Rarity')
   const [expanded, setExpanded] = useState(false)
+  const options: Options[] = ['Rarity', 'A-Z', 'Price', 'Value/Weight', 'Weight']
   const sortedOptions = options.filter(option => option !== currentSort)
+
+  useEffect(() => {
+    switch(currentSort) {
+      case 'Rarity':
+        setItems(prevItems => [...prevItems].sort(compareRarity))
+        break
+      case 'A-Z':
+        setItems(prevItems => [...prevItems].sort(compareName))
+        break
+      case 'Price':
+        setItems(prevItems => [...prevItems].sort(comparePrice))
+        break
+      case 'Value/Weight':
+        setItems(prevItems => [...prevItems].sort(compareValuePerWeight))
+        break
+      case 'Weight':
+        setItems(prevItems => [...prevItems].sort(compareWeight))
+    }
+  }, [currentSort, setItems])
 
   const onClickHandler = (value: Options) => {
     setExpanded(prevState => !prevState)
     setCurrentSort(value)
-    switch(currentSort) {
-      case 'Rarity':
-        setItems(prevItems => prevItems.sort(compareRarity))
-        break
-      case 'A-Z':
-        setItems(prevItems => prevItems.sort(compareName))
-        break
-      case 'Price':
-        setItems(prevItems => prevItems.sort(comparePrice))
-        break
-      case 'Value/Weight':
-        setItems(prevItems => prevItems.sort(compareValuePerWeight))
-        break
-      case 'Weight':
-        setItems(prevItems => prevItems.sort(compareWeight))
-    }
   }
   
 

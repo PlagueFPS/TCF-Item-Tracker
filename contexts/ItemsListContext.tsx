@@ -6,6 +6,7 @@ import { useState, createContext, useContext, useEffect } from 'react'
 import { usePathname } from "next/navigation"
 import ToastContextProvider from "./ToastContext"
 import Settings from "@/components/Settings/Settings"
+import { Item } from "@/interfaces/Item"
 
 interface Props {
   children: React.ReactNode
@@ -28,7 +29,7 @@ interface ItemListContextProps {
   setHomeList: React.Dispatch<React.SetStateAction<boolean>>
   setListSwitcher: React.Dispatch<React.SetStateAction<boolean>>
   setSettings: React.Dispatch<React.SetStateAction<boolean>>
-  addItemToList: (item: Material) => void
+  addItemToList: (item: Material | Item) => void
   triggerList: () => void
 }
 
@@ -73,7 +74,7 @@ export default function ItemsListContextProvider({ children }: Props) {
     loadList()
   }, [])
 
-  const addItemToList = (item: Material) => {
+  const addItemToList = (item: Material | Item) => {
     item.createdAt = Date.now()
     item.amount = 1
     localStorage.setItem(list.id, JSON.stringify({...list, items: [...list.items, item]}))

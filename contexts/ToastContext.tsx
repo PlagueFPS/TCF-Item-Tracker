@@ -3,15 +3,16 @@ import { Material } from "@/interfaces/Material"
 import { createContext, useState, useEffect, useContext } from 'react'
 import { useItemsListContext } from "./ItemsListContext"
 import Toast from "@/components/Toast/Toast"
+import { Item } from "@/interfaces/Item"
 
 interface ToastContextProps {
   showToast: boolean
   toastAction: string
-  toastItems: Material[]
+  toastItems: (Material | Item)[]
   setToast: React.Dispatch<React.SetStateAction<boolean>>
   setAction: React.Dispatch<React.SetStateAction<string>>
-  setItems: React.Dispatch<React.SetStateAction<Material[]>>
-  itemToast: (item: Material, action?: string) => void
+  setItems: React.Dispatch<React.SetStateAction<(Material | Item)[]>>
+  itemToast: (item: Material | Item, action?: string) => void
   itemsToast: (items: Material[], action?: string) => void
   toast: (action?: string) => void
 }
@@ -26,7 +27,7 @@ export default function ToastContextProvider({ children }: Props) {
   const { list } = useItemsListContext()
   const [showToast, setToast] = useState(false)
   const [toastAction, setAction] = useState('')
-  const [toastItems, setItems] = useState<Material[]>([])
+  const [toastItems, setItems] = useState<(Material| Item)[]>([])
   const [closing, setClosing] = useState(false)
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export default function ToastContextProvider({ children }: Props) {
     return () => clearTimeout(timeout)
   }, [showToast, toastItems])
 
-  const itemToast = (item: Material, action?: string) => {
+  const itemToast = (item: Material | Item, action?: string) => {
     setToast(true)
     setItems([item])
     if (action) setAction(action)

@@ -1,4 +1,5 @@
 import { Craft } from "@/interfaces/Craft";
+import { ForgeRecipe } from "@/interfaces/ForgeRecipe";
 import { Item } from "@/interfaces/Item";
 import { Material } from "@/interfaces/Material";
 import { Quest } from "@/interfaces/Quest";
@@ -35,9 +36,8 @@ export const upgradeHrefSelector = (upgrade: Quarters) => {
     if (upgrade.inGameName.includes('Gen') || upgrade.inGameName.includes('Supply Crate')) return `/upgrades/generators/${upgrade.inGameName.replace(/\s/g, '')}`
     else if (upgrade.inGameName.includes('Increase')) return `/upgrades/inventory/${upgrade.inGameName.replace(/\s/g, '')}`
     else if (upgrade.inGameName.includes('Reduce PQ Upgrade Time')) return `/upgrades/workbench/${upgrade.inGameName.replace(/\s/g, '')}`
+    else return '#'
   }
-
-  return ""
 }
 
 export const craftHrefSelector = (craft: Craft) => {
@@ -62,11 +62,20 @@ export const craftHrefSelector = (craft: Craft) => {
 export const getLink = async (name: string) => {
   const quests = await getGameData('missions') as Quest[]
   const upgrades = await getGameData('personalQuarters') as Quarters[]
+  const crafts = await getGameData('printing') as Craft[]
+  const forgeRecipes = await getGameData('forgePerks') as ForgeRecipe[]
+  const items = await getGameData('items', true) as Item[]
   const quest = quests.find(quest => quest.inGameName === name)
   const upgrade = upgrades.find(upgrade => upgrade.inGameName === name)
+  const craft = crafts.find(craft => craft.inGameName === name)
+  const recipe = forgeRecipes.find(recipe => recipe.inGameName === name)
+  const item = items.find(item => item.inGameName === name)
 
   if (quest) return questHrefSelector(quest)
   else if (upgrade) return upgradeHrefSelector(upgrade)
+  else if (craft) return craftHrefSelector(craft)
+  else if (recipe) return `/forge/${recipe.key}`
+  else if (item) return `/item-info/${item.key}`
   else return '#'
 }
 

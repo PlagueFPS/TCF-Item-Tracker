@@ -2,6 +2,7 @@
 import styles from '../ItemCard/ItemCard.module.css'
 import { Item } from "@/interfaces/Item"
 import { useState } from 'react'
+import ItemCardOptions from '../ItemCard/ItemCardOptions/ItemCardOptions'
 
 interface Props {
   children: React.ReactNode
@@ -35,6 +36,7 @@ export default function ItemsCardWrapper({ children, item, items }: Props) {
 
   return (
     <>
+      { showOptions && <ItemCardOptions item={ item } items={ items } toggleOptionsModal={ toggleOptionsModal } /> }
       <div className={ classSelector() } onClick={ toggleOptionsModal }>
         { children }
       </div>

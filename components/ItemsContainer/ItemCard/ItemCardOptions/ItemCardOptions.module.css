@@ -1,0 +1,202 @@
+.container {
+  @apply flex justify-center items-center fixed top-0 bottom-0 left-0 right-0 z-[999]
+}
+
+.blur {
+  @apply fixed top-0 right-0 left-0 bottom-0 opacity-100 backdrop-saturate-[30%]
+  supports-[backdrop-filter]:backdrop-blur
+}
+
+.contentContainer {
+  @apply relative flex flex-col justify-center items-center m-4 pt-8 pb-12 gap-4
+  w-96 min-h-[500px] z-[999] border-2 border-outline border-t-common rounded-br-lg rounded-bl-lg
+  bg-primary-800 bg-itemcommon shadow-secondary animate-bounceIn
+}
+
+.contentContainer.closing {
+  @apply animate-bounceOut
+}
+
+.commonContainer {
+  @apply bg-itemcommon border-t-common
+}
+
+.uncommonContainer {
+  @apply bg-itemuncommon border-t-uncommon
+}
+
+.rareContainer {
+  @apply bg-itemrare border-t-rare
+}
+
+.epicContainer {
+  @apply bg-itemepic border-t-epic
+}
+
+.legendaryContainer {
+  @apply bg-itemlegendary border-t-legendary
+}
+
+.exoticContainer {
+  @apply bg-itemexotic border-t-exotic
+}
+
+.prevBtn, 
+.nextBtn {
+  @apply absolute bg-transparent border-none text-common text-7xl cursor-pointer
+  transition-all w-fit h-fit
+}
+
+.prevBtn {
+  @apply -top-28 hover:-translate-y-[1%] md:top-0 md:bottom-0 md:my-auto md:-left-16 md:hover:-translate-x-[5%]
+}
+
+.nextBtn {
+  @apply -bottom-28 hover:translate-y-[1%] md:bottom-0 md:top-0 md:my-auto md:-right-16 md:hover:translate-x-[5%]
+}
+
+.commonContainer .nextBtn,
+.commonContainer .prevBtn {
+  @apply text-common
+}
+
+.uncommonContainer .nextBtn,
+.uncommonContainer .prevBtn {
+  @apply text-uncommon
+}
+
+.rareContainer .nextBtn,
+.rareContainer .prevBtn {
+  @apply text-rare
+}
+
+.epicContainer .nextBtn,
+.epicContainer .prevBtn {
+  @apply text-epic
+}
+
+.exoticContainer .nextBtn,
+.exoticContainer .prevBtn {
+  @apply text-exotic
+}
+
+.legendaryContainer .nextBtn,
+.legendaryContainer .prevBtn {
+  @apply text-legendary
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center w-full -mb-10 z-0
+}
+
+.itemFrame {
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-36 rounded-full
+  -z-[1]
+}
+
+.image {
+  @apply p-2 h-36
+}
+
+.titleContainer {
+  @apply flex justify-center items-center flex-grow text-secondary-400 font-semibold
+  text-2xl w-full
+}
+
+.title {
+  @apply relative flex justify-center items-center text-center after:absolute
+  after:-bottom-1 after:m-auto after:h-[2px] after:w-24 after:bg-secondary-800
+}
+
+.commonContainer .title {
+  @apply text-commonText
+}
+
+.uncommonContainer .title {
+  @apply text-uncommonText
+}
+
+.rareContainer .title {
+  @apply text-rareText
+}
+
+.epicContainer .title {
+  @apply text-epicText
+}
+
+.exoticContainer .title {
+  @apply text-exoticText
+}
+
+.legendaryContainer .title {
+  @apply text-legendaryText
+}
+
+.commonContainer .title::after {
+  @apply bg-common
+}
+
+.uncommonContainer .title::after {
+  @apply bg-uncommon
+}
+
+.rareContainer .title::after {
+  @apply bg-rare
+}
+
+.epicContainer .title::after {
+  @apply bg-epic
+}
+
+.exoticContainer .title::after {
+  @apply bg-exotic
+}
+
+.legendaryContainer .title::after {
+  @apply bg-legendary
+}
+
+.filterContainer {
+  @apply flex justify-evenly items-center w-full bg-primary-900
+}
+
+.filter {
+  @apply text-lg font-medium w-full p-1 text-center cursor-pointer
+}
+
+.filter.activeFilter {
+  @apply font-semibold border-b-2 border-secondary-600
+}
+
+.list {
+  @apply relative flex flex-col flex-grow px-4 w-full max-h-36 min-h-[144px] overflow-auto
+  text-lg
+}
+
+.listTitle {
+  @apply font-bold underline
+}
+
+.listItem {
+  @apply text-secondary-500 font-medium border-dotted border-b border-secondary-500
+  transition-all hover:opacity-75 hover:cursor-pointer
+}
+
+.btnContainer {
+  @apply flex justify-center items-center px-8 gap-4 w-full text-primary-900
+}
+
+.btn {
+  @apply bg-greenLight border border-primary-800 text-base font-bold rounded
+  p-2 flex-grow cursor-pointer hover:bg-green-500 transition-all
+}
+
+.btn.btnDecline {
+  @apply bg-red-400 border border-primary-800 hover:bg-red-500
+}
+
+.link {
+  @apply absolute bottom-8 flex justify-center items-center flex-grow bg-primary-900
+  py-2 px-5 -mb-8 rounded-tr-lg rounded-tl-lg text-secondary-400 text-base transition-all
+  hover:pb-3
+}

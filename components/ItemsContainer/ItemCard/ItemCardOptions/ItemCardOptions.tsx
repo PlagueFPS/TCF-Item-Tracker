@@ -64,6 +64,7 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
       case 'Forge':
         const forgeRecipes: Forge[] = []
         for (const recipe in currentItem.uses.forge) {
+          console.log(recipe, currentItem.uses.forge[recipe])
           forgeRecipes.push(currentItem.uses.forge[recipe])
         }
 
@@ -103,14 +104,12 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
     addItemToList(currentItem)
     itemToast(currentItem)
     setClosing(true)
-    const timeout = setTimeout(toggleOptionsModal, 250)
-    return clearTimeout(timeout)
+    setTimeout(toggleOptionsModal, 250)
   }
 
   const handleCloseClick = () => {
     setClosing(true)
-    const timeout = setTimeout(toggleOptionsModal, 250)
-    return clearTimeout(timeout)
+    setTimeout(toggleOptionsModal, 250)
   }
 
   const cyclePrevItem = () => {

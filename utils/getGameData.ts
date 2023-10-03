@@ -46,14 +46,15 @@ const tagsToExclude = [
 
 export default async function getGameData(filename: DataStrings, filtered?: boolean): Promise<DataTypes[] | Location | Cosmetic> {
   switch(filename) {
-    case 'materials':
+    case 'materials': {
       const materialData = materials as Material[]
       const filteredMaterials = materialData.filter(item => 
         tagsToExclude.every(tag => !item.tags.includes(tag) && item.tags.length) && 
         itemsToExclude.every(i => item.inGameName !== i))
       
       return filteredMaterials
-    case 'items':
+    }
+    case 'items': {
       const itemsData = items as Item[]
       const filteredItems = itemsData.filter(item => {
         return tagsToExclude.every(tag => !item.tags.includes(tag) && item.tags.length) && 
@@ -61,11 +62,14 @@ export default async function getGameData(filename: DataStrings, filtered?: bool
       })
       
       return filtered ? filteredItems : itemsData
-    case 'missions':
+    }
+    case 'missions': {
       const missionData = missions as Quest[]
       return missionData
-    case 'personalQuarters':
+    }
+    case 'personalQuarters': {
       const quarters: any = personalQuarters[0]
+      const rawUpgrades: any = personalQuarters[1]
       const upgrades = []
 
       for (const level in quarters) {
@@ -74,14 +78,18 @@ export default async function getGameData(filename: DataStrings, filtered?: bool
         }
       }
     
-      // for (const node in quarters) {
-      //   upgrades.push(quarters[node])
-      // }
+      for (const node in rawUpgrades) {
+        if (rawUpgrades[node] !== "nodes") {
+          const tiers = rawUpgrades[node]["levels"]
+          tiers.forEach((tier: any) => upgrades.push(tier))
+        }
+      }
 
       return upgrades
-    case 'printing':
+    }
+    case 'printing': {
       const printingData: any = printing
-      // const itemsData = items
+      const itemsData = items as Item[]
       const crafts: Craft[] = printingData.map((craft: RawCraft) => {
         const item = itemsData.find((item: Item) => item.key === craft.key)
         const effects = getItemEffect(craft)
@@ -117,7 +125,8 @@ export default async function getGameData(filename: DataStrings, filtered?: bool
       })
 
       return crafts
-    case 'forgePerks':
+    }
+    case 'forgePerks': {
       const perkData = forgePerks as RawRecipe[]
       const perks: ForgeRecipe[] = perkData.map(perk => {
         let inGameName = perk.description
@@ -149,12 +158,15 @@ export default async function getGameData(filename: DataStrings, filtered?: bool
       })
 
       return perks
-    case 'locations':
+    }
+    case 'locations': {
       const locationData = locations as Location
       return locationData
-    case 'cosmetics':
+    }
+    case 'cosmetics': {
       const cosmeticsData = cosmetics as Cosmetic
       return cosmeticsData
+    }
   }
 }
 

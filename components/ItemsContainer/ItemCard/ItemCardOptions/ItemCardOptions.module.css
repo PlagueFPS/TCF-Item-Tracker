@@ -3,7 +3,7 @@
 }
 
 .blur {
-  @apply fixed top-0 right-0 left-0 bottom-0 opacity-100 backdrop-saturate-[30%]
+  @apply fixed top-0 right-0 left-0 bottom-0 z-[999] opacity-100 backdrop-saturate-[30%]
   supports-[backdrop-filter]:backdrop-blur
 }
 

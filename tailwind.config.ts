@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '480px'
+      },
       colors: {
         primary: {
           900: 'hsl(225, 8%, 9%)',

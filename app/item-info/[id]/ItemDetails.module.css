@@ -1,0 +1,165 @@
+.container {
+  @apply relative flex flex-col gap-14 items-center bg-primary-900 border-t border-outline
+}
+
+.commonContainer {
+  @apply bg-itemcommon border-t-common
+}
+
+.uncommonContainer {
+  @apply bg-itemuncommon border-t-uncommon
+}
+
+.rareContainer {
+  @apply bg-itemrare border-t-rare
+}
+
+.epicContainer {
+  @apply bg-itemepic border-t-epic
+}
+
+.legendaryContainer {
+  @apply bg-itemlegendary border-t-legendary
+}
+
+.exoticContainer {
+  @apply bg-itemexotic border-t-exotic
+}
+
+.itemContainer {
+  @apply relative flex flex-col gap-8 items-center w-full
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center mt-4 -mb-12 z-0
+}
+
+.image {
+  @apply h-64 w-64
+}
+
+.itemFrame {
+  @apply absolute top-0 bottom-0 left-0 right-0 mx-auto bg-black bg-opacity-25 -z-[1] rounded-full
+}
+
+.title {
+  @apply relative text-secondary-400 text-center flex justify-center items-center text-3xl font-bold
+}
+
+.commonContainer .title {
+  @apply text-commonText
+}
+
+.uncommonContainer .title {
+  @apply text-uncommonText
+}
+
+.rareContainer .title {
+  @apply text-rareText
+}
+
+.epicContainer .title {
+  @apply text-epicText
+}
+
+.exoticContainer .title {
+  @apply text-exoticText
+}
+
+.legendaryContainer .title {
+  @apply text-legendaryText
+}
+
+.description {
+  @apply text-xl font-medium text-secondary-500 bg-primary-900 py-2 px-4 rounded-lg max-w-[80ch] mx-4 border border-outline
+}
+
+.statsContainer, .foundContainer {
+  @apply relative flex flex-col gap-4 justify-center items-center p-4 mx-auto bg-primary-900 rounded-lg border border-outline
+}
+
+.foundContainer {
+  @apply min-w-[30ch] mx-4 md:mx-0
+}
+
+.statsList {
+  @apply grid grid-cols-1 gap-4 xs:grid-cols-2 justify-center items-center w-full
+}
+
+.statsList_Item {
+  @apply flex justify-center items-center gap-2 w-full
+}
+
+.foundList {
+  @apply flex flex-col justify-center items-center gap-3
+}
+
+.foundListItem {
+  @apply flex items-center w-full
+}
+
+.foundListItem a {
+  @apply border-b border-dotted border-secondary-500 hover:opacity-50 transition-all
+}
+
+.statText, .foundListItem a {
+  @apply text-xl text-secondary-500
+}
+
+.stat {
+  @apply text-xl font-bold capitalize text-secondary-500
+}
+
+.commonContainer .rarity {
+  @apply text-common
+}
+
+.uncommonContainer .rarity {
+  @apply text-uncommon
+}
+
+.rareContainer .rarity {
+  @apply text-rare
+}
+
+.epicContainer .rarity {
+  @apply text-epic
+}
+
+.exoticContainer .rarity {
+  @apply text-exotic
+}
+
+.legendaryContainer .rarity {
+  @apply text-legendary
+}
+
+.contentContainer {
+  @apply relative flex justify-center flex-wrap gap-0 md:gap-8 max-w-[80ch] bg-primary-900 rounded-lg my-4 mx-4 md:mx-0 mb-12 border border-outline
+}
+
+.contentTitle,
+.statsTitle,
+.foundTitle {
+  @apply absolute -top-10 text-2xl text-secondary-400 font-semibold
+}
+
+.content {
+  @apply flex flex-col items-center p-4 min-w-[37ch] max-w-[37ch]
+}
+
+.list {
+  @apply flex flex-col justify-center w-full
+}
+
+.listTitle {
+  @apply text-secondary-400 text-2xl font-semibold
+}
+
+.content dd {
+  @apply flex items-center w-full gap-2 text-secondary-300
+}
+
+.listItem {
+  @apply text-secondary-500 text-xl border-b border-dotted border-secondary-500 transition-all hover:opacity-50
+}

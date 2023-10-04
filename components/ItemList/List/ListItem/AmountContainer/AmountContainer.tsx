@@ -1,10 +1,11 @@
 import styles from './AmountContainer.module.css'
 import { Material } from '@/interfaces/Material'
+import { Item } from '@/interfaces/Item'
 import { useItemsListContext } from '@/contexts/ItemsListContext'
 import { useEffect, useRef, useState } from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa6'
 interface Props {
-  item: Material
+  item: Material | Item
 }
 
 export default function AmountContainer({ item }: Props) {

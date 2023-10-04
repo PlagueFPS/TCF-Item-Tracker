@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation'
 import { Item } from '@/interfaces/Item'
 import { Quest } from '@/interfaces/Quest'
 import { Quarters } from '@/interfaces/Upgrade'
-import { upgradeHrefSelector } from '@/functions/GlobalFunctions'
 import { Craft } from '@/interfaces/Craft'
 import { ForgeRecipe } from '@/interfaces/ForgeRecipe'
+import { craftHrefSelector, upgradeHrefSelector } from '@/functions/GlobalFunctions'
 import SuggestedItems from './SuggestedItems/SuggestedItems'
 
 interface Props {
@@ -61,37 +61,7 @@ export default function Searchbar({ data, dataType, page, placeholder }: Props) 
       case 'craft':
         const craftData = data as Craft[]
         const craft = craftData.find(craft => craft.inGameName.toLowerCase().replace(/\s/g, '') === value || craft.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
-        if (craft) {
-          url = craft.key
-          switch(craft.type) {
-            default:
-              page = 'crafting'
-              break
-            case 'attachment': 
-              page = 'crafting/attachments'
-              break
-            case 'backpack':
-              page = 'crafting'
-              break
-            case 'consumable':
-              page = 'crafting/consumables'
-              break
-            case 'helmet':
-              page = 'crafting/armor'
-              break
-            case 'material':
-              page = 'crafting/materials'
-              break
-            case 'questItem':
-              page = 'crafting'
-              break
-            case 'shield':
-              page = 'crafting/armor'
-              break
-            case 'weapon':
-              page = 'crafting/weapons'
-          }
-        }
+        if (craft) url = craftHrefSelector(craft)
         break
       case 'forge':
         const forgeRecipes = data as ForgeRecipe[]

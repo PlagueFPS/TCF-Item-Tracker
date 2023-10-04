@@ -1,5 +1,6 @@
 import styles from './ListItem.module.css'
 import { Material } from "@/interfaces/Material"
+import { Item } from '@/interfaces/Item'
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from '@/contexts/ToastContext'
 import { useEffect } from 'react'
@@ -8,7 +9,7 @@ import AmountContainer from './AmountContainer/AmountContainer'
 import ItemImage from '@/components/ImageContainer/ItemImage/ItemImage'
 
 interface Props {
-  item: Material
+  item: Material | Item
 }
 
 export default function ListItem({ item }: Props) {

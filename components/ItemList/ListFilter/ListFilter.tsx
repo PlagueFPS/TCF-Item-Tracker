@@ -1,7 +1,7 @@
 "use client"
 import styles from './ListFilter.module.css'
 import { useItemsListContext } from '@/contexts/ItemsListContext'
-import { compareCreatedAt, compareName, compareRarity } from '@/utils/GameUtils'
+import { compareCreatedAt, compareName, compareRarity } from '@/functions/GlobalFunctions'
 
 export default function ListFilter() {
   const { list, setList } = useItemsListContext()

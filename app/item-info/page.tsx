@@ -9,7 +9,7 @@ import Header from '@/components/Header/Header'
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 import ItemList from '@/components/ItemList/ItemList'
 import ItemsContainer from '@/components/ItemsContainer/ItemsContainer'
-import { compareRarity } from '@/utils/GameUtils'
+import { compareRarity } from '@/functions/GlobalFunctions'
 
 export const generateMetadata = async () => {
   const posts = await getPosts<TypeGeneralPagesSkeleton>({ content_type: 'generalPages', 'sys.id': '5ViHygmyrfsQO8LlNuQylP' })

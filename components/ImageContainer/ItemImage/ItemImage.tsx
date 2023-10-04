@@ -1,9 +1,10 @@
 "use client"
 import { Material } from "@/interfaces/Material"
+import { Item } from "@/interfaces/Item"
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from "@/contexts/ToastContext"
 interface Props {
-  item: Material
+  item: Material | Item
   className: string
   clickable?: boolean
 }

@@ -3,8 +3,8 @@ import getGameData from "@/utils/getGameData"
 import { Forge, Item } from "@/interfaces/Item"
 import { Metadata } from "next"
 import { notFound } from 'next/navigation'
-import Header from "@/components/Header/Header"
 import { calcRepPerWeight, calcValuePerWeight, getLink, itemAmountNeeded } from '@/functions/GlobalFunctions'
+import Header from "@/components/Header/Header"
 import Link from 'next/link'
 
 interface Props {

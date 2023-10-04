@@ -1,7 +1,7 @@
 import styles from './ImageContainer.module.css'
 import getGameData from "@/utils/getGameData"
 import { Material, Rarity } from "@/interfaces/Material"
-import { compareRarity } from '@/utils/GameUtils'
+import { compareRarity } from '@/functions/GlobalFunctions'
 import ItemImage from './ItemImage/ItemImage'
 
 

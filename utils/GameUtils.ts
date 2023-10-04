@@ -1,16 +1,9 @@
-import { Craft, CraftItem } from "@/interfaces/Craft";
+import { CraftItem } from "@/interfaces/Craft";
 import { Item } from "@/interfaces/Item";
-import { Material } from "@/interfaces/Material";
-import { DataTypes } from "@/types/DataTypes";
 import { MMapName, Objective, Quest, Reward } from "@/interfaces/Quest";
 import { UpgradeCost } from "@/interfaces/Upgrade";
 import getGameData from "./getGameData";
 import { Location } from "@/interfaces/Location";
-import { calcValuePerWeight } from "@/functions/GlobalFunctions";
-
-interface CompareValues {
-  [key: string]: number
-}
 
 interface Cosmetics {
   [key: string]: any
@@ -18,97 +11,6 @@ interface Cosmetics {
 
 interface Containers {
   [key: string]: string
-}
-
-export const compareRarity = (x: Item | Material, y: Item | Material) => {
-  const itemRarityValues: CompareValues = {
-    Common: 5,
-    Uncommon: 4,
-    Rare: 3,
-    Epic: 2,
-    Legendary: 1,
-    Exotic: 0,
-}
-let a = itemRarityValues[x.rarity]
-let b = itemRarityValues[y.rarity]
-return a === b ? 0 : a > b ? 1 : -1
-}
-
-export const compareCraftRarity = (x: Craft, y: Craft) => {
-  const itemRarityValues: CompareValues = {
-    Common: 0,
-    Uncommon: 1,
-    Rare: 2,
-    Epic: 3,
-    Exotic: 4,
-    Legendary: 5,
-  }
-  let a = itemRarityValues[x.rarity]
-  let b = itemRarityValues[y.rarity]
-  return a === b ? 0 : a > b ? 1 : -1
-}
-
-export const comparePrice = (x: Item | Material, y: Item | Material) => {
-  let a = x.sellValue
-  let b = y.sellValue
-  return a === b ? 0 : a < b ? 1 : -1
-}
-
-export const compareWeight = (x: Item | Material, y: Item | Material) => {
-  let a = x.weight 
-  let b = y.weight
-  return a === b ? 0 : a < b ? 1 : -1
-}
-
-export const compareValuePerWeight = (x: Item | Material, y: Item | Material) => {
-  let a = calcValuePerWeight(x)
-  let b = calcValuePerWeight(y)
-  return a === b ? 0 : a < b ? 1 : -1
-}
-
-export const compareName = (x: DataTypes, y: DataTypes) => {
-  let a = x.inGameName.toLowerCase()
-  let b = y.inGameName.toLowerCase()
-  return a === b ? 0 : a > b ? 1 : -1
-}
-
-export const compareRep = (x: Item | Material, y: Item | Material) => {
-  let a = x.factionRep 
-  let b = y.factionRep
-  return a === b ? 0 : a < b ? 1 : -1
-}
-
-export const compareCreatedAt = (x: Item | Material, y: Item | Material) => {
-  if (x.createdAt && y.createdAt) {
-    let a = x.createdAt
-    let b = y.createdAt
-    return a === b ? 0 : a > b ? 1 : -1
-  } else return 0
-}
-
-export const compareKorolevChainName = (x: Quest, y: Quest) => {
-  const chainNameValues: CompareValues = {
-    timetopunchin: 0,
-    whatatool: 1,
-    goodhonestwork: 2,
-    unchartedterritory: 3,
-    velteciteforthemasses: 4,
-    titanhunter: 5,
-    focusedoncrystals: 6,
-    apowerfuldiscovery: 7,
-    timeformorework: 8,
-    researchcosts: 9,
-    inadeepdarkhole: 10,
-    craftingbetterbags: 11,
-    heavyconstruction: 12,
-    crushhazard: 13,
-    thetestrun: 14
-  }
-
-  let a = chainNameValues[x.chainName.toLowerCase().replace("!", "")]
-  let b = chainNameValues[y.chainName.toLowerCase().replace("!", "")]
-
-  return a === b ? 0 : a > b ? 1 : -1
 }
 
 export const getObjectives = async (objective: Objective) => {

@@ -1,7 +1,7 @@
 import styles from './ItemsSorter.module.css'
 import { useEffect, useState } from 'react'
 import { Item } from '@/interfaces/Item'
-import { compareName, comparePrice, compareRarity, compareValuePerWeight, compareWeight } from '@/utils/GameUtils'
+import { compareName, comparePrice, compareRarity, compareValuePerWeight, compareWeight } from '@/functions/GlobalFunctions'
 
 interface Props {
   setItems: React.Dispatch<React.SetStateAction<Item[]>>

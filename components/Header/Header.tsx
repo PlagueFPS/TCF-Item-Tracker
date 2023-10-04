@@ -14,13 +14,11 @@ interface SharedProps {
 
 type ConditionalProps = {
   title?: never
-  page: string
   dataType: "item" | "quest" | "upgrade" | "craft" | "forge"
   data: DataTypes[]
   placeHolder: string
 } | {
   title: string
-  page?: never
   dataType?: never
   data?: never
   placeHolder?: never
@@ -29,7 +27,7 @@ type ConditionalProps = {
 type HeaderProps = SharedProps & ConditionalProps
 
 
-export default function Header({ bannerImage, width, height, opacity, position, title, page, dataType, data, placeHolder }: HeaderProps) {
+export default function Header({ bannerImage, width, height, opacity, position, title, dataType, data, placeHolder }: HeaderProps) {
   return (
     <header className={ styles.header }>
       <Banner 
@@ -40,12 +38,11 @@ export default function Header({ bannerImage, width, height, opacity, position, 
         position={ position } 
       />
       <SettingsButton />
-      { page &&
+      { data &&
         <div className={ styles.searchbar_container }>
           <Searchbar 
-            page={ page }
-            dataType={ dataType }
             data={ data }
+            dataType={ dataType }
             placeholder={ placeHolder }
           />
         </div>

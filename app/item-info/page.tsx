@@ -42,7 +42,6 @@ export default async function ItemInfo() {
         width={ 1488 }
         height={ 970 }
         opacity={ 0.65 }
-        page='item-info'
         dataType='item'
         data={ materials }
         placeHolder='Search for item...'

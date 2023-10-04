@@ -100,7 +100,6 @@ export default async function ItemDetails({ params }: Props) {
         height={ 1488 }
         width={ 970 }
         opacity={ 0.65 }
-        page="item-info"
         dataType="item"
         placeHolder="Search for item..."
         data={ items }

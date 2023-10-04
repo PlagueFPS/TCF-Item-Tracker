@@ -8,17 +8,16 @@ import { Quest } from '@/interfaces/Quest'
 import { Quarters } from '@/interfaces/Upgrade'
 import { Craft } from '@/interfaces/Craft'
 import { ForgeRecipe } from '@/interfaces/ForgeRecipe'
-import { craftHrefSelector, upgradeHrefSelector } from '@/functions/GlobalFunctions'
+import { craftHrefSelector, questHrefSelector, upgradeHrefSelector } from '@/functions/GlobalFunctions'
 import SuggestedItems from './SuggestedItems/SuggestedItems'
 
 interface Props {
   data: DataTypes[]
   dataType: "item" | "quest" | "upgrade" | "craft" | "forge"
-  page: string
   placeholder: string
 }
 
-export default function Searchbar({ data, dataType, page, placeholder }: Props) {
+export default function Searchbar({ data, dataType, placeholder }: Props) {
   const [inputValue, setValue] = useState('')
   const router = useRouter()
 
@@ -31,27 +30,12 @@ export default function Searchbar({ data, dataType, page, placeholder }: Props) 
       case 'item':
         const itemData = data as Item[]
         const item = itemData.find(item => item.inGameName.toLowerCase().replace(/\s/g, '') === value || item.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
-        if (item) url = item.key
+        if (item) url = `/item-info/${item.key}`
         break
       case 'quest':
         const questData = data as Quest[]
         const quest = questData.find(quest => quest.inGameName.toLowerCase().replace(/\s/g, '') === value || quest.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
-        if (quest) {
-          url = quest.key
-          switch(quest.faction) {
-            case 'Badum':
-              page = 'quests'
-              break
-            case 'ICA':
-              page = 'quests/ica'
-              break
-            case 'Korolev':
-              page = 'quests/korolev'
-              break
-            case 'Osiris':
-              page = 'quests/osiris'
-          }
-        }
+        if (quest) url = questHrefSelector(quest)
         break
       case 'upgrade':
         const upgradeData = data as Quarters[]
@@ -66,10 +50,10 @@ export default function Searchbar({ data, dataType, page, placeholder }: Props) 
       case 'forge':
         const forgeRecipes = data as ForgeRecipe[]
         const recipe = forgeRecipes.find(recipe => recipe.inGameName.toLowerCase().replace(/\s/g, '') === value || recipe.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
-        if (recipe) url = recipe.key
+        if (recipe) url = `/forge/${recipe.key}`
     }
 
-    router.push(`/${page}/${url}`)
+    router.push(url)
   }
 
   return (

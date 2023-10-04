@@ -1,0 +1,36 @@
+.container {
+  @apply flex mb-6 md:mb-0 justify-center items-center bg-primary-800 w-full
+}
+
+.filterLink {
+  @apply w-full
+}
+
+.filterBtn {
+  @apply flex justify-center items-center gap-2 w-full h-full p-4 bg-transparent border-none cursor-pointer transition-all
+  hover:bg-primary-600
+}
+
+.filterText {
+  @apply text-secondary-400 text-xl hidden md:block
+}
+
+.filterText.badum {
+  @apply text-epicText
+}
+
+.filterText.korolev {
+  @apply text-legendaryText
+}
+
+.filterText.ica {
+  @apply text-rareText
+}
+
+.filterText.osiris {
+  @apply text-uncommonText
+}
+
+.filterImage_Container {
+  @apply flex justify-center items-center
+}

@@ -1,4 +1,32 @@
 .suggestedItem {
-  @apply flex items-center gap-2 text-primary-800 font-semibold p-2 m-0.5 text-lg rounded cursor-pointer
-  hover:text-secondary-400 hover:bg-primary-800
+  @apply flex items-center gap-2 text-secondary-400 font-semibold p-2 m-0.5 text-lg rounded cursor-pointer
+ hover:bg-primary-600
+}
+
+.suggestedItem.exotic {
+  @apply text-exoticText
+}
+
+.suggestedItem.legendary,
+.suggestedItem.korolev {
+  @apply text-legendaryText
+}
+
+.suggestedItem.epic,
+.suggestedItem.badum {
+  @apply text-epicText
+}
+
+.suggestedItem.rare,
+.suggestedItem.ica {
+  @apply text-rareText
+}
+
+.suggestedItem.uncommon,
+.suggestedItem.osiris {
+  @apply text-uncommonText
+}
+
+.suggestedItem.common {
+  @apply text-commonText
 }

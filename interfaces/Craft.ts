@@ -1,3 +1,5 @@
+import { Rarity } from "./Item";
+
 export interface RawCraft {
   time:  number;
   items: { [key: string]: CraftItem };
@@ -7,7 +9,7 @@ export interface RawCraft {
 
 export interface Craft extends RawCraft {
   inGameName: string
-  rarity: string
+  rarity: Rarity
   description: string
   effects?: string[]
   armorValue?: number

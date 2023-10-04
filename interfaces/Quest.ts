@@ -61,7 +61,7 @@ interface DataTable {
 
 type Difficulty = "Invalid";
 
-type Faction = "Korolev" | "ICA" | "Osiris" | "Badum";
+export type Faction = "Korolev" | "ICA" | "Osiris" | "Badum";
 
 
  type ObjectName = "DataTable PRO_Weapons" | "DataTable Ai_Tuning_DT";

@@ -9,5 +9,7 @@
 }
 
 .list {
-  @apply absolute top-11 left-0 right-48 bg-secondary-500 rounded z-[999] list-none
+  @apply absolute top-11 left-0 right-48 bg-primary-800 border border-outline border-t-0 rounded z-[999] list-none max-h-60 overflow-auto
 }
+
+/* bg-secondary-500 */

@@ -1,0 +1,4 @@
+.suggestedItem {
+  @apply flex items-center gap-2 text-primary-800 font-semibold p-2 m-0.5 text-lg rounded cursor-pointer
+  hover:text-secondary-400 hover:bg-primary-800
+}

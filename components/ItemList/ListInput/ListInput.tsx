@@ -36,11 +36,13 @@ export default function ListInput({ items }: Props) {
         onChange={ (e) => setValue(e.target.value) }
       />
       <button type='submit' className={ styles.submitBtn } onClick={ handleSubmit }>Submit</button>
-      <ListSuggestions 
-        items={ items }
-        inputValue={ inputValue }
-        setValue={ setValue }
-      />
+      { inputValue && 
+        <ListSuggestions 
+          items={ items }
+          inputValue={ inputValue }
+          setValue={ setValue }
+        />
+      }
     </>
   )
 }

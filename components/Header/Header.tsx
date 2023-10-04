@@ -2,6 +2,7 @@ import styles from './Header.module.css'
 import { DataTypes } from "@/types/DataTypes"
 import Banner from '../Banner/Banner'
 import SettingsButton from '../Settings/SettingsButton/SettingsButton'
+import Searchbar from '../Searchbar/Searchbar'
 
 interface SharedProps {
   bannerImage: string
@@ -14,7 +15,7 @@ interface SharedProps {
 type ConditionalProps = {
   title?: never
   page: string
-  dataType: string
+  dataType: "item" | "quest" | "upgrade" | "craft" | "forge"
   data: DataTypes[]
   placeHolder: string
 } | {
@@ -41,12 +42,12 @@ export default function Header({ bannerImage, width, height, opacity, position, 
       <SettingsButton />
       { page &&
         <div className={ styles.searchbar_container }>
-          {/* <SearchBar 
+          <Searchbar 
             page={ page }
             dataType={ dataType }
             data={ data }
             placeholder={ placeHolder }
-          /> */}
+          />
         </div>
       }
       { title && 

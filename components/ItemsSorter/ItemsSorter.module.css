@@ -1,6 +1,6 @@
 .container {
   @apply absolute -top-8 -left-2 right-0 w-full max-w-[400px] md:left-0 md:max-w-[850px] xl:max-w-[1255px] 
-  mx-auto mt-8 z-10 h-20 p-4 animate-fadeIn;
+  mx-auto mt-8 z-[1] h-20 p-4 animate-fadeIn;
 }
 
 .selector {

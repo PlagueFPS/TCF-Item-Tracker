@@ -113,48 +113,6 @@ export const calcValuePerWeight = (item: Item | Material, asString?: boolean) =>
   : Math.round(valuePerWeight)
 }
 
-export const questHrefSelector = (quest: Quest) => {
-  switch(quest.faction) {
-    case 'Badum': 
-      return `/quests/${quest.key}`
-    case 'ICA':
-      return `/quests/ica/${quest.key}`
-    case 'Korolev':
-      return `/quests/korolev/${quest.key}`
-    case 'Osiris':
-      return `/quests/osiris/${quest.key}`
-  }
-}
-
-export const upgradeHrefSelector = (upgrade: Quarters) => {
-  if ('level' in upgrade) return `/upgrades/${upgrade.inGameName.replace(/\s/g, '')}`
-  else {
-    if (upgrade.inGameName.includes('Gen') || upgrade.inGameName.includes('Supply Crate')) return `/upgrades/generators/${upgrade.inGameName.replace(/\s/g, '')}`
-    else if (upgrade.inGameName.includes('Increase')) return `/upgrades/inventory/${upgrade.inGameName.replace(/\s/g, '')}`
-    else if (upgrade.inGameName.includes('Reduce PQ Upgrade Time')) return `/upgrades/workbench/${upgrade.inGameName.replace(/\s/g, '')}`
-    else return '#'
-  }
-}
-
-export const craftHrefSelector = (craft: Craft) => {
-  switch(craft.type) {
-    default: 
-      return `/crafting/${craft.key}`
-    case 'weapon':
-      return `/crafting/weapons/${craft.key}`
-    case 'shield':
-      return `/crafting/armor/${craft.key}`
-    case 'helmet':
-      return `/crafting/armor/${craft.key}`
-    case 'attachment':
-      return `/crafting/attachments/${craft.key}`
-    case 'consumable':
-      return `/crafting/consumables/${craft.key}`
-    case 'material':
-      return `/crafting/materials/${craft.key}`
-  }
-}
-
 export const getLink = async (name: string) => {
   const quests = await getGameData('missions') as Quest[]
   const upgrades = await getGameData('personalQuarters') as Quarters[]
@@ -167,9 +125,9 @@ export const getLink = async (name: string) => {
   const recipe = forgeRecipes.find(recipe => recipe.inGameName === name)
   const item = items.find(item => item.inGameName === name)
 
-  if (quest) return questHrefSelector(quest)
-  else if (upgrade) return upgradeHrefSelector(upgrade)
-  else if (craft) return craftHrefSelector(craft)
+  if (quest) return `/quests/${quest.key}`
+  else if (upgrade) return `/upgrades/${upgrade.inGameName.replace(/\s/g, '')}`
+  else if (craft) return `/crafting/${craft.key}`
   else if (recipe) return `/forge/${recipe.key}`
   else if (item) return `/item-info/${item.key}`
   else return '#'

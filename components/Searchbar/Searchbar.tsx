@@ -8,7 +8,6 @@ import { Quest } from '@/interfaces/Quest'
 import { Quarters } from '@/interfaces/Upgrade'
 import { Craft } from '@/interfaces/Craft'
 import { ForgeRecipe } from '@/interfaces/ForgeRecipe'
-import { craftHrefSelector, questHrefSelector, upgradeHrefSelector } from '@/functions/GlobalFunctions'
 import SuggestedItems from './SuggestedItems/SuggestedItems'
 
 interface Props {
@@ -35,17 +34,17 @@ export default function Searchbar({ data, dataType, placeholder }: Props) {
       case 'quest':
         const questData = data as Quest[]
         const quest = questData.find(quest => quest.inGameName.toLowerCase().replace(/\s/g, '') === value || quest.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
-        if (quest) url = questHrefSelector(quest)
+        if (quest) url = `/quests/${quest.key}`
         break
       case 'upgrade':
         const upgradeData = data as Quarters[]
         const upgrade = upgradeData.find(upgrade => upgrade.inGameName.toLowerCase().replace(/\s/g, '') === value || upgrade.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
-        if (upgrade) url = upgradeHrefSelector(upgrade)
+        if (upgrade) url = `/upgrades/${upgrade.inGameName.replace(/\s/g, '')}`
         break
       case 'craft':
         const craftData = data as Craft[]
         const craft = craftData.find(craft => craft.inGameName.toLowerCase().replace(/\s/g, '') === value || craft.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
-        if (craft) url = craftHrefSelector(craft)
+        if (craft) url = `/crafting/${craft.key}`
         break
       case 'forge':
         const forgeRecipes = data as ForgeRecipe[]

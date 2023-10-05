@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react'
 import { getItemImage, getTaskItems } from "@/utils/GameUtils"
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import Link from 'next/link'
-import { questHrefSelector } from '@/functions/GlobalFunctions'
 
 interface Props {
   quest: Quest
@@ -20,6 +19,11 @@ interface Props {
 
 interface optionItem extends Item {
   image?: string
+}
+
+interface newListItem {
+  item: (Material | Item)
+  index: number
 }
 
 export default function QuestCardOptions({ quest, quests, taskItems, toggleOptionsModal }: Props) {
@@ -72,10 +76,10 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
         const newItems = list.items.filter(i => i.key !== itemInList.key)
         const newItem = {...itemInList, amount: itemInList.amount += item.amount }
         newItems.splice(index, 0, newItem)
-        setList({
-          ...list,
+        setList(prevList => ({
+          ...prevList,
           items: [...newItems]
-        })
+        }))
       }
       else if (!itemInList) {
         addItemToList(item)
@@ -86,6 +90,8 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
 
     if (toastItems.length > 1) itemsToast(toastItems)
     else itemToast(toastItems[0])
+    setClosing(true)
+    setTimeout(toggleOptionsModal, 250)
   }
 
   const handleCloseButtonClick = () => {
@@ -165,7 +171,7 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
               <p className={ styles.noBtnText }>Close</p>
             </button>
         </div>
-        <Link href={ questHrefSelector(currentQuest) } className={ styles.link }>
+        <Link href={ `/quests/${currentQuest.key}` } className={ styles.link }>
           <p className={ styles.linkText }>View Quest Details</p>
         </Link>
       </div>

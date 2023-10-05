@@ -51,7 +51,7 @@ export default function ItemsListContextProvider({ children }: Props) {
   const [listSwitcher, setListSwitcher] = useState(false)
   const [settings, setSettings] = useState(false)
   const pathname = usePathname()
-
+  
   useEffect(() => {
     const loadList = () => {
       if (!localStorage.getItem('itemslist')) {
@@ -76,7 +76,7 @@ export default function ItemsListContextProvider({ children }: Props) {
 
   const addItemToList = (item: Material | Item) => {
     item.createdAt = Date.now()
-    item.amount = 1
+    if (!item.amount) item.amount = 1
     localStorage.setItem(list.id, JSON.stringify({...list, items: [...list.items, item]}))
     localStorage.setItem('list', JSON.stringify({...list, items: [...list.items, item]}))
     setList(prevList => {

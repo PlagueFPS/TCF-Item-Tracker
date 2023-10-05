@@ -1,5 +1,5 @@
 .container {
-  @apply relative flex flex-col-reverse lg:flex-row w-full bg-primary-900
+  @apply relative flex flex-col-reverse lg:flex-row w-full bg-primary-900 overflow-x-hidden
 }
 
 .contentContainer {
@@ -8,5 +8,5 @@
 
 .button {
   @apply fixed top-2 z-[998] md:absolute md:top-20 md:z-0 m-auto bg-secondary-500 text-primary-900 text-xl font-semibold
-  capitalize rounded py-2 px-3 cursor-pointer transition-all hover:bg-primary-800 hover:text-secondary-500
+  capitalize rounded py-2 px-3 cursor-pointer transition-all hover:bg-secondary-700
 }

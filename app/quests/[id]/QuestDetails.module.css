@@ -1,0 +1,163 @@
+.container {
+  @apply relative flex gap-20 md:gap-14 flex-col items-center w-full bg-primary-900 border-t-2
+}
+
+.container.badum {
+  @apply border-epic bg-itemepic
+}
+
+.container.korolev {
+  @apply border-legendary bg-itemlegendary
+}
+.container.ica {
+  @apply border-rare bg-itemrare
+}
+.container.osiris {
+  @apply border-uncommon bg-itemuncommon
+} 
+
+.questContainer {
+  @apply relative flex flex-col justify-center items-center gap-8 w-full
+}
+
+.title {
+  @apply text-secondary-400 text-center text-3xl mt-8 font-bold
+}
+
+.badum .title {
+  @apply text-epicText
+}
+
+.korolev .title {
+  @apply text-legendaryText
+}
+
+.ica .title {
+  @apply text-rareText
+}
+
+.osiris .title {
+  @apply text-uncommonText
+}
+
+.description {
+  @apply text-xl font-medium text-secondary-500 bg-primary-900 py-3 px-4 rounded-lg max-w-[80ch] border border-outline
+}
+
+.badum .description {
+  @apply text-epicText
+}
+
+.korolev .description {
+  @apply text-legendaryText
+}
+
+.ica .description {
+  @apply text-rareText
+}
+
+.osiris .description {
+  @apply text-uncommonText
+}
+
+.categoryTitle {
+  @apply absolute -top-10 mx-auto text-2xl text-secondary-400 font-semibold
+}
+
+.badum .categoryTitle {
+  @apply text-epicText
+}
+
+.korolev .categoryTitle {
+  @apply text-legendaryText
+}
+
+.ica .categoryTitle {
+  @apply text-rareText
+}
+
+.osiris .categoryTitle {
+  @apply text-uncommonText
+}
+
+.tasksContainer {
+  @apply relative flex justify-center items-center p-4 min-w-[45ch] md:min-w-[60ch] rounded-lg bg-primary-900 border border-outline
+}
+
+.tasksList {
+  @apply flex flex-col justify-center items-center gap-4 px-4
+}
+
+.task {
+  @apply w-full
+}
+
+.taskDescription {
+  @apply text-xl text-secondary-500
+}
+
+.badum .taskDescription {
+  @apply text-epicText
+}
+
+.korolev .taskDescription {
+  @apply text-legendaryText
+}
+
+.ica .taskDescription {
+  @apply text-rareText
+}
+
+.osiris .taskDescription {
+  @apply text-uncommonText
+}
+
+.taskItems_Container {
+  @apply relative flex justify-center items-center gap-4 bg-primary-900 rounded-lg min-w-[45ch] md:min-w-[60ch]
+  border border-outline
+}
+
+.taskItems_List {
+  @apply flex flex-wrap justify-center items-center w-full
+}
+
+.taskItem {
+  @apply flex justify-center items-center p-4 gap-2
+}
+
+.taskItemImage_Container {
+  @apply flex justify-center items-center
+}
+
+.taskItemImage {
+  @apply h-24 w-full
+}
+
+.taskItemAmount {
+  @apply text-secondary-400 text-2xl
+}
+
+.rewardsContainer {
+  @apply relative flex justify-center items-center gap-4 bg-primary-900 rounded-lg min-w-[45ch] md:min-w-[60ch]
+  mt-4 mx-4 mb-12 md:mt-8 md:mx-0 md:mb-12 border border-outline
+}
+
+.rewardsList {
+  @apply flex justify-center items-center w-full
+}
+
+.reward {
+  @apply flex justify-center items-center p-4 gap-2
+}
+
+.rewardImage_Container {
+  @apply flex justify-center items-center
+}
+
+.rewardImage {
+  @apply h-16 w-full
+}
+
+.rewardAmount {
+  @apply text-xl
+}

@@ -1,5 +1,6 @@
 "use client"
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import useLargeScreen from "@/hooks/useLargeScreen";
 
 interface NavContextProps {
   showSidebar: boolean,
@@ -8,7 +9,6 @@ interface NavContextProps {
   setClosing: React.Dispatch<React.SetStateAction<boolean>>,
   handleCloseSidebar: () => void,
   largeScreen: boolean,
-  setLargeScreen: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 interface NavContextProviderProps {
@@ -18,20 +18,10 @@ interface NavContextProviderProps {
 const NavContext = createContext<NavContextProps | null>(null)
 
 export const NavContextProvider = ({ children }: NavContextProviderProps) => {
+  const { largeScreen } = useLargeScreen()
   const [showSidebar, setSidebar] = useState(false)
   const [isClosing, setClosing] = useState(false)
-  const [largeScreen, setLargeScreen] = useState(false)
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      if (window.innerWidth >= 1280) setLargeScreen(true)
-      else setLargeScreen(false)
-    }
-
-    handleWindowResize()
-    window.addEventListener('resize', handleWindowResize)
-    return () => window.removeEventListener('resize', handleWindowResize)
-  }, [setLargeScreen])
+  
 
   const handleCloseSidebar = () => {
     setClosing(true)
@@ -48,7 +38,6 @@ export const NavContextProvider = ({ children }: NavContextProviderProps) => {
     setClosing,
     handleCloseSidebar,
     largeScreen,
-    setLargeScreen
   }
 
   return (

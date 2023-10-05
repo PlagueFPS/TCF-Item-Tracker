@@ -1,7 +1,7 @@
 "use client"
 import styles from '../ItemCard/ItemCard.module.css'
 import { Item } from "@/interfaces/Item"
-import { useState } from 'react'
+import useToggleOptions from '@/hooks/useToggleOptions'
 import ItemCardOptions from '../ItemCard/ItemCardOptions/ItemCardOptions'
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function ItemsCardWrapper({ children, item, items }: Props) {
-  const [showOptions, setOptions] = useState(false)
+  const { showOptions, toggleOptionsModal } = useToggleOptions()
 
   const classSelector = () => {
     switch(item.rarity) {
@@ -28,10 +28,6 @@ export default function ItemsCardWrapper({ children, item, items }: Props) {
       case 'Legendary':
         return `${styles.container} ${styles.legendaryContainer}`
     }
-  }
-
-  const toggleOptionsModal = () => {
-    setOptions(options => !options)
   }
 
   return (

@@ -2,7 +2,7 @@
 import styles from '@/components/QuestsContainer/QuestCard/QuestCard.module.css'
 import { Quest } from "@/interfaces/Quest"
 import { Item } from "@/interfaces/Item"
-import { useState } from "react"
+import useToggleOptions from '@/hooks/useToggleOptions'
 
 interface Props {
   children: React.ReactNode
@@ -12,12 +12,7 @@ interface Props {
 }
 
 export default function QuestCardWrapper({ children, quest, quests, taskItems }: Props) {
-  const [showOptions, setOptions] = useState(false)
-
-  const toggleOptionsModel = (e: any) => {
-    e.preventDefault()
-    setOptions(option => !option)
-  }
+  const { showOptions, toggleOptionsModal } = useToggleOptions()
 
   const classSelector = () => {
     switch(quest.faction) {
@@ -34,7 +29,7 @@ export default function QuestCardWrapper({ children, quest, quests, taskItems }:
 
   return (
     <>
-      <div className={ classSelector() } onClick={ toggleOptionsModel }>
+      <div className={ classSelector() } onClick={ toggleOptionsModal }>
         { children }
       </div>
     </>

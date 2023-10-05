@@ -1,0 +1,159 @@
+.container {
+  @apply relative flex flex-col justify-center items-center gap-4 max-h-96 h-96 bg-primary-800 cursor-pointer
+  bg-itemcommon shadow-secondary transition-all rounded-br-2xl rounded-bl-2xl border-2 border-outline border-t-common
+  text-secondary-400 overflow-hidden hover:-translate-y-[5%]
+}
+
+.container.badum {
+  @apply border-t-epic bg-itemepic
+}
+
+.container.korolev {
+  @apply border-t-legendary bg-itemlegendary
+}
+.container.ica {
+  @apply border-t-rare bg-itemrare
+}
+.container.osiris {
+  @apply border-t-uncommon bg-itemuncommon
+} 
+
+.partContainer {
+  @apply absolute top-0 right-0 bg-primary-600 bg-opacity-50 text-secondary-400 rounded-bl p-2
+}
+
+.part {
+  @apply text-lg font-normal
+}
+
+.badum .part {
+  @apply text-epicText
+}
+
+.korolev .part {
+  @apply text-legendaryText
+}
+
+.ica .part {
+  @apply text-rareText
+}
+
+.osiris .part {
+  @apply text-uncommonText
+}
+
+.factionContainer {
+  @apply absolute top-2 left-2 bg-transparent
+}
+
+.faction {
+  @apply h-7 w-full
+}
+
+.titleContainer {
+  @apply relative flex justify-center items-center mt-8 w-full
+}
+
+.title {
+  @apply text-secondary-400 text-center text-2xl font-medium
+}
+
+.badum .title {
+  @apply text-epicText
+}
+
+.korolev .title {
+  @apply text-legendaryText
+}
+
+.ica .title {
+  @apply text-rareText
+}
+
+.osiris .title {
+  @apply text-uncommonText
+}
+
+.tasksContainer {
+  @apply flex flex-col justify-center items-center gap-2 px-2 w-full text-lg flex-grow
+}
+
+.task {
+  @apply text-center p-1 text-secondary-400
+}
+
+.badum .task {
+  @apply text-epicText
+}
+
+.korolev .task {
+  @apply text-legendaryText
+}
+
+.ica .task {
+  @apply text-rareText
+}
+
+.osiris .task {
+  @apply text-uncommonText
+}
+
+.itemsToCollect_Container {
+  @apply flex justify-center items-center gap-1 w-full flex-grow text-lg
+}
+
+.itemsToCollect {
+  @apply text-secondary-400 font-medium
+}
+
+.badum .itemsToCollect {
+  @apply text-epicText
+}
+
+.korolev .itemsToCollect {
+  @apply text-legendaryText
+}
+
+.ica .itemsToCollect {
+  @apply text-rareText
+}
+
+.osiris .itemsToCollect {
+  @apply text-uncommonText
+}
+
+.taskItems_Container {
+  @apply flex justify-center items-center gap-1 w-full flex-grow
+}
+
+.taskItem {
+  @apply flex justify-center items-center gap-1
+}
+
+.taskItemImage_Container {
+  @apply flex justify-center items-center
+}
+
+.taskItemImage {
+  @apply h-10 w-full
+}
+
+.taskItemAmount {
+  @apply text-secondary-400 font-normal text-lg
+}
+
+.rewardsContainer {
+  @apply flex flex-wrap justify-center items-center gap-3 w-full bg-primary-900 p-2 text-lg
+}
+
+.rewardImage_Container {
+  @apply flex justify-center items-center
+}
+
+.rewardImage {
+  @apply h-10 w-full
+}
+
+.reward {
+  @apply flex justify-center items-center gap-1
+}

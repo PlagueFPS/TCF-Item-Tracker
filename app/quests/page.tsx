@@ -8,6 +8,7 @@ import Header from '@/components/Header/Header'
 import QuestsFilter from '@/components/QuestsFilter/QuestsFilter'
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 import ItemList from '@/components/ItemList/ItemList'
+import QuestsContainer from '@/components/QuestsContainer/QuestsContainer'
 
 export const generateMetadata = async () => {
   const posts = await getPosts<TypeGeneralPagesSkeleton>({ content_type: 'generalPages', 'sys.id': '6VcLwqGefXhbZSCiTOQMUp' })
@@ -49,11 +50,7 @@ export default async function BadumQuests() {
         <section className={ styles.contentContainer }>
           <QuestsFilter />
           <ToggleListButton className={ styles.button } />
-          <div className={ styles.questsContainer }>
-            { badumQuests.map(quest => (
-              <div key={ quest.key }>{ quest.inGameName }</div>
-            ))}
-          </div>
+          <QuestsContainer quests={ badumQuests } />
         </section>
         <ItemList />
       </div>

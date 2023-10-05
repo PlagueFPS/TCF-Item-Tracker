@@ -1,6 +1,6 @@
 import { CraftItem } from "@/interfaces/Craft";
 import { Item } from "@/interfaces/Item";
-import { MMapName, Objective, Quest, Reward } from "@/interfaces/Quest";
+import { Faction, MMapName, Objective, Reward } from "@/interfaces/Quest";
 import { UpgradeCost } from "@/interfaces/Upgrade";
 import getGameData from "./getGameData";
 import { Location } from "@/interfaces/Location";
@@ -107,7 +107,7 @@ export const getItemImage = async (itemName: string) => {
   return `/images/${image}`
 }
 
-export const getRewards = async (quest: Quest, rewards: Reward[]) => {
+export const getRewards = async (faction: Faction, rewards: Reward[]) => {
   const items = await getGameData('items') as Item[]
   const cosmetics = await getGameData('cosmetics') as Cosmetics
   const newRewards: Reward[] = []
@@ -137,7 +137,7 @@ export const getRewards = async (quest: Quest, rewards: Reward[]) => {
     else if (reward.item === 'DarkUnboundSynth') reward.item = 'Tempest Archetype'
     else if (reward.item === 'Melee_Karambit01') reward.item = "Tempest's Strike Melee"
     else if (cosmeticItem) reward.item = cosmeticItem.ingamename
-    else if (reward.item.includes('Reputation')) reward.item = `${quest.faction} Reputation`
+    else if (reward.item.includes('Reputation')) reward.item = `${faction} Reputation`
     else if (reward.item === 'SoftCurrency') reward.item = 'Kmarks'
     else if (reward.item === 'ShockGrenade_02') reward.item = 'Light Grenade'
     else if (reward.item === 'TOOL_Mining_01') reward.item = 'Heavy Mining Tool'
@@ -386,7 +386,7 @@ const getLocation = async (location: string, killLocation?: boolean) => {
     ]
 
     // if the location passed is empty or doesn't exist exit the function
-    if (location === "") return ""
+    if (!location) return ""
 
     // replaces locations raw name to either the in-game name or the codename within locations.json
     location = location

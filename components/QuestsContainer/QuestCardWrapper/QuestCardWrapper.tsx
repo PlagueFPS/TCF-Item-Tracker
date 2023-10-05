@@ -3,6 +3,7 @@ import styles from '@/components/QuestsContainer/QuestCard/QuestCard.module.css'
 import { Quest } from "@/interfaces/Quest"
 import { Item } from "@/interfaces/Item"
 import useToggleOptions from '@/hooks/useToggleOptions'
+import QuestCardOptions from '../QuestCard/QuestCardOptions/QuestCardOptions'
 
 interface Props {
   children: React.ReactNode
@@ -29,6 +30,14 @@ export default function QuestCardWrapper({ children, quest, quests, taskItems }:
 
   return (
     <>
+      { showOptions && 
+        <QuestCardOptions 
+          quest={ quest } 
+          quests={ quests } 
+          taskItems={ taskItems } 
+          toggleOptionsModal={ toggleOptionsModal } 
+        /> 
+      }
       <div className={ classSelector() } onClick={ toggleOptionsModal }>
         { children }
       </div>

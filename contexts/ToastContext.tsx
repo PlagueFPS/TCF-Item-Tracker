@@ -13,7 +13,7 @@ interface ToastContextProps {
   setAction: React.Dispatch<React.SetStateAction<string>>
   setItems: React.Dispatch<React.SetStateAction<(Material | Item)[]>>
   itemToast: (item: Material | Item, action?: string) => void
-  itemsToast: (items: Material[], action?: string) => void
+  itemsToast: (items: (Material | Item)[], action?: string) => void
   toast: (action?: string) => void
 }
 
@@ -54,7 +54,7 @@ export default function ToastContextProvider({ children }: Props) {
     else setAction(`Item Added To ${list.name}`)
   }
 
-  const itemsToast = (items: Material[], action?: string) => {
+  const itemsToast = (items: (Material | Item)[], action?: string) => {
     setToast(true)
     setItems(items)
     if (action) setAction(action)

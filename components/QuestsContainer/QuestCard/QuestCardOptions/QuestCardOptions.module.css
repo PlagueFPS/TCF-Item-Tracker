@@ -1,0 +1,191 @@
+.container {
+  @apply flex justify-center items-center fixed top-0 right-0 left-0 bottom-0 z-[999]
+}
+
+.blur {
+  @apply fixed top-0 bottom-0 left-0 right-0 opacity-100 bg-none backdrop-saturate-[30%] transition-all
+  z-[99] supports-[backdrop-filter]:backdrop-blur
+}
+
+.content {
+  @apply relative flex flex-col justify-center items-center m-4 pt-8 px-4 pb-12 gap-4 w-full
+  max-w-sm h-96 z-[100] bg-primary-800 border-2 border-outline border-t-common rounded-br rounded-bl
+  shadow-secondary animate-bounceIn
+}
+
+.content.closing {
+  @apply animate-bounceOut
+}
+
+.content.badum {
+  @apply border-t-epic bg-itemepic
+}
+
+.content.korolev {
+  @apply border-t-legendary bg-itemlegendary
+}
+
+.content.ica {
+  @apply border-t-rare bg-itemrare
+}
+
+.content.osiris {
+  @apply border-t-uncommon bg-itemuncommon
+}
+
+.prevBtn, 
+.nextBtn {
+  @apply absolute bg-transparent border-none text-common text-7xl cursor-pointer
+  transition-all w-fit h-fit
+}
+
+.prevBtn {
+  @apply -top-28 hover:-translate-y-[1%] md:top-0 md:bottom-0 md:my-auto md:-left-16 md:hover:-translate-x-[5%]
+}
+
+.nextBtn {
+  @apply -bottom-28 hover:translate-y-[1%] md:bottom-0 md:top-0 md:my-auto md:-right-16 md:hover:translate-x-[5%]
+}
+
+.badum .prevBtn,
+.badum .nextBtn {
+  @apply text-epic
+}
+
+.korolev .prevBtn,
+.korolev .nextBtn {
+  @apply text-legendary
+}
+
+.ica .prevBtn,
+.ica .nextBtn {
+  @apply text-rare
+}
+
+.osiris .prevBtn,
+.osiris .nextBtn {
+  @apply text-uncommon
+}
+
+.partContainer {
+  @apply absolute top-0 right-0 bg-primary-600 text-secondary-400 bg-opacity-50 rounded-bl p-2
+}
+
+.badum .partContainer {
+  @apply text-epicText
+}
+
+.korolev .partContainer {
+  @apply text-legendaryText
+}
+
+.ica .partContainer {
+  @apply text-rareText
+}
+
+.osiris .partContainer {
+  @apply text-uncommonText
+}
+
+.part {
+  @apply text-lg font-normal
+}
+
+.factionContainer {
+  @apply absolute top-2 left-2
+}
+
+.faction {
+  @apply h-7 w-full
+}
+
+.titleContainer {
+  @apply flex justify-center items-center flex-grow text-secondary-500 w-full
+}
+
+.title {
+  @apply relative text-center font-medium text-2xl
+}
+
+.badum .title {
+  @apply text-epicText
+}
+
+.korolev .title {
+  @apply text-legendaryText
+}
+
+.ica .title {
+  @apply text-rareText
+}
+
+.osiris .title {
+  @apply text-uncommonText
+}
+
+.descriptionContainer {
+  @apply flex justify-center items-center flex-grow w-full
+}
+
+.description {
+  @apply text-xl font-normal text-center text-secondary-500
+}
+
+.badum .description {
+  @apply text-epicText
+}
+
+.korolev .description {
+  @apply text-legendaryText
+}
+
+.ica .description {
+  @apply text-rareText
+}
+
+.osiris .description {
+  @apply text-uncommonText
+}
+
+.taskItems_Container {
+  @apply flex justify-center items-center gap-4 flex-grow w-full text-secondary-500
+}
+
+.taskItem {
+  @apply flex justify-center items-center gap-2
+}
+
+.taskItemAmount {
+  @apply text-secondary-400 text-xl
+}
+
+.taskItemImage_Container {
+  @apply relative flex justify-center items-center
+}
+
+.taskItemImage {
+  @apply h-14
+}
+
+.btnContainer {
+  @apply flex justify-center items-center gap-4 flex-grow mb-4 px-8 w-full
+}
+
+.btnContainer button {
+  @apply flex-grow
+}
+
+.yesBtn {
+  @apply bg-greenLight border border-outline text-primary-900 font-bold text-base rounded py-2 px-3 cursor-pointer
+  transition-all hover:bg-green-500
+}
+
+.noBtn {
+  @apply bg-red-400 border border-outline text-primary-900 font-bold text-base rounded py-2 px-3 cursor-pointer
+  transition-all hover:bg-red-500
+}
+
+.link {
+  @apply absolute bottom-8 flex justify-center items-center flex-grow bg-primary-900 py-2 px-5 -mb-8 rounded-tr-lg rounded-tl-lg
+  text-base transition-all hover:pb-3
+}

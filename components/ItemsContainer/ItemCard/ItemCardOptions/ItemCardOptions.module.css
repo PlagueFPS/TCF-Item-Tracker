@@ -1,10 +1,10 @@
 .container {
-  @apply flex justify-center items-center fixed top-0 bottom-0 left-0 right-0 z-[999]
+  @apply flex justify-center items-center fixed top-0 right-0 left-0 bottom-0 z-[999]
 }
 
 .blur {
-  @apply fixed top-0 right-0 left-0 bottom-0 z-[999] opacity-100 backdrop-saturate-[30%]
-  supports-[backdrop-filter]:backdrop-blur
+  @apply fixed top-0 bottom-0 left-0 right-0 opacity-100 bg-none backdrop-saturate-[30%] transition-all
+  z-[99] supports-[backdrop-filter]:backdrop-blur
 }
 
 .contentContainer {

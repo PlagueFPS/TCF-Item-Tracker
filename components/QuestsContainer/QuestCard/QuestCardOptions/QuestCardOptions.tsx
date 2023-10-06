@@ -21,11 +21,6 @@ interface optionItem extends Item {
   image?: string
 }
 
-interface newListItem {
-  item: (Material | Item)
-  index: number
-}
-
 export default function QuestCardOptions({ quest, quests, taskItems, toggleOptionsModal }: Props) {
   const { largeScreen } = useLargeScreen()
   const { list, setList, addItemToList } = useItemsListContext()

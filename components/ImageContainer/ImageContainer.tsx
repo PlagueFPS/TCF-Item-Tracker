@@ -4,7 +4,6 @@ import { Material, Rarity } from "@/interfaces/Material"
 import { compareRarity } from '@/functions/GlobalFunctions'
 import ItemImage from './ItemImage/ItemImage'
 
-
 export default async function ImageContainer() {
   const items = await getGameData('materials') as Material[]
 

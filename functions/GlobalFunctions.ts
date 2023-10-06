@@ -78,6 +78,8 @@ export const compareCreatedAt = (x: Item | Material, y: Item | Material) => {
 }
 
 export const compareKorolevChainName = (x: Quest, y: Quest) => {
+  const xChainName = x.chainName.toLowerCase().replace("!", "").replace(/\s/g, '').replace(",", '')
+  const yChainName = y.chainName.toLowerCase().replace("!", "").replace(/\s/g, '').replace(",", '')
   const chainNameValues: CompareValues = {
     timetopunchin: 0,
     whatatool: 1,
@@ -96,9 +98,62 @@ export const compareKorolevChainName = (x: Quest, y: Quest) => {
     thetestrun: 14
   }
 
-  let a = chainNameValues[x.chainName.toLowerCase().replace("!", "")]
-  let b = chainNameValues[y.chainName.toLowerCase().replace("!", "")]
+  let a = chainNameValues[xChainName]
+  let b = chainNameValues[yChainName]
 
+  return a === b ? 0 : a > b ? 1 : -1
+}
+
+export const compareICAChainName = (x: Quest, y: Quest) => {
+  const xChainName = x.chainName.toLowerCase().replace("!", "").replace(/\s/g, '').replace(",", '')
+  const yChainName = y.chainName.toLowerCase().replace("!", "").replace(/\s/g, '').replace(",", '')
+  const chainNameValues: CompareValues = {
+    yourcivicduty: 0,
+    audiophilesbeware: 1,
+    doingthework: 2,
+    toxiclove: 3,
+    projectfireball: 4,
+    racetothebottom: 5,
+    workingforthecommunity: 6,
+    nevergiveup: 7,
+    privatebusiness: 8,
+    backtobasics: 9,
+    aneyeforoil: 10,
+    puttothetest: 11,
+    thecommunityneedsyou: 12
+  } 
+
+  let a = chainNameValues[xChainName]
+  let b = chainNameValues[yChainName]
+  return a === b ? 0 : a > b ? 1 : -1
+}
+
+export const compareOsirisChainName = (x: Quest, y: Quest) => {
+  const xChainName = x.chainName.toLowerCase().replace("!", "").replace(/\s/g, '').replace(",", '')
+  const yChainName = y.chainName.toLowerCase().replace("!", "").replace(/\s/g, '').replace(",", '')
+  const chainNameValues: CompareValues = {
+    dangerousscience: 0,
+    howlingskies: 1,
+    fieldresearch: 2,
+    stimulatingdevelopments: 3,
+    lostknowledge: 4,
+    theprogenitordevice: 5,
+    explosivedelivery: 6,
+    lasershow: 7,
+    stormrider: 8,
+    theneedsoftheone: 9,
+    everythingiscrystals: 10,
+    pathtostrongmedkits: 11,
+    buildingabetterdeathray: 12,
+    satellitemaster: 13,
+    combatready: 14,
+    orbitalrepairs: 15,
+    breakingandentering: 16,
+    awholenewecosystem: 17
+  }
+
+  let a = chainNameValues[xChainName]
+  let b = chainNameValues[yChainName]
   return a === b ? 0 : a > b ? 1 : -1
 }
 

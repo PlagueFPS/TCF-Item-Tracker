@@ -1,9 +1,10 @@
-import styles from './Quests.module.css'
+import styles from '../Quests.module.css'
 import { getPosts } from '@/utils/contentful-utils'
 import { TypeGeneralPagesSkeleton } from '@/contentful/types/contentful-types'
 import { Metadata } from 'next'
 import { Quest } from '@/interfaces/Quest'
 import getGameData from '@/utils/getGameData'
+import { compareICAChainName } from '@/functions/GlobalFunctions'
 import Header from '@/components/Header/Header'
 import QuestsFilter from '@/components/QuestsFilter/QuestsFilter'
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
@@ -11,7 +12,7 @@ import QuestsContainer from '@/components/QuestsContainer/QuestsContainer'
 import ItemList from '@/components/ItemList/ItemList'
 
 export const generateMetadata = async () => {
-  const posts = await getPosts<TypeGeneralPagesSkeleton>({ content_type: 'generalPages', 'sys.id': '6VcLwqGefXhbZSCiTOQMUp' })
+  const posts = await getPosts<TypeGeneralPagesSkeleton>({ content_type: 'generalPages', 'sys.id': '5gQXnvjJt0dtbzUc8WvNg3' })
   const { title, description } = posts.items[0].fields
   const metadata: Metadata = {
     title: title,
@@ -19,25 +20,29 @@ export const generateMetadata = async () => {
     openGraph: {
       title: title,
       description: description,
-      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/quests`
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/quests`,
+      images: [{
+        url: '/images/icabanner.png'
+      }]
     },
     twitter: {
       title: title,
-      description: description
+      description: description,
+      card: 'summary_large_image'
     }
   }
 
   return metadata
 }
 
-export default async function BadumQuests() {
+export default async function ICAQuests() {
   const quests = await getGameData('missions') as Quest[]
-  const badumQuests = quests.filter(quest => quest.faction === 'Badum')
+  const icaQuests = quests.filter(quest => quest.faction === 'ICA').sort(compareICAChainName)
 
   return (
     <>
       <Header 
-        bannerImage='badumbanner'
+        bannerImage='icabanner'
         width={ 1920 }
         height={ 692 }
         opacity={ 0.65 }
@@ -50,7 +55,7 @@ export default async function BadumQuests() {
         <section className={ styles.contentContainer }>
           <QuestsFilter />
           <ToggleListButton className={ styles.button } />
-          <QuestsContainer quests={ badumQuests } />
+          <QuestsContainer quests={ icaQuests } />
         </section>
         <ItemList />
       </div>

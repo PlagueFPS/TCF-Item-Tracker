@@ -1,0 +1,16 @@
+.container {
+  @apply relative flex w-full bg-primary-900 border border-outline
+}
+
+.contentContainer {
+  @apply relative flex flex-col items-center flex-grow text-secondary-400 transition-all
+}
+
+.button {
+  @apply fixed top-2 z-[998] md:absolute md:top-16 md:z-0 m-auto bg-secondary-500 text-primary-900 font-semibold text-xl
+  capitalize rounded py-2 px-3 cursor-pointer transition-all hover:bg-secondary-700
+}
+
+.button.genButton {
+  @apply top-32
+}

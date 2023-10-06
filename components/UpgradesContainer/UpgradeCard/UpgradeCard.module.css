@@ -1,0 +1,60 @@
+.container {
+  @apply relative flex flex-col justify-center items-center gap-4 h-96 bg-primary-800 cursor-pointer
+  bg-itemcommon shadow-secondary border-2 border-outline border-t-common rounded-bl-2xl rounded-br-2xl
+  transition-all text-secondary-400 overflow-hidden hover:-translate-y-[5%]
+}
+
+.tierContainer {
+  @apply absolute top-0 right-0 bg-primary-600 text-secondary-400 bg-opacity-50 rounded-bl p-2
+}
+
+.tier {
+  @apply text-lg font-normal
+}
+
+.titleContainer {
+  @apply relative flex justify-center items-center w-full flex-grow mt-8
+}
+
+.title {
+  @apply text-secondary-400 text-center text-xl font-semibold
+}
+
+.upgradesRequired_Container,
+.upgradeAmount_Container,
+.upgradeTime_Container {
+  @apply flex justify-center items-center gap-2 w-full text-xl flex-grow
+}
+
+.upgradesRequiredText,
+.upgradeAmountText,
+.upgradeTimeText {
+  @apply flex justify-center items-center gap-2 text-secondary-400 text-center
+}
+
+.upgradesRequired,
+.upgradeAmount,
+.upgradeTime {
+  @apply font-bold text-secondary-400
+}
+
+.upgradeCosts_Container {
+  @apply flex justify-center items-center flex-grow gap-4 w-full rounded-bl-lg rounded-br-lg
+  bg-primary-900 p-2 text-lg
+}
+
+.upgradeCost {
+  @apply flex justify-center items-center gap-1
+}
+
+.upgradeCostImage_Container {
+  @apply flex justify-center items-center
+}
+
+.upgradeCostImage {
+  @apply h-10 w-full
+}
+
+.upgradeCostAmount {
+  @apply text-secondary-400 font-normal
+}

@@ -1,0 +1,24 @@
+.container {
+  @apply flex justify-center items-center bg-primary-800 w-full
+}
+
+.container a {
+  @apply w-full
+}
+
+.filterBtn {
+  @apply flex justify-center items-center gap-4 h-14 w-full py-4 transition-all cursor-pointer
+  hover:bg-primary-600
+}
+
+.filterImage_Container {
+  @apply flex justify-center items-center
+}
+
+.filterImage {
+  @apply h-7
+}
+
+.filterText {
+  @apply text-secondary-400 text-lg font-normal hidden md:block
+}

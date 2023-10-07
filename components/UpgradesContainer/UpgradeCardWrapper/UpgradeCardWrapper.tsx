@@ -3,6 +3,7 @@ import styles from '../UpgradeCard/UpgradeCard.module.css'
 import { Quarters, UpgradeCost } from "@/interfaces/Upgrade"
 import { Item } from "@/interfaces/Item"
 import useToggleOptions from "@/hooks/useToggleOptions"
+import UpgradeCardOptions from '../UpgradeCard/UpgradeCardOptions/UpgradeCardOptions'
 
 interface Props {
   children: React.ReactNode
@@ -17,6 +18,15 @@ export default function UpgradeCardWrapper({ children, upgrade, upgrades, costs,
 
   return (
     <>
+      { showOptions && 
+        <UpgradeCardOptions 
+          upgrade={ upgrade } 
+          upgrades={ upgrades } 
+          costs={ costs } 
+          items={ items } 
+          toggleOptionsModal={ toggleOptionsModal }  
+        /> 
+      }
       <div className={ styles.container } onClick={ toggleOptionsModal }>
         { children }
       </div>

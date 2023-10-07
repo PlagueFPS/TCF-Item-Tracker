@@ -1,7 +1,9 @@
 import styles from './ItemCardOptions.module.css'
+import { useEffect, useState, useCallback } from "react"
+import useCycleState from '@/hooks/useCycleState'
+import useLargeScreen from '@/hooks/useLargeScreen'
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from "@/contexts/ToastContext"
-import { useEffect, useState, useCallback } from "react"
 import { Forge, Item } from "@/interfaces/Item"
 import { getLink } from "@/functions/GlobalFunctions"
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
@@ -21,14 +23,15 @@ interface Link {
 type Filter = 'Quests' | 'Upgrades' | 'Crafts' | 'Forge'
 
 export default function ItemCardOptions({ item, items, toggleOptionsModal }: Props) {
-  const { addItemToList } = useItemsListContext()
-  const { itemToast } = useToastContext()
   const [currentItem, setCurrentItem] = useState(item)
   const [currentData, setCurrentData] = useState<Forge[]>([])
   const [currentLinks, setCurrentLinks] = useState<Link[]>([])
   const [activeFilter, setFilter] = useState<Filter>('Quests')
   const [closing, setClosing] = useState(false)
-  const [largeScreen, setLargeScreen] = useState(false)
+  const { cyclePrevState, cycleNextState } = useCycleState<Item>(items, currentItem, setCurrentItem)
+  const { addItemToList } = useItemsListContext()
+  const { largeScreen } = useLargeScreen()
+  const { itemToast } = useToastContext()
   const inGameName = currentItem.inGameName.toLowerCase().replace(/\s/g, '')
   const itemImageAVIF = `/images/${inGameName}.avif`
   const itemImageWEBP = `/images/${inGameName}.webp`
@@ -89,17 +92,6 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
     getCurrentLinks()
   }, [currentData])
 
-  useEffect(() => {
-    const handleLargeScreen = () => {
-      if (window.innerWidth > 768) setLargeScreen(true)
-      else setLargeScreen(false)
-    }
-
-    handleLargeScreen()
-    window.addEventListener('resize', handleLargeScreen)
-    return () => window.removeEventListener('resize', handleLargeScreen)
-  }, [])
-
   const handleAddToListClick = () => {
     addItemToList(currentItem)
     itemToast(currentItem)
@@ -110,22 +102,6 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
   const handleCloseClick = () => {
     setClosing(true)
     setTimeout(toggleOptionsModal, 250)
-  }
-
-  const cyclePrevItem = () => {
-    const itemIndex = items.findIndex(item => item.key === currentItem.key)
-    const newIndex = itemIndex - 1
-
-    if (newIndex < 0) setCurrentItem(items[items.length - 1])
-    else setCurrentItem(items[newIndex])
-  }
-
-  const cycleNextItem = () => {
-    const itemIndex = items.findIndex(item => item.key === currentItem.key)
-    const newIndex = itemIndex + 1
-
-    if (newIndex < items.length) setCurrentItem(items[newIndex])
-    else setCurrentItem(items[0])
   }
 
   const classSelector = () => {
@@ -155,10 +131,10 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
     <div className={ styles.container }>
       <div className={ styles.blur } />
       <div className={ classSelector() }>
-        <button className={ styles.prevBtn } onClick={ cyclePrevItem }>
+        <button className={ styles.prevBtn } onClick={ cyclePrevState }>
           { largeScreen ? <FaAngleLeft /> : <FaAngleUp /> }
         </button>
-        <button className={ styles.nextBtn } onClick={ cycleNextItem }>
+        <button className={ styles.nextBtn } onClick={ cycleNextState }>
           { largeScreen ? <FaAngleRight /> : <FaAngleDown /> }
         </button>
         <picture className={ styles.imageContainer }>

@@ -2,6 +2,7 @@ import styles from './QuestCardOptions.module.css'
 import { Quest } from "@/interfaces/Quest"
 import { Item } from "@/interfaces/Item"
 import { Material } from '@/interfaces/Material'
+import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from "@/hooks/useLargeScreen"
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from "@/contexts/ToastContext"
@@ -22,12 +23,13 @@ interface optionItem extends Item {
 }
 
 export default function QuestCardOptions({ quest, quests, taskItems, toggleOptionsModal }: Props) {
-  const { largeScreen } = useLargeScreen()
+  const [currentTaskItems, setCurrentTaskItems] = useState<optionItem[]>(taskItems)
+  const [currentQuest, setCurrentQuest] = useState(quest)
+  const [closing, setClosing] = useState(false)
+  const { cyclePrevState, cycleNextState } = useCycleState<Quest>(quests, currentQuest, setCurrentQuest)
   const { list, setList, addItemToList } = useItemsListContext()
   const { itemToast, itemsToast } = useToastContext()
-  const [currentQuest, setCurrentQuest] = useState(quest)
-  const [currentTaskItems, setCurrentTaskItems] = useState<optionItem[]>(taskItems)
-  const [closing, setClosing] = useState(false)
+  const { largeScreen } = useLargeScreen()
   const faction = currentQuest.faction.toLowerCase()
 
   useEffect(() => {
@@ -43,22 +45,6 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
 
     getCurrentTaskItems()
   }, [currentQuest])
-
-  const cyclePrevQuest = () => {
-    const questIndex = quests.findIndex(quest => quest.key === currentQuest.key)
-    const newIndex = questIndex - 1
-
-    if (newIndex < 0) setCurrentQuest(quests[quests.length - 1])
-    else return setCurrentQuest(quests[newIndex])
-  }
-
-  const cycleNextQuest = () => {
-    const questIndex = quests.findIndex(quest => quest.key === currentQuest.key)
-    const newIndex = questIndex + 1
-
-    if (newIndex < quests.length) setCurrentQuest(quests[newIndex])
-    else return setCurrentQuest(quests[0])
-  }
 
   const handleAddButtonClick = () => {
     const toastItems: (Material | Item)[] = []
@@ -111,10 +97,10 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
     <div className={ styles.container }>
       <div className={ styles.blur } />
       <div className={ classSelector() }>
-        <button className={ styles.prevBtn } onClick={ cyclePrevQuest }>
+        <button className={ styles.prevBtn } onClick={ cyclePrevState }>
           { largeScreen ? <FaAngleLeft /> : <FaAngleDown /> }
         </button>
-        <button className={ styles.nextBtn } onClick={ cycleNextQuest }>
+        <button className={ styles.nextBtn } onClick={ cycleNextState }>
           { largeScreen ? <FaAngleRight /> : <FaAngleUp /> }
         </button>
         <div className={ styles.partContainer } title={ `Part: ${currentQuest.chainPart}` }>

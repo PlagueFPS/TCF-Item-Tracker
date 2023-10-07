@@ -1,22 +1,16 @@
 import styles from './UpgradeCard.module.css'
 import { Quarters } from "@/interfaces/Upgrade"
-import { Item } from "@/interfaces/Item"
-import getGameData from "@/utils/getGameData"
 import { getCosts, getItemImage } from "@/utils/GameUtils"
-import UpgradeCardWrapper from '../UpgradeCardWrapper/UpgradeCardWrapper'
 import { dataTimes } from '@/functions/GlobalFunctions'
 
 interface Props {
   upgrade: Quarters
-  upgrades: Quarters[]
 }
 
-export default async function UpgradeCard({ upgrade, upgrades }: Props) {
-  const items = await getGameData('items') as Item[]
+export default async function UpgradeCard({ upgrade }: Props) {
   const costs = await getCosts(upgrade.costs)
-
   return (
-    <UpgradeCardWrapper upgrade={ upgrade } upgrades={ upgrades } costs={ costs } items={ items }>
+    <>
       <div className={ styles.titleContainer }>
         <h2 className={ styles.title }>{ upgrade.inGameName }</h2>
       </div>
@@ -55,6 +49,6 @@ export default async function UpgradeCard({ upgrade, upgrades }: Props) {
           </div>
         )))}
       </div>
-    </UpgradeCardWrapper>
+    </>
   )
 }

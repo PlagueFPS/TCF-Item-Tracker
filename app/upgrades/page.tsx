@@ -7,11 +7,12 @@ import UpgradesContainer from '@/components/UpgradesContainer/UpgradesContainer'
 
 export default async function QuarterUpgrades() {
   const upgrades = await getGameData('personalQuarters') as Quarters[]
+  const levels = upgrades.filter(upgrade => 'level' in upgrade)
 
   return (
     <>
       <ToggleListButton className={ styles.button } />
-      <UpgradesContainer upgrades={ upgrades } />
+      <UpgradesContainer upgrades={ levels } />
     </>
   )
 }

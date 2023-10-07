@@ -43,6 +43,7 @@ export default async function UpgradeCard({ upgrade }: Props) {
                 className={ `${styles.upgradeCostImage } ${ cost.item.toLowerCase().replace(/\s/g, '') }` } 
                 height={ 40 }
                 width={ 40 }
+                title={ cost.item }
               />
             </picture>
             <p className={ styles.upgradeCostAmount }>{ cost.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") }</p>

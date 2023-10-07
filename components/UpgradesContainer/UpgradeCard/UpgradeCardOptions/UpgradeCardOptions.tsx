@@ -110,7 +110,8 @@ export default function UpgradeCardOptions({ upgrade, upgrades, costs, items, to
                     <img 
                       src={ `${cost.image}.png` }
                       alt={ cost.item } 
-                      className={ `${styles.costImage } ${ cost.item.toLowerCase().replace(/\s/g, '') }` } 
+                      className={ `${styles.costImage } ${ cost.item.toLowerCase().replace(/\s/g, '') }` }
+                      title={ cost.item }
                     />
                   </picture>
                   <p className={ styles.costAmount }>{ cost.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") }</p>

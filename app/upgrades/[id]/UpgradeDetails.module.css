@@ -1,0 +1,54 @@
+.container {
+  @apply relative flex gap-20 flex-col justify-center items-center bg-primary-900 bg-itemcommon border-t-2 border-common w-full
+}
+
+.upgradeContainer {
+  @apply relative flex flex-col justify-center items-center w-full
+}
+
+.title {
+  @apply text-secondary-400 text-center mt-8 text-3xl font-bold
+}
+
+.categoryTitle {
+  @apply absolute -top-10 mx-auto text-2xl text-secondary-400 font-semibold
+}
+
+.upgradesRequired_Container,
+.upgradeAmount_Container,
+.upgradeTime_Container {
+  @apply relative flex justify-center items-center gap-2 p-4 w-[45ch] md:w-[60ch] bg-primary-900
+  rounded-lg border border-outline
+}
+
+.upgradesRequired,
+.upgradesRequiredText,
+.upgradeAmount,
+.upgradeTime {
+  @apply text-xl text-center text-secondary-500
+}
+
+.upgradeCosts_Container {
+  @apply relative flex justify-center items-center gap-4 bg-primary-900 rounded-lg w-[45ch] md:w-[80ch]
+  mt-4 mx-4 mb-12 md:mt-0 md:mx-0 border border-outline
+}
+
+.costsList {
+  @apply flex flex-wrap justify-center items-center w-full
+}
+
+.cost {
+  @apply flex justify-center items-center p-4 gap-2
+}
+
+.costImage_Container {
+  @apply flex justify-center items-center
+}
+
+.costImage {
+  @apply h-16 w-full
+}
+
+.costAmount {
+  @apply text-xl text-secondary-400
+}

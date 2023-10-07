@@ -5,7 +5,6 @@ import { Metadata } from "next"
 import getGameData from "@/utils/getGameData"
 import { Quarters } from "@/interfaces/Upgrade"
 import Header from "@/components/Header/Header"
-import UpgradesFilter from '@/components/UpgradesFilter/UpgradesFilter'
 import ItemList from '@/components/ItemList/ItemList'
 
 interface Props {
@@ -48,7 +47,6 @@ export default async function UpgradesLayout({ children }: Props) {
       />
       <div className={ styles.container }>
         <section className={ styles.contentContainer }>
-          <UpgradesFilter />
           { children }
         </section>
         <ItemList />

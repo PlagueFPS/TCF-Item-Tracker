@@ -2,6 +2,7 @@ import styles from '../Upgrades.module.css'
 import { getPosts } from "@/utils/contentful-utils"
 import { TypeGeneralPagesSkeleton } from "@/contentful/types/contentful-types"
 import { Metadata } from "next"
+import UpgradesFilter from '@/components/UpgradesFilter/UpgradesFilter'
 import UpgradesSubFilter from '@/components/UpgradesFilter/UpgradesSubFilter/UpgradesSubFilter'
 import ToggleListButton from "@/components/ItemList/ToggleListButton/ToggleListButton"
 
@@ -32,6 +33,7 @@ export const generateMetadata = async () => {
 export default function GeneratorLayout({ children }: Props) {
   return (
     <>
+      <UpgradesFilter />
       <UpgradesSubFilter />
       <ToggleListButton className={ `${styles.button} ${styles.genButton}` } />
       { children }

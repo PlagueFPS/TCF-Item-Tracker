@@ -21,9 +21,6 @@ export const generateMetadata = async () => {
       title: title,
       description: description,
       url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/quests`,
-      images: [{
-        url: '/images/icabanner.png'
-      }]
     },
     twitter: {
       title: title,

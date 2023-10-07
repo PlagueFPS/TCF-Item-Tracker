@@ -128,7 +128,7 @@ export default function UpgradeCardOptions({ upgrade, upgrades, costs, items, to
             <span className={ styles.noText }>Close</span>
           </button>
         </div>
-        <Link href={ `/upgrades/${currentUpgrade.inGameName.toLowerCase().replace(/\s/g, '')}` } className={ styles.link }>
+        <Link href={ `/upgrades/${currentUpgrade.inGameName.replace(/\s/g, '')}` } className={ styles.link }>
           <p className={ styles.linkText }>View Upgrade Details</p>
         </Link>
       </div>

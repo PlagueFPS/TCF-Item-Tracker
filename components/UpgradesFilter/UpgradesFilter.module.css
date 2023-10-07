@@ -16,9 +16,9 @@
 }
 
 .filterImage {
-  @apply h-7
+  @apply h-7 w-full
 }
 
 .filterText {
-  @apply text-secondary-400 text-lg font-normal hidden md:block
+  @apply text-secondary-400 text-xl font-normal hidden md:block
 }

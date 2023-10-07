@@ -7,7 +7,7 @@
 }
 
 .filterBtn {
-  @apply flex justify-center items-center gap-2 w-full h-full p-4 bg-transparent border-none cursor-pointer transition-all
+  @apply flex justify-center items-center gap-2 w-full h-14 p-4 bg-transparent border-none cursor-pointer transition-all
   hover:bg-primary-600
 }
 
@@ -33,4 +33,8 @@
 
 .filterImage_Container {
   @apply flex justify-center items-center
+}
+
+.filterImage {
+  @apply h-7 w-full
 }

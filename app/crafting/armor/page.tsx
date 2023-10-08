@@ -2,9 +2,6 @@ import styles from '../Crafting.module.css'
 import { TypeGeneralPagesSkeleton } from "@/contentful/types/contentful-types"
 import { getPosts } from "@/utils/contentful-utils"
 import { Metadata } from "next"
-import getGameData from "@/utils/getGameData"
-import { Craft } from "@/interfaces/Craft"
-import { compareCraftRarity } from "@/functions/GlobalFunctions"
 import CraftingFilter from "@/components/CraftingFilter/CraftingFilter"
 import ToggleListButton from "@/components/ItemList/ToggleListButton/ToggleListButton"
 import CraftingContainer from "@/components/CraftingContainer/CraftingContainer"
@@ -29,15 +26,12 @@ export const generateMetadata = async () => {
   return metadata
 }
 
-export default async function ArmorCrafts() {
-  const crafts = await getGameData('printing') as Craft[]
-  const armor = crafts.filter(craft => craft.type === 'shield' || craft.type === 'helmet').sort(compareCraftRarity)
-
+export default function ArmorCrafts() {
   return (
     <>
       <CraftingFilter />
       <ToggleListButton className={ styles.button } />
-      <CraftingContainer crafts={ armor } />
+      <CraftingContainer craftType='shield' />
     </>
   )
 }

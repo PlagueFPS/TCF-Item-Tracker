@@ -1,9 +1,9 @@
 .container {
-  @apply relative flex w-full bg-primary-900 border-t border-outline
+  @apply relative flex w-full bg-primary-900 border-t border-outline overflow-x-hidden
 }
 
 .contentContainer {
-  @apply relative flex flex-col justify-center items-center flex-grow text-secondary-400 transition-all
+  @apply relative flex flex-col items-center flex-grow text-secondary-400 transition-all
 }
 
 .button {

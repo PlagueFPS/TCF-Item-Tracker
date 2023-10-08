@@ -1,0 +1,200 @@
+.container {
+  @apply flex justify-center items-center fixed top-0 right-0 left-0 bottom-0 z-[999]
+}
+
+.blur {
+  @apply fixed top-0 bottom-0 left-0 right-0 opacity-100 bg-none backdrop-saturate-[30%] transition-all
+  z-[99] supports-[backdrop-filter]:backdrop-blur
+}
+
+.content {
+  @apply relative flex flex-col justify-center items-center m-4 pt-8 px-4 pb-12 gap-4 w-full
+  max-w-sm h-fit z-[100] bg-primary-800 border-2 border-outline border-t-common rounded-br rounded-bl
+  shadow-secondary animate-bounceIn
+}
+
+.content.closing {
+  @apply animate-bounceOut
+}
+
+.uncommon {
+  @apply bg-itemuncommon border-t-uncommon
+}
+
+.rare {
+  @apply bg-itemrare border-t-rare
+}
+
+.epic {
+  @apply bg-itemepic border-t-epic
+}
+
+.legendary {
+  @apply bg-itemlegendary border-t-legendary
+}
+
+.exotic {
+  @apply bg-itemexotic border-t-exotic
+}
+
+.prevBtn, 
+.nextBtn {
+  @apply absolute bg-transparent border-none text-common text-7xl cursor-pointer
+  transition-all w-fit h-fit
+}
+
+.prevBtn {
+  @apply -top-28 hover:-translate-y-[1%] md:top-0 md:bottom-0 md:my-auto md:-left-16 md:hover:-translate-x-[5%]
+}
+
+.nextBtn {
+  @apply -bottom-28 hover:translate-y-[1%] md:bottom-0 md:top-0 md:my-auto md:-right-16 md:hover:translate-x-[5%]
+}
+
+.common .nextBtn,
+.common .prevBtn {
+  @apply text-common
+}
+
+.uncommon .nextBtn,
+.uncommon .prevBtn {
+  @apply text-uncommon
+}
+
+.rare .nextBtn,
+.rare .prevBtn {
+  @apply text-rare
+}
+
+.epic .nextBtn,
+.epic .prevBtn {
+  @apply text-epic
+}
+
+.exotic .nextBtn,
+.exotic .prevBtn {
+  @apply text-exotic
+}
+
+.legendary .nextBtn,
+.legendary .prevBtn {
+  @apply text-legendary
+}
+
+.craftImage_Container {
+  @apply relative flex justify-center items-center w-full -mb-10 z-0
+}
+
+.imageFrame {
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-36 rounded-full
+  -z-[1]
+}
+
+.image {
+  @apply p-2 h-36
+}
+
+.titleContainer {
+  @apply flex justify-center items-center flex-grow text-secondary-400 font-semibold
+  text-2xl w-full
+}
+
+.title {
+  @apply relative flex justify-center items-center text-center after:absolute
+  after:-bottom-1 after:m-auto after:h-[2px] after:w-24 after:bg-secondary-800
+}
+
+.uncommon .title {
+  @apply text-uncommonText
+}
+
+.rare .title {
+  @apply text-rareText
+}
+
+.epic .title {
+  @apply text-epicText
+}
+
+.exotic .title {
+  @apply text-exoticText
+}
+
+.legendary .title {
+  @apply text-legendaryText
+}
+
+.common .title::after {
+  @apply bg-common
+}
+
+.uncommon .title::after {
+  @apply bg-uncommon
+}
+
+.rare .title::after {
+  @apply bg-rare
+}
+
+.epic .title::after {
+  @apply bg-epic
+}
+
+.exotic .title::after {
+  @apply bg-exotic
+}
+
+.legendary .title::after {
+  @apply bg-legendary
+}
+
+.descriptionContainer {
+  @apply flex justify-center items-center flex-grow p-4 w-full text-xl font-normal text-center
+  text-secondary-300
+}
+
+.description {
+  @apply flex justify-center items-center w-full
+}
+
+.itemsContainer {
+  @apply flex justify-center items-center gap-4 w-full flex-grow text-secondary-500
+}
+
+.cost {
+  @apply flex justify-center items-center gap-2
+}
+
+.costImage_Container {
+  @apply relative flex justify-center items-center
+}
+
+.costImage {
+  @apply h-14 w-full
+}
+
+.costAmount {
+  @apply text-secondary-400 text-xl
+}
+
+.btnContainer {
+  @apply flex justify-center items-center flex-grow px-8 gap-4 w-full
+}
+
+.btnContainer button {
+  @apply text-primary-900 text-base font-bold capitalize rounded py-2 px-3 flex-grow cursor-pointer
+  transition-all
+}
+
+.yesBtn {
+  @apply bg-greenLight hover:bg-green-600
+}
+
+.noBtn {
+  @apply bg-red-400 hover:bg-red-600
+}
+
+.link {
+  @apply absolute bottom-8 flex justify-center items-center flex-grow bg-primary-900 py-2 px-5 -mb-8 rounded-tl-lg rounded-tr-lg text-secondary-400
+  transition-all hover:pb-3
+}

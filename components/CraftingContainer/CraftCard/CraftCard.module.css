@@ -1,0 +1,152 @@
+.container {
+  @apply relative flex flex-col justify-center items-center gap-4 h-96 bg-primary-800 cursor-pointer
+  bg-itemcommon shadow-secondary rounded-bl-2xl rounded-br-2xl border-2 border-outline border-t-common
+  overflow-hidden text-secondary-400 hover:translate-y-[-5%] transition-all
+}
+
+.uncommon {
+  @apply border-t-uncommon bg-itemuncommon
+}
+
+.rare {
+  @apply border-t-rare bg-itemrare
+}
+
+.epic {
+  @apply border-t-epic bg-itemepic
+}
+
+.exotic {
+  @apply border-t-exotic bg-itemexotic
+}
+
+.legendary {
+  @apply border-t-legendary bg-itemlegendary
+}
+
+.craftImage_Container {
+  @apply relative flex justify-center items-center mt-4 -mb-8 z-0
+}
+
+.imageFrame {
+  @apply absolute top-0 bottom-0 left-0 right-0 mx-auto bg-black bg-opacity-25 w-24 rounded-full -z-[1]
+}
+
+.image {
+  @apply h-24 w-full p-2
+}
+
+.titleContainer {
+  @apply relative flex justify-center items-center w-full flex-grow
+}
+
+.title {
+  @apply relative flex justify-center items-center text-secondary-400 text-center text-xl font-semibold
+}
+
+.uncommon .title {
+  @apply text-uncommonText
+}
+
+.rare .title {
+  @apply text-rareText
+}
+
+.epic .title {
+  @apply text-epicText
+}
+
+.exotic .title {
+  @apply text-exoticText
+}
+
+.legendary .title {
+  @apply text-legendaryText
+}
+
+.title::after {
+  @apply absolute -bottom-1 m-auto h-0.5 w-24 bg-common
+}
+
+.uncommon .title::after {
+  @apply bg-uncommon
+}
+
+.rare .title::after {
+  @apply bg-rare
+}
+
+.epic .title::after {
+  @apply bg-epic
+}
+
+.exotic .title::after {
+  @apply bg-exotic
+}
+
+.legendary .title::after {
+  @apply bg-legendary
+}
+
+.armorValue_Container,
+.craftTime_Container,
+.craftRarity_Container {
+  @apply flex justify-center items-center gap-2 w-full text-xl flex-grow
+}
+
+.armorValueText,
+.craftTimeText,
+.craftRarityText {
+  @apply text-center
+}
+
+.armorValue,
+.craftTime,
+.craftRarity {
+  @apply font-bold
+}
+
+.craftRarity {
+  @apply brightness-125 capitalize
+}
+
+.uncommon .craftRarity {
+  @apply text-uncommon
+}
+
+.rare .craftRarity {
+  @apply text-rare
+}
+
+.epic .craftRarity {
+  @apply text-epic
+}
+
+.exotic .craftRarity {
+  @apply text-exotic
+}
+
+.legendary .craftRarity {
+  @apply text-legendary
+}
+
+.craftCosts_Container {
+  @apply flex justify-center items-center flex-wrap flex-grow gap-4 w-full
+  bg-primary-900 p-2 text-lg
+}
+
+.costImage_Container {
+  @apply flex justify-center items-center
+}
+
+.costImage {
+  @apply h-10 w-full
+}
+
+.craftCost {
+  @apply flex justify-center items-center gap-2
+}
+
+.craftCostAmount {
+  @apply text-secondary-400 
+}

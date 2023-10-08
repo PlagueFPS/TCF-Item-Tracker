@@ -3,7 +3,7 @@ import { Rarity } from "./Item";
 export interface RawCraft {
   time:  number;
   items: { [key: string]: CraftItem };
-  type:  Type;
+  type:  CraftType;
   key:   string;
 }
 
@@ -21,5 +21,5 @@ export interface CraftItem {
   amount:     number;
 }
 
-type Type = "material" | "questItem" | "weapon" | "consumable" | "backpack" | "shield" | "helmet" | "attachment";
+export type CraftType = "material" | "questItem" | "weapon" | "consumable" | "backpack" | "shield" | "helmet" | "attachment";
 

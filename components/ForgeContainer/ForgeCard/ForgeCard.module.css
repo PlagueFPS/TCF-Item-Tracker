@@ -1,0 +1,64 @@
+.container {
+  @apply relative flex flex-col justify-center items-center gap-4 h-96 bg-primary-800
+  cursor-pointer bg-itemcommon shadow-secondary transition-all border-2 border-outline
+  border-t-common text-secondary-400 overflow-hidden hover:-translate-y-[5%]
+  rounded-bl-2xl rounded-br-2xl
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center mt-4 -mb-8 z-0
+}
+
+.imageFrame {
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-20 rounded-full -z-[1]
+}
+
+.image {
+  @apply h-20 w-full p-2
+}
+
+.titleContainer {
+  @apply relative flex justify-center items-center px-2 w-full flex-grow
+}
+
+.title {
+  @apply relative flex justify-center items-center text-secondary-400 text-center
+  text-2xl font-semibold mb-0 after:absolute after:-bottom-1 after:m-auto after:h-0.5 after:w-24
+  after:bg-common
+}
+
+.compatabilityContainer {
+  @apply flex justify-center items-center gap-2 w-full flex-grow text-xl
+}
+
+.compatabilityList {
+  @apply flex flex-col justify-center items-center gap-2
+}
+
+.compatabilityTitle {
+  @apply font-semibold text-xl text-secondary-400
+}
+
+.compatabilityListItem {
+  @apply flex justify-center items-center gap-2 text-secondary-400
+}
+
+.costsContainer {
+  @apply flex justify-center items-center gap-4 p-2 w-full bg-primary-900 text-xl
+}
+
+.cost {
+  @apply flex justify-center items-center gap-1
+}
+
+.costImage_Container {
+  @apply flex justify-center items-center
+}
+
+.costImage {
+  @apply h-10 w-full
+}
+
+.costAmount {
+  @apply text-secondary-400
+}

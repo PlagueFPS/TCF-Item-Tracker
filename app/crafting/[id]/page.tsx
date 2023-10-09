@@ -97,7 +97,7 @@ export default async function CraftDetails({ params }: Props) {
           <p className={ styles.armorValue }>{ craft.durability }/{ craft.durability }</p>
         </div>
       }
-      { (craft.effects && craft.effects.length > 0) &&
+      { (craft.effects && craft.effects.length > 0 && craft.effects[0]) &&
         <div className={ styles.effectContainer }>
           <h2 className={ styles.categoryTitle }>{ craft.effects.length > 1 ? `Attachment Effects:` : `Attachment Effect:` }</h2>
           <ul className={ styles.effectList }>

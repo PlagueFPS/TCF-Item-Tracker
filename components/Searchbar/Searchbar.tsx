@@ -20,7 +20,7 @@ export default function Searchbar({ data, dataType, placeholder }: Props) {
   const [inputValue, setValue] = useState('')
   const router = useRouter()
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLLIElement>, altValue?: string) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLLIElement>, dataKey?: string) => {
     e.preventDefault()
     const value = inputValue.toLowerCase().replace(/\s/g, '')
     let url = ''
@@ -28,30 +28,32 @@ export default function Searchbar({ data, dataType, placeholder }: Props) {
     switch(dataType) {
       case 'item':
         const itemData = data as Item[]
-        const item = itemData.find(item => item.inGameName.toLowerCase().replace(/\s/g, '') === value || item.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
+        const item = itemData.find(item => item.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (item) url = `/item-info/${item.key}`
         break
       case 'quest':
         const questData = data as Quest[]
-        const quest = questData.find(quest => quest.inGameName.toLowerCase().replace(/\s/g, '') === value || quest.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
+        const quest = questData.find(quest => quest.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (quest) url = `/quests/${quest.key}`
         break
       case 'upgrade':
         const upgradeData = data as Quarters[]
-        const upgrade = upgradeData.find(upgrade => upgrade.inGameName.toLowerCase().replace(/\s/g, '') === value || upgrade.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
+        const upgrade = upgradeData.find(upgrade => upgrade.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (upgrade) url = `/upgrades/${upgrade.inGameName.replace(/\s/g, '')}`
         break
       case 'craft':
         const craftData = data as Craft[]
-        const craft = craftData.find(craft => craft.inGameName.toLowerCase().replace(/\s/g, '') === value || craft.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
+        let craft = craftData.find(craft => craft.key === dataKey)
+        if (!craft) craft = craftData.find(craft => craft.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (craft) url = `/crafting/${craft.key}`
         break
       case 'forge':
         const forgeRecipes = data as ForgeRecipe[]
-        const recipe = forgeRecipes.find(recipe => recipe.inGameName.toLowerCase().replace(/\s/g, '') === value || recipe.inGameName.toLowerCase().replace(/\s/g, '') === altValue)
+        const recipe = forgeRecipes.find(recipe => recipe.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (recipe) url = `/forge/${recipe.key}`
     }
 
+    setValue('')
     router.push(url)
   }
 
@@ -69,7 +71,7 @@ export default function Searchbar({ data, dataType, placeholder }: Props) {
         <ul className={ styles.list }>
           <SuggestedItems 
             data={ data } 
-            inputValue={ inputValue }  
+            inputValue={ inputValue }
             handleSubmit={ handleSubmit } 
           /> 
         </ul>

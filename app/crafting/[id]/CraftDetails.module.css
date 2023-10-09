@@ -7,244 +7,140 @@
 }
 
 .rare {
-  background-image: radial-gradient(circle at top,rgba(0,68,255,.25),var(--bg-color-2) 60%);
-  border-top: 3px solid var(--rare);
+  @apply bg-itemrare border-t-rare
 }
 
 .epic {
-  background-image: radial-gradient(circle at top,rgba(195,0,255,.25),var(--bg-color-2) 60%);
-  border-top: 3px solid var(--epic);
+  @apply bg-itemepic border-t-epic
 }
 
 .legendary {
-  background-image: radial-gradient(circle at top,rgba(255,153,0,.25),var(--bg-color-2) 60%);
-  border-top: 3px solid var(--legendary);
+  @apply bg-itemlegendary border-t-legendary
 }
 
 .exotic {
-  background-image: radial-gradient(circle at top,rgba(255,0,0,.25),var(--bg-color-2) 60%);
-  border-top: 3px solid var(--exotic);
+  @apply bg-itemexotic border-t-exotic
 }
 
 .craftContainer {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  width: 100%;
+  @apply relative flex flex-col gap-8 items-center w-full
 }
 
 .imageContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  margin-bottom: -3rem;
-  z-index: 0;
+  @apply relative flex justify-center items-center mt-4 -mb-12 z-0
 }
 
 .image {
-  height: 256px;
-  width: 100%;
+  @apply h-64 w-full
 }
 
 .itemFrame {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.25);
-  width: 18rem;
-  border-radius: 50%;
-  z-index: -1;
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-72 rounded-full
+  -z-[1]
 }
 
 .title {
-  position: relative;
-  color: var(--text-color-2);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply relative text-secondary-400 text-3xl text-center flex justify-center items-center font-bold
 }
 
 .common .title {
-  color: var(--commonText);
+  @apply text-commonText
 }
 
 .uncommon .title {
-  color: var(--uncommonText);
+  @apply text-uncommonText
 }
 
 .rare .title {
-  color: var(--rareText);
+  @apply text-rareText
 }
 
 .epic .title {
-  color: var(--epicText);
+  @apply text-epicText
 }
 
 .exotic .title {
-  color: var(--exoticText);
+  @apply text-exoticText
 }
 
 .legendary .title {
-  color: var(--legendaryText);
+  @apply text-legendaryText
 }
 
 .categoryTitle {
-  position: absolute;
-  top: -2.5rem;
-  font-size: 1.75rem;
-  color: var(--text-color-2);
+  @apply absolute -top-10 text-2xl text-secondary-400 font-semibold
 }
 
 .description {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--text-color-3);
-  background-color: var(--bg-color);
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  max-width: 80ch;
+  @apply text-xl font-medium text-secondary-500 bg-primary-900 py-2 px-4 rounded-lg max-w-[80ch]
+  border border-outline mx-auto
 }
 
 .armorValue_Container,
 .effectContainer,
 .timeContainer,
 .rarityContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  min-width: 60ch;
-  background-color: var(--bg-color);
-  border-radius: 10px;
+  @apply relative flex justify-center items-center gap-2 p-4 w-[45] md:w-[60ch] bg-primary-900
+  rounded-lg border border-outline
 }
 
 .armorValue,
 .effect,
 .time,
 .rarity {
-  font-size: 1.4rem;
-  text-align: center;
-  color: var(--text-color-3);
-  text-transform: capitalize;
+  @apply text-xl text-center text-secondary-500 capitalize
 }
 
 .rarity {
-  font-weight: bold;
-  filter: brightness(125%);
+  @apply font-bold brightness-125
 }
 
 .common .rarity {
-  color: var(--common);
+  @apply text-common
 }
 
 .uncommon .rarity {
-  color: var(--uncommon);
+  @apply text-uncommon
 }
 
 .rare .rarity {
-  color: var(--rare);
+  @apply text-rare
 }
 
 .epic .rarity {
-  color: var(--epic);
+  @apply text-epic
 }
 
 .exotic .rarity {
-  color: var(--exotic);
+  @apply text-exotic
 }
 
 .legendary .rarity {
-  color: var(--legendary);
+  @apply text-legendary
 }
 
 .costsContainer {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  background-color: var(--bg-color);
-  border-radius: 10px;
-  min-width: 60ch;
-  margin: 2rem 0 3rem 0;
+  @apply relative flex justify-center items-center gap-4 bg-primary-900
+  rounded-lg w-[45ch] md:min-w-[80ch] mt-4 mx-4 mb-12 md:mt-8 md:mx-0
+  border border-outline
 }
 
 .costsList {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  @apply flex flex-wrap justify-center items-center w-full
 }
 
 .cost {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  gap: 0.5rem;
+  @apply flex justify-center items-center p-4 gap-2
 }
 
 .costImage_Container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply flex justify-center items-center
 }
 
 .costImage {
-  height: 64px;
+  @apply h-16 w-full
 }
 
 .costAmount {
-  font-size: 1.4rem;
-  color: var(--text-color-2);
-}
-
-@media screen and (max-width: 721px) {
-  .header {
-    margin-top: 3.4rem;
-  }
-
-  .searchBar_Container {
-    width: 80%;
-  }
-
-  .container {
-    gap: 5rem;
-  }
-
-  .nextBtn,
-  .prevBtn {
-    top: 20rem;
-    font-size: 1.2rem;
-  }
-
-  .description {
-    margin: 3.5rem 1rem 0;
-  }
-
-  .armorValue_Container,
-  .effectContainer,
-  .timeContainer,
-  .rarityContainer {
-    min-width: 45ch;
-    max-width: 45ch;
-  }
-
-  .costsContainer {
-    min-width: 0;
-    max-width: 45ch;
-    margin: 1rem 1rem 3rem 1rem;
-  }
-
-  .costsList {
-    flex-wrap: wrap;
-  }
+  @apply text-xl text-secondary-400
 }

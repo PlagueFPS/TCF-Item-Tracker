@@ -13,8 +13,10 @@ export default function SuggestedItems({ data, inputValue, handleSubmit }: Props
   let num = 0
 
   const displayValue = (data: DataTypes, e: FormEvent<HTMLFormElement>| MouseEvent<HTMLLIElement>) => {
-    const value = data.inGameName.toLowerCase().replace(/\s/g, '')
-    handleSubmit(e, value)
+    if ('key' in data) {
+      handleSubmit(e, data.key)
+    }
+    else handleSubmit(e)
   }
 
   const checkInput = (data: DataTypes) => {

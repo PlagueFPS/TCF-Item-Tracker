@@ -4,7 +4,7 @@ import { Item } from '@/interfaces/Item'
 import { useState } from 'react'
 import ItemsCardWrapper from './ItemsCardWrapper/ItemsCardWrapper'
 import ItemCard from './ItemCard/ItemCard'
-import ItemsSorter from '../ItemsSorter/ItemsSorter'
+import ItemsSorter from './ItemsSorter/ItemsSorter'
 
 interface Props {
   items: Item[]

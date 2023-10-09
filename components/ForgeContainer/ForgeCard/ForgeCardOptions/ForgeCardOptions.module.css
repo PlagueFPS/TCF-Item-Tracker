@@ -1,0 +1,105 @@
+.container {
+  @apply flex justify-center items-center fixed top-0 right-0 left-0 bottom-0 z-[999]
+}
+
+.blur {
+  @apply fixed top-0 bottom-0 left-0 right-0 opacity-100 bg-none backdrop-saturate-[30%] transition-all
+  z-[99] supports-[backdrop-filter]:backdrop-blur
+}
+
+.content {
+  @apply relative flex flex-col justify-center items-center m-4 pt-8 px-4 pb-12 gap-4 w-full
+  max-w-sm h-fit z-[100] bg-primary-800 bg-itemcommon border-2 border-outline border-t-common rounded-br rounded-bl
+  shadow-secondary animate-bounceIn
+}
+
+.content.closing {
+  @apply animate-bounceOut
+}
+
+.prevBtn, 
+.nextBtn {
+  @apply absolute bg-transparent border-none text-common text-7xl cursor-pointer
+  transition-all w-fit h-fit
+}
+
+.prevBtn {
+  @apply -top-28 hover:-translate-y-[1%] md:top-0 md:bottom-0 md:my-auto md:-left-16 md:hover:-translate-x-[5%]
+}
+
+.nextBtn {
+  @apply -bottom-28 hover:translate-y-[1%] md:bottom-0 md:top-0 md:my-auto md:-right-16 md:hover:translate-x-[5%]
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center w-full -mb-8 z-0
+}
+
+.imageFrame {
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-24 rounded-full
+  -z-[1]
+}
+
+.image {
+  @apply h-24 p-2
+}
+
+.titleContainer {
+  @apply flex justify-center items-center flex-grow text-commonText w-full
+}
+
+.title {
+  @apply relative flex text-center justify-center items-center font-semibold text-2xl
+  after:absolute after:-bottom-1 after:h-0.5 after:w-24 after:bg-common
+}
+
+.descriptionContainer {
+  @apply flex justify-center items-center flex-grow p-4 w-full text-xl
+  font-normal text-center
+}
+
+.description {
+  @apply flex justify-center items-center w-full text-secondary-300
+}
+
+.itemsContainer {
+  @apply flex flex-wrap justify-center items-center gap-4 w-full flex-grow text-secondary-400
+}
+
+.cost {
+  @apply flex justify-center items-center gap-2
+}
+
+.costImage_Container {
+  @apply flex justify-center items-center
+}
+
+.costImage {
+  @apply h-14 w-full
+}
+
+.costAmount {
+  @apply text-secondary-400 text-xl
+}
+
+.btnContainer {
+  @apply flex justify-center items-center flex-grow mb-4 px-8 gap-4 w-full
+}
+
+.btnContainer button {
+  @apply text-primary-900 font-bold text-base capitalize rounded py-2 px-3 cursor-pointer
+  transition-all
+}
+
+.yesBtn {
+  @apply bg-greenLight hover:bg-green-600
+}
+
+.noBtn {
+  @apply bg-red-400 hover:bg-red-600
+}
+
+.link {
+  @apply absolute bottom-8 flex justify-center items-center flex-grow bg-primary-900 py-2 px-5
+  -mb-8 rounded-tr-lg rounded-tl-lg text-base transition-all hover:pb-3
+}

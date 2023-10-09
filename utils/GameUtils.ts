@@ -146,7 +146,7 @@ export const getRewards = async (faction: Faction, rewards: Reward[]) => {
   return newRewards
 }
 
-export const getCosts = async (costs: { [key: string]: number }) => {
+export const getCosts = async (costs: { [key: string]: number | undefined }) => {
   const items = await getGameData('items') as Item[]
   const newCosts: UpgradeCost[] = []
 
@@ -154,9 +154,9 @@ export const getCosts = async (costs: { [key: string]: number }) => {
   for (const cost in costs) {
     const item = items.find(item => item.key === cost || item.inGameName === cost)?.inGameName
 
-    if (item) newCosts.push({ item: item, amount: costs[cost] })
-    else if (cost === 'SoftCurrency') newCosts.splice(0, 0, { item: 'Kmarks', amount: costs[cost] })
-    else newCosts.push({ item: `[${cost}]`, amount: costs[cost] })
+    if (item) newCosts.push({ item: item, amount: costs[cost] ?? 0 })
+    else if (cost === 'SoftCurrency') newCosts.splice(0, 0, { item: 'Kmarks', amount: costs[cost] ?? 0 })
+    else newCosts.push({ item: `[${cost}]`, amount: costs[cost] ?? 0 })
   }
 
   return newCosts

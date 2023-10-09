@@ -2,7 +2,7 @@ export interface RawRecipe {
   description:        string;
   elite:              boolean;
   equipment:          RawEquipment[] | Equipment[];
-  items:              { [key: string]: number };
+  items:              { [key: string]: number | undefined };
   attributes:         Attribute[];
   attributeOverrides: AttributeOverrides;
   key:                string;

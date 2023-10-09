@@ -1,0 +1,78 @@
+.container {
+  @apply relative flex gap-20 md:gap-16 flex-col items-center bg-primary-900 bg-itemcommon
+  border-t-2 border-common w-full
+}
+
+.recipeContainer {
+  @apply relative flex flex-col gap-8 justify-center items-center w-full
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center mt-4 -mb-12 z-0
+}
+
+.image {
+  @apply h-24 md:h-32 w-full
+}
+
+.imageFrame {
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-full rounded-full
+  -z-[1]
+}
+
+.title {
+  @apply relative text-commonText font-bold text-center flex justify-center items-center max-w-[60ch]
+  text-3xl mt-2 mx-2 md:mt-0
+}
+
+.categoryTitle {
+  @apply absolute -top-10 text-2xl text-secondary-400
+}
+
+.compatabilityContainer,
+.minStat_Container,
+.maxStat_Container {
+  @apply relative flex justify-center items-center gap-3 p-4 w-[45ch] md:min-w-[60ch] max-w-[80ch]
+  rounded-lg bg-primary-900 border border-outline
+}
+
+.compatabilityList {
+  @apply flex flex-col flex-wrap justify-center items-center gap-4
+}
+
+.compatabilityListItem {
+  @apply flex justify-center items-center gap-2 text-xl text-secondary-500
+}
+
+.compatability, .stat {
+  @apply text-xl text-center text-secondary-500 capitalize
+}
+
+.compatability {
+  @apply font-bold
+}
+
+.costsContainer {
+  @apply relative flex justify-center items-center gap-4 bg-primary-900 rounded-lg w-[45ch] md:min-w-[60ch] max-w-[80ch]
+  mt-4 mx-4 mb-12 md:mt-8 md:mx-0 border border-outline
+}
+
+.costsList {
+  @apply flex flex-wrap justify-center items-center w-full
+}
+
+.cost {
+  @apply flex justify-center items-center p-4 gap-2
+}
+
+.costImage_Container {
+  @apply flex justify-center items-center 
+}
+
+.costImage {
+  @apply h-16
+}
+
+.costAmount {
+  @apply text-xl text-secondary-400
+}

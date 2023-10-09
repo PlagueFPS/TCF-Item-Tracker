@@ -25,7 +25,7 @@ export const generateMetadata = async () => {
   return metadata
 }
 
-export default function Forge() {
+export default function ForgePerks() {
   return (
     <>
       <ToggleListButton className={ styles.button } />

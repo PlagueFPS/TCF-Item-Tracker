@@ -28,12 +28,12 @@ export default function Searchbar({ data, dataType, placeholder }: Props) {
     switch(dataType) {
       case 'item':
         const itemData = data as Item[]
-        const item = itemData.find(item => item.inGameName.toLowerCase().replace(/\s/g, '') === value)
+        const item = itemData.find(item => item.key === dataKey || item.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (item) url = `/item-info/${item.key}`
         break
       case 'quest':
         const questData = data as Quest[]
-        const quest = questData.find(quest => quest.inGameName.toLowerCase().replace(/\s/g, '') === value)
+        const quest = questData.find(quest => quest.key === dataKey || quest.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (quest) url = `/quests/${quest.key}`
         break
       case 'upgrade':
@@ -43,13 +43,12 @@ export default function Searchbar({ data, dataType, placeholder }: Props) {
         break
       case 'craft':
         const craftData = data as Craft[]
-        let craft = craftData.find(craft => craft.key === dataKey)
-        if (!craft) craft = craftData.find(craft => craft.inGameName.toLowerCase().replace(/\s/g, '') === value)
+        const craft = craftData.find(craft => craft.key === dataKey || craft.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (craft) url = `/crafting/${craft.key}`
         break
       case 'forge':
         const forgeRecipes = data as ForgeRecipe[]
-        const recipe = forgeRecipes.find(recipe => recipe.inGameName.toLowerCase().replace(/\s/g, '') === value)
+        const recipe = forgeRecipes.find(recipe => recipe.key === dataKey || recipe.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (recipe) url = `/forge/${recipe.key}`
     }
 

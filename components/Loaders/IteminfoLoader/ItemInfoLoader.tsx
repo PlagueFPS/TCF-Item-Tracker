@@ -13,7 +13,7 @@ export default function ItemInfoLoader() {
             <div className={ styles.selector } />
           </div>
           <div className={ styles.itemsContainer }>
-            { [...Array(100).keys()].map(i => (
+            { [...Array(21).keys()].map(i => (
               <CardLoader key={ i } />
             ))}
           </div>

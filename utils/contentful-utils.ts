@@ -1,5 +1,5 @@
 import { EntriesQueries, EntrySkeletonType, Asset, UnresolvedLink } from 'contentful'
-import { client } from '../contentful/contentful'
+import { client } from '@/contentful/contentful'
 
 export const getPosts = <T extends EntrySkeletonType>(searchParams: EntriesQueries<T, undefined>) => {
   const response = client.getEntries<T>(searchParams)

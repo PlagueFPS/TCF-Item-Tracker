@@ -1,6 +1,6 @@
 .container {
   @apply sticky top-0 grid gap-6 content-start flex-grow p-8
-  bg-primary-800 border-x-2 border-outline transition-all animate-fadeIn;
+  bg-primary-800 border-x-2 border-outline transition-all;
   grid-template: auto / repeat(auto-fill, minmax(100px, 1fr));
 }
 
@@ -12,7 +12,7 @@
 .image {
   @apply flex justify-center items-center bg-primary-800 border-2 border-common
   bg-itemcommon rounded-full p-4 cursor-pointer scale-100 transition-all hover:scale-105
-  hover:brightness-110 active:scale-95 aspect-square
+  hover:brightness-110 active:scale-95 aspect-square animate-fadeIn
 }
 
 .uncommon {

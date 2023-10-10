@@ -6,7 +6,3 @@
 .section.closing {
   @apply animate-slideOut
 }
-
-.section.home.desktop {
-  @apply animate-fadeIn
-}

@@ -1,0 +1,70 @@
+.container {
+  @apply relative flex flex-col-reverse xl:flex-row gap-4 flex-grow m-auto w-full bg-primary-900 border-t-2 border-outline;
+  min-height: calc(100vh - (160px + 75px)); 
+}
+
+.button {
+  @apply block xl:hidden fixed top-4 left-0 right-0 h-10 w-28 mx-auto z-[998] bg-primary-600 border border-outline
+  rounded py-2 px-3 transition-all animate-pulse
+}
+
+.imageContainer {
+  @apply sticky top-0 grid gap-6 content-start flex-grow p-8 bg-primary-800 border-l-2 border-r-2 border-outline
+  transition-all min-w-[50%];
+  grid-template: auto / repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.imageContainerTitle {
+  @apply col-span-full bg-primary-700 rounded-lg p-4 h-20 animate-pulse
+}
+
+.image {
+  @apply flex justify-center items-center bg-primary-800 border-2 border-common bg-imgcommon
+  rounded-full p-4 scale-100 transition-all animate-pulse h-24 w-24
+}
+
+.itemList {
+  @apply sticky top-0 basis-[30%] max-h-screen overflow-auto px-4 pb-96 bg-primary-800
+  border-l-2 border-r-2 border-outline overscroll-none transition-all
+}
+
+.itemListHeader {
+  @apply sticky top-0 left-0 right-0 -mx-4 pt-4 px-8 pb-8 bg-primary-800
+  border-b-2 border-outline z-[3] animate-pulse
+}
+
+.btnContainer {
+  @apply flex justify-between items-center w-full
+}
+
+.clearBtn, .switchBtn {
+  @apply flex items-center mt-20 md:mt-0 py-2 px-4 bg-primary-600 rounded transition-all animate-pulse
+  h-10 w-28
+}
+
+.itemListTitle {
+  @apply bg-primary-600 rounded-lg p-2 my-6 animate-pulse h-14
+}
+
+.formControl {
+  @apply relative flex justify-center
+}
+
+.input {
+  @apply p-1 pl-4 bg-primary-800 rounded-tl rounded-br border border-outline outline-0 animate-pulse
+  h-9;
+  flex: 1 0 auto;
+}
+
+.submitButton {
+  @apply bg-primary-600 border-transparent flex-grow-0 flex-shrink-0 basis-20 grid items-center p-1 rounded-tr rounded-br
+  transition-all animate-pulse h-9 w-20
+}
+
+.listBtnFilter_Container {
+  @apply flex justify-start items-center gap-2 mt-3;
+}
+
+.listBtnFilter {
+  @apply py-1 px-2 bg-primary-600 transition-all animate-pulse h-8 w-16
+}

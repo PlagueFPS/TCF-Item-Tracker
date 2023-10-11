@@ -1,0 +1,37 @@
+.container {
+  @apply relative flex gap-14 flex-col items-center bg-primary-900 bg-itemcommon border-t-2 border-t-common w-full
+}
+
+.craftContainer {
+  @apply relative flex flex-col gap-8 items-center w-full
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center h-64 w-64 mt-4 -mb-12 z-0
+}
+
+.itemFrame {
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-72 rounded-full
+  -z-[1] animate-pulse
+}
+
+.title {
+  @apply relative bg-primary-900 rounded h-9 w-64 animate-pulse
+}
+
+.description {
+  @apply bg-primary-900 py-2 px-4 rounded-lg w-[45ch] md:w-[80ch]
+  border border-outline mx-auto animate-pulse h-12
+}
+
+.timeContainer,
+.rarityContainer {
+  @apply relative flex justify-center items-center gap-2 p-4 h-16 w-[45] md:w-[60ch] bg-primary-900
+  rounded-lg border border-outline animate-pulse
+}
+
+.costsContainer {
+  @apply relative flex justify-center items-center gap-4 bg-primary-900
+  rounded-lg h-24 w-[45ch] md:w-[80ch] mt-4 mx-4 mb-12 md:mt-8 md:mx-0
+  border border-outline animate-pulse
+}

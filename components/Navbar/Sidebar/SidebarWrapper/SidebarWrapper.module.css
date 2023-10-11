@@ -1,5 +1,5 @@
 .sidebar {
-  @apply fixed top-0 right-0 h-screen bg-primary-800 flex flex-col gap-4 z-[102] border-r border-outline
+  @apply fixed top-0 right-0 h-screen bg-primary-800 flex flex-col gap-4 z-[999] border-r border-outline
   animate-slideIn;
 }
 

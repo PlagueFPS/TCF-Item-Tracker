@@ -1,0 +1,42 @@
+.container {
+  @apply relative flex gap-20 md:gap-16 flex-col items-center bg-primary-900 bg-itemcommon
+  border-t-2 border-common w-full
+}
+
+.recipeContainer {
+  @apply relative flex flex-col gap-8 justify-center items-center w-full
+}
+
+.imageContainer {
+  @apply relative flex justify-center h-32 w-32 items-center mt-4 -mb-12 z-0
+}
+
+.imageFrame {
+  @apply absolute top-0 bottom-0 mx-auto bg-black bg-opacity-25 w-full rounded-full
+  -z-[1] animate-pulse
+}
+
+.title {
+  @apply relative h-9 w-[60ch] mt-2 mx-2 md:mt-0 animate-pulse
+}
+
+.compatabilityContainer,
+.minStat_Container,
+.maxStat_Container {
+  @apply relative flex justify-center items-center gap-3 p-4 w-[45ch] md:w-[60ch]
+  rounded-lg bg-primary-900 border border-outline animate-pulse
+}
+
+.compatabilityContainer {
+  @apply h-24
+}
+
+.minStat_Container, 
+.maxStat_Container {
+  @apply h-16
+}
+
+.costsContainer {
+  @apply relative flex justify-center items-center gap-4 bg-primary-900 rounded-lg h-24 w-[45ch] md:w-[60ch]
+  mt-4 mx-4 mb-12 md:mt-8 md:mx-0 border border-outline animate-pulse
+}

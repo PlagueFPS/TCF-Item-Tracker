@@ -24,7 +24,7 @@ export const getObjectives = async (objective: Objective) => {
       const areaToVisit = await getLocation(objective.locationConditions[0])
       return areaToVisit
     case 'DeadDrop':
-      const itemToStash = items.find(item => item.key === objective.deadDropItem)
+      const itemToStash = items.find(item => item.key === objective.deadDropItem)?.inGameName
       return `Stash ${objective.maxProgress.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")} ${itemToStash} in the dead drop at ${objective.deadDropLocation}`
     case 'Kills': 
       const tasks = await killTasks(objective)

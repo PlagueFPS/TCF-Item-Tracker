@@ -1,7 +1,7 @@
 .container {
   @apply relative flex flex-col justify-center items-center gap-4 h-96 bg-primary-800 cursor-pointer
   bg-itemcommon shadow-secondary border-2 border-outline border-t-common rounded-bl-2xl rounded-br-2xl
-  transition-all text-secondary-400 overflow-hidden hover:-translate-y-[5%] -z-0
+  transition-all text-secondary-400 overflow-hidden hover:-translate-y-[5%] -z-0 animate-fadeIn
 }
 
 .titleContainer {

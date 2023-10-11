@@ -1,7 +1,7 @@
 .container {
   @apply relative flex flex-col justify-center items-center gap-4 max-h-96 h-96 bg-primary-800 cursor-pointer
   bg-itemcommon shadow-secondary transition-all rounded-br-2xl rounded-bl-2xl border-2 border-outline border-t-common
-  text-secondary-400 overflow-hidden hover:-translate-y-[5%]
+  text-secondary-400 overflow-hidden hover:-translate-y-[5%] animate-fadeIn
 }
 
 .container.badum {

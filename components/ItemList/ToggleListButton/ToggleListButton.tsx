@@ -26,7 +26,7 @@ export default function ToggleListButton({ className, home }: Props) {
     else setListClosing(true)
   }, [home, setHomeList, setListClosing])
 
-  const triggerList = () => {
+  const toggleList = () => {
     // allow time for animation to play on exit
     if (home) {
       if (!listClosing) {
@@ -53,7 +53,7 @@ export default function ToggleListButton({ className, home }: Props) {
   }
 
   return (
-    <button className={ className } onClick={ triggerList } title="Toggle List">
+    <button className={ className } onClick={ toggleList } title="Toggle List">
       Toggle List
     </button>
   )

@@ -2,7 +2,7 @@
   @apply relative flex flex-col justify-center items-center gap-4 h-96 bg-primary-800
   cursor-pointer bg-itemcommon shadow-secondary transition-all border-2 border-outline
   border-t-common text-secondary-400 overflow-hidden hover:-translate-y-[5%]
-  rounded-bl-2xl rounded-br-2xl
+  rounded-bl-2xl rounded-br-2xl animate-fadeIn
 }
 
 .imageContainer {

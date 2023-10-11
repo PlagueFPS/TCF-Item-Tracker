@@ -1,7 +1,7 @@
 .container {
   @apply relative flex flex-col gap-4 justify-center items-center  bg-primary-800 cursor-pointer
   bg-itemcommon shadow-secondary transition-all rounded-bl-2xl rounded-br-2xl border-2 border-outline
-  overflow-hidden hover:-translate-y-[5%]
+  overflow-hidden hover:-translate-y-[5%] animate-fadeIn
 }
 
 .commonContainer {

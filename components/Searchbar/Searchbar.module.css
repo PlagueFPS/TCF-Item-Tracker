@@ -1,6 +1,6 @@
 .input {
   @apply text-xl h-11 text-secondary-500 bg-primary-800 border border-secondary-500 rounded rounded-tr-none rounded-br-none py-2 px-4
-  w-full placeholder:text-secondary-400 placeholder:opacity-80
+  w-full placeholder:text-secondary-400
 }
 
 .button {
@@ -9,5 +9,5 @@
 }
 
 .list {
-  @apply absolute top-11 left-0 right-48 bg-primary-800 border border-outline border-t-0 rounded z-[999] list-none max-h-60 overflow-auto
+  @apply absolute top-11 left-0 right-48 bg-primary-800 border border-outline border-t-0 rounded z-50 list-none max-h-60 overflow-auto
 }

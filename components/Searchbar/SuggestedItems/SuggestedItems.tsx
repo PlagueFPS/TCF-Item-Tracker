@@ -5,12 +5,10 @@ import { FormEvent, MouseEvent } from 'react'
 interface Props {
   data: DataTypes[]
   inputValue: string
-  handleSubmit: (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLLIElement>, altValue?: string) => void
+  handleSubmit: (e: FormEvent<HTMLFormElement> | MouseEvent<HTMLLIElement>, dataKey?: string) => void
 }
 
 export default function SuggestedItems({ data, inputValue, handleSubmit }: Props) {
-  const limit = 5
-  let num = 0
 
   const displayValue = (data: DataTypes, e: FormEvent<HTMLFormElement>| MouseEvent<HTMLLIElement>) => {
     if ('key' in data) {
@@ -60,8 +58,7 @@ export default function SuggestedItems({ data, inputValue, handleSubmit }: Props
   return (
     <>
       { data.map((data, index) => {
-        if (checkInput(data) && num < limit) {
-          num += 1
+        if (checkInput(data)) {
           return (
             <li key={ `${data.inGameName}_${index}` } className={ classSelector(data) } onClick={ (e) => displayValue(data, e) }>
               <p>{ data.inGameName } { 'rarity' in data ? `(${data.rarity})` : 'faction' in data ? `(${data.faction})` : null }</p>

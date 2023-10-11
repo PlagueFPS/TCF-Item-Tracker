@@ -1,0 +1,38 @@
+.container {
+  @apply relative flex flex-col gap-14 items-center bg-primary-900 border-t border-outline
+  bg-itemcommon border-t-common
+}
+
+.itemContainer {
+  @apply relative flex flex-col gap-8 items-center w-full
+}
+
+.imageContainer {
+  @apply relative flex justify-center items-center mt-4 -mb-12 z-0 h-64 w-64
+}
+
+.itemFrame {
+  @apply absolute top-0 bottom-0 left-0 right-0 mx-auto bg-black bg-opacity-25 -z-[1] rounded-full animate-pulse
+}
+
+.title {
+  @apply relative bg-primary-600 flex justify-center items-center h-9 w-64 animate-pulse
+}
+
+.description {
+  @apply bg-primary-900 py-2 px-4 rounded-lg h-20 w-[80ch] mx-4 border border-outline animate-pulse
+}
+
+.statsContainer, .foundContainer {
+  @apply relative flex flex-col gap-4 justify-center items-center p-4 mx-auto bg-primary-900 rounded-lg border border-outline animate-pulse
+  h-72 w-96
+}
+
+.foundContainer {
+  @apply w-[30ch] h-36 mx-4 md:mx-0
+}
+
+.contentContainer {
+  @apply relative flex justify-center flex-wrap gap-0 md:gap-8 h-96 w-[80ch] bg-primary-900 rounded-lg my-4 mx-4 md:mx-0 mb-12 border border-outline
+  animate-pulse
+}

@@ -1,9 +1,10 @@
+import { Item } from '@/interfaces/Item'
 import styles from './ToastImage.module.css'
 import { Material } from "@/interfaces/Material"
 import { BsCheck } from 'react-icons/bs'
 
 interface Props {
-  item: Material
+  item: (Material | Item)
 }
 
 export default function ToastImage({ item }: Props) {

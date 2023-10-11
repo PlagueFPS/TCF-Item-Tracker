@@ -1,12 +1,10 @@
 import styles from './QuestCardOptions.module.css'
 import { Quest } from "@/interfaces/Quest"
 import { Item } from "@/interfaces/Item"
-import { Material } from '@/interfaces/Material'
 import { useEffect, useState } from 'react'
+import useButtonOptions from '@/hooks/useButtonOptions'
 import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from "@/hooks/useLargeScreen"
-import { useItemsListContext } from "@/contexts/ItemsListContext"
-import { useToastContext } from "@/contexts/ToastContext"
 import { getItemImage, getTaskItems } from "@/utils/GameUtils"
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import Link from 'next/link'
@@ -23,12 +21,10 @@ interface optionItem extends Item {
 }
 
 export default function QuestCardOptions({ quest, quests, taskItems, toggleOptionsModal }: Props) {
-  const [currentTaskItems, setCurrentTaskItems] = useState<optionItem[]>(taskItems)
   const [currentQuest, setCurrentQuest] = useState(quest)
-  const [closing, setClosing] = useState(false)
+  const [currentTaskItems, setCurrentTaskItems] = useState<optionItem[]>(taskItems)
+  const { closing, handleAddButtonClick, handleCloseButtonClick } = useButtonOptions(currentTaskItems, toggleOptionsModal)
   const { cyclePrevState, cycleNextState } = useCycleState<Quest>(quests, currentQuest, setCurrentQuest)
-  const { list, setList, addItemToList } = useItemsListContext()
-  const { itemToast, itemsToast } = useToastContext()
   const { largeScreen } = useLargeScreen()
   const faction = currentQuest.faction.toLowerCase()
 
@@ -45,40 +41,6 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
 
     getCurrentTaskItems()
   }, [currentQuest])
-
-  const handleAddButtonClick = () => {
-    const toastItems: (Material | Item)[] = []
-
-    currentTaskItems.forEach(item => {
-      const itemInList = list.items.find(i => i.key === item.key)
-      if (itemInList && itemInList.amount && item.amount) {
-        // keep location of updated item
-        const index = list.items.indexOf(itemInList)
-        const newItems = list.items.filter(i => i.key !== itemInList.key)
-        const newItem = {...itemInList, amount: itemInList.amount += item.amount }
-        newItems.splice(index, 0, newItem)
-        setList(prevList => ({
-          ...prevList,
-          items: [...newItems]
-        }))
-      }
-      else if (!itemInList) {
-        addItemToList(item)
-      }
-
-      toastItems.push(item)
-    })
-
-    if (toastItems.length > 1) itemsToast(toastItems)
-    else itemToast(toastItems[0])
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
-
-  const handleCloseButtonClick = () => {
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
 
   const classSelector = () => {
     switch(quest.faction) {

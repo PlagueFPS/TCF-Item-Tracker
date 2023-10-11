@@ -29,6 +29,7 @@ interface ItemListContextProps {
   setListSwitcher: React.Dispatch<React.SetStateAction<boolean>>
   setSettings: React.Dispatch<React.SetStateAction<boolean>>
   addItemToList: (item: Material | Item) => void
+  updateItemInList: (item: Material | Item, updateAmount: number) => void
 }
 
 const itemsList: List = {
@@ -82,6 +83,20 @@ export default function ItemsListContextProvider({ children }: Props) {
     })
   }
 
+  const updateItemInList = (item: Material | Item, updateAmount: number) => {
+    setList(prevList => ({
+      ...prevList,
+      items: prevList.items.map(listItem => {
+        let newItem: (Material | Item) = {...listItem}
+        if (listItem.key === item.key && listItem.amount) {
+          newItem = {...listItem, amount: listItem.amount += updateAmount}
+        }
+
+        return newItem
+      })
+    }))
+  }
+
   const toggleListSwitcher = () => {
     setListSwitcher(prevState => !prevState)
   }
@@ -104,6 +119,7 @@ export default function ItemsListContextProvider({ children }: Props) {
     setListSwitcher,
     setSettings,
     addItemToList,
+    updateItemInList,
   }
 
   return (

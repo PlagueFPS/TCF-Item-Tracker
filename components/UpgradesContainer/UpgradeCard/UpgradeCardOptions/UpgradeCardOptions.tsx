@@ -10,6 +10,7 @@ import { useToastContext } from '@/contexts/ToastContext'
 import { getCosts, getItemImage } from '@/utils/GameUtils'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import Link from 'next/link'
+import useButtonOptions from '@/hooks/useButtonOptions'
 
 interface Props {
   upgrade: Quarters
@@ -26,10 +27,11 @@ interface optionCost extends UpgradeCost {
 export default function UpgradeCardOptions({ upgrade, upgrades, costs, items, toggleOptionsModal }: Props) {
   const [currentUpgrade, setCurrentUpgrade] = useState(upgrade)
   const [currentCosts, setCurrentCosts] = useState<optionCost[]>(costs)
-  const [closing, setClosing] = useState(false)
+  const { closing, handleAddButtonClick, handleCloseButtonClick } = useButtonOptions(currentCosts, toggleOptionsModal, items)
+  // const [closing, setClosing] = useState(false)
   const { cyclePrevState, cycleNextState } = useCycleState<Quarters>(upgrades, currentUpgrade, setCurrentUpgrade)
-  const { list, setList, addItemToList } = useItemsListContext()
-  const { itemToast, itemsToast } = useToastContext()
+  // const { list, setList, addItemToList } = useItemsListContext()
+  // const { itemToast, itemsToast } = useToastContext()
   const { largeScreen } = useLargeScreen()
 
   useEffect(() => {
@@ -45,42 +47,42 @@ export default function UpgradeCardOptions({ upgrade, upgrades, costs, items, to
     getCurrentCosts()
   }, [currentUpgrade])
 
-  const handleAddButtonClick = () => {
-    const toastItems: (Material | Item)[] = []
+  // const handleAddButtonClick = () => {
+  //   const toastItems: (Material | Item)[] = []
 
-    currentCosts.forEach(cost => {
-      const item = items.find(item => item.key === cost.item || item.inGameName === cost.item)
-      const itemInList = list.items.find(i => i.key === item?.key)
+  //   currentCosts.forEach(cost => {
+  //     const item = items.find(item => item.key === cost.item || item.inGameName === cost.item)
+  //     const itemInList = list.items.find(i => i.key === item?.key)
 
-      if (itemInList && itemInList.amount && item) {
-        // keep location of updated item
-        const index = list.items.indexOf(itemInList)
-        const newItems = list.items.filter(i => i.key !== itemInList.key)
-        const newItem = {...itemInList, amount: itemInList.amount += cost.amount }
-        newItems.splice(index, 0, newItem)
-        toastItems.push(item)
-        setList(prevList => ({
-          ...prevList,
-          items: [...newItems]
-        }))
-      }
-      else if (!itemInList && item) {
-        item.amount = cost.amount
-        addItemToList(item)
-        toastItems.push(item)
-      }
-    })
+  //     if (itemInList && itemInList.amount && item) {
+  //       // keep location of updated item
+  //       const index = list.items.indexOf(itemInList)
+  //       const newItems = list.items.filter(i => i.key !== itemInList.key)
+  //       const newItem = {...itemInList, amount: itemInList.amount += cost.amount }
+  //       newItems.splice(index, 0, newItem)
+  //       toastItems.push(item)
+  //       setList(prevList => ({
+  //         ...prevList,
+  //         items: [...newItems]
+  //       }))
+  //     }
+  //     else if (!itemInList && item) {
+  //       item.amount = cost.amount
+  //       addItemToList(item)
+  //       toastItems.push(item)
+  //     }
+  //   })
 
-    if (toastItems.length > 1) itemsToast(toastItems)
-    else itemToast(toastItems[0])
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
+  //   if (toastItems.length > 1) itemsToast(toastItems)
+  //   else itemToast(toastItems[0])
+  //   setClosing(true)
+  //   setTimeout(toggleOptionsModal, 250)
+  // }
 
-  const handleCloseButtonClick = () => {
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
+  // const handleCloseButtonClick = () => {
+  //   setClosing(true)
+  //   setTimeout(toggleOptionsModal, 250)
+  // }
 
   return (
     <div className={ styles.container }>

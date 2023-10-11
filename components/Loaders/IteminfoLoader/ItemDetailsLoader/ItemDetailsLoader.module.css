@@ -20,7 +20,7 @@
 }
 
 .description {
-  @apply bg-primary-900 py-2 px-4 rounded-lg h-20 w-[80ch] mx-4 border border-outline animate-pulse
+  @apply bg-primary-900 py-2 px-4 rounded-lg h-20 w-[45ch] md:w-[80ch] mx-4 border border-outline animate-pulse
 }
 
 .statsContainer, .foundContainer {
@@ -33,6 +33,6 @@
 }
 
 .contentContainer {
-  @apply relative flex justify-center flex-wrap gap-0 md:gap-8 h-96 w-[80ch] bg-primary-900 rounded-lg my-4 mx-4 md:mx-0 mb-12 border border-outline
+  @apply relative flex justify-center flex-wrap gap-0 md:gap-8 h-96 w-[45ch] md:w-[80ch] bg-primary-900 rounded-lg my-4 mx-4 md:mx-0 mb-12 border border-outline
   animate-pulse
 }

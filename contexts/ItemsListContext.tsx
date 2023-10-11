@@ -3,7 +3,6 @@ import ListSwitcher from "@/components/ItemList/ListSwitcher/ListSwitcher"
 import { List } from "@/interfaces/List"
 import { Material } from "@/interfaces/Material"
 import { useState, createContext, useContext, useEffect } from 'react'
-import { usePathname } from "next/navigation"
 import ToastContextProvider from "./ToastContext"
 import Settings from "@/components/Settings/Settings"
 import { Item } from "@/interfaces/Item"
@@ -30,7 +29,6 @@ interface ItemListContextProps {
   setListSwitcher: React.Dispatch<React.SetStateAction<boolean>>
   setSettings: React.Dispatch<React.SetStateAction<boolean>>
   addItemToList: (item: Material | Item) => void
-  triggerList: () => void
 }
 
 const itemsList: List = {
@@ -50,7 +48,6 @@ export default function ItemsListContextProvider({ children }: Props) {
   const [listClosing, setListClosing] = useState(false)
   const [listSwitcher, setListSwitcher] = useState(false)
   const [settings, setSettings] = useState(false)
-  const pathname = usePathname()
   
   useEffect(() => {
     const loadList = () => {
@@ -85,33 +82,6 @@ export default function ItemsListContextProvider({ children }: Props) {
     })
   }
 
-  const triggerList = () => {
-    // allow time for animation to play on exit
-    const home = pathname === '/'
-    if (home) {
-      if (!listClosing) {
-        setListClosing(true)
-        const timeout = setTimeout(() => setHomeList(false), 250)
-        return () => clearTimeout(timeout)
-      }
-      else {
-        setListClosing(false)
-        setHomeList(true)
-      }
-    }
-    else {
-      if (!listClosing) {
-        setListClosing(true)
-        const timeout = setTimeout(() => setShowList(false), 250)
-        return () => clearTimeout(timeout)
-      }
-      else {
-        setListClosing(false)
-        setShowList(true)
-      }
-    }
-  }
-
   const toggleListSwitcher = () => {
     setListSwitcher(prevState => !prevState)
   }
@@ -134,7 +104,6 @@ export default function ItemsListContextProvider({ children }: Props) {
     setListSwitcher,
     setSettings,
     addItemToList,
-    triggerList,
   }
 
   return (

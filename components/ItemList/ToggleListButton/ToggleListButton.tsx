@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function ToggleListButton({ className, home }: Props) {
-  const { setHomeList, triggerList, setListClosing } = useItemsListContext()
+  const { listClosing, setHomeList, setListClosing, setShowList } = useItemsListContext()
 
   useEffect(() => {
     if (home) {
@@ -23,7 +23,34 @@ export default function ToggleListButton({ className, home }: Props) {
       window.addEventListener('resize', handleWindowResize)
       return () => window.removeEventListener('resize', handleWindowResize)
     }
+    else setListClosing(true)
   }, [home, setHomeList, setListClosing])
+
+  const triggerList = () => {
+    // allow time for animation to play on exit
+    if (home) {
+      if (!listClosing) {
+        setListClosing(true)
+        const timeout = setTimeout(() => setHomeList(false), 250)
+        return () => clearTimeout(timeout)
+      }
+      else {
+        setListClosing(false)
+        setHomeList(true)
+      }
+    }
+    else {
+      if (!listClosing) {
+        setListClosing(true)
+        const timeout = setTimeout(() => setShowList(false), 250)
+        return () => clearTimeout(timeout)
+      }
+      else {
+        setListClosing(false)
+        setShowList(true)
+      }
+    }
+  }
 
   return (
     <button className={ className } onClick={ triggerList } title="Toggle List">

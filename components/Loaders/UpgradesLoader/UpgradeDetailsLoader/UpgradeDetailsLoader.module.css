@@ -1,0 +1,22 @@
+.container {
+  @apply relative flex gap-20 flex-col justify-center items-center bg-primary-900 bg-itemcommon border-t-2 border-common w-full
+}
+
+.upgradeContainer {
+  @apply relative flex flex-col justify-center items-center w-full
+}
+
+.title {
+  @apply bg-primary-900 rounded h-9 w-64 mt-8 animate-pulse
+}
+
+.upgradesRequired_Container,
+.upgradeTime_Container {
+  @apply relative flex justify-center items-center gap-2 p-4 h-16 w-[45ch] md:w-[60ch] bg-primary-900
+  rounded-lg border border-outline animate-pulse
+}
+
+.upgradeCosts_Container {
+  @apply relative flex justify-center items-center gap-4 bg-primary-900 rounded-lg h-24 w-[45ch] md:w-[80ch]
+  mt-4 mx-4 mb-12 md:mt-0 md:mx-0 border border-outline animate-pulse
+}

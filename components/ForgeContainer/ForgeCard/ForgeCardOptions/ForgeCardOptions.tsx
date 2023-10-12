@@ -2,10 +2,8 @@ import styles from './ForgeCardOptions.module.css'
 import { ForgeRecipe } from '@/interfaces/ForgeRecipe'
 import { Item } from '@/interfaces/Item'
 import { UpgradeCost } from '@/interfaces/Upgrade'
-import { Material } from '@/interfaces/Material'
 import { useEffect, useState } from 'react'
-import { useItemsListContext } from '@/contexts/ItemsListContext'
-import { useToastContext } from '@/contexts/ToastContext'
+import useButtonOptions from '@/hooks/useButtonOptions'
 import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from '@/hooks/useLargeScreen'
 import { getCosts, getItemImage } from '@/utils/GameUtils'
@@ -27,10 +25,8 @@ export default function ForgeCardOptions({ recipe, recipes, items, toggleOptions
   const [currentRecipe, setCurrentRecipe] = useState(recipe)
   const [currentCosts, setCurrentCosts] = useState<optionCost[]>([])
   const [currentImage, setCurrentImage] = useState('')
-  const [closing, setClosing] = useState(false)
+  const { closing, handleAddButtonClick, handleCloseButtonClick } = useButtonOptions(currentCosts, toggleOptionsModal, items)
   const { cyclePrevState, cycleNextState } = useCycleState(recipes, currentRecipe, setCurrentRecipe)
-  const { list, setList, addItemToList } = useItemsListContext()
-  const { itemToast, itemsToast } = useToastContext()
   const { largeScreen } = useLargeScreen()
 
   useEffect(() => {
@@ -53,42 +49,6 @@ export default function ForgeCardOptions({ recipe, recipes, items, toggleOptions
     getCurrentImage()
     getCurrentCosts()
   }, [currentRecipe])
-
-  const handleAddButtonClick = () => {
-    const toastItems: (Material | Item)[] = []
-
-    currentCosts.forEach(cost => {
-      const item = items.find(item => item.key === cost.item || item.inGameName === cost.item)
-      const itemInList = list.items.find(i => i.key === item?.key)
-      if (itemInList && itemInList.amount && item) {
-        // keep location of updated item
-        const index = list.items.indexOf(itemInList)
-        const newItems = list.items.filter(i => i.key !== itemInList.key)
-        const newItem = {...itemInList, amount: itemInList.amount += cost.amount}
-        newItems.splice(index, 0, newItem)
-        toastItems.push(item)
-        setList(prevList => ({
-          ...prevList,
-          items: [...newItems]
-        }))
-      }
-      else if (!itemInList && item) {
-        item.amount = cost.amount
-        addItemToList(item)
-        toastItems.push(item)
-      }
-    })
-
-    if (toastItems.length > 1) itemsToast(toastItems)
-    else itemToast(toastItems[0])
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
-
-  const handleCloseButtonClick = () => {
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
 
   return (
     <div className={ styles.container }>

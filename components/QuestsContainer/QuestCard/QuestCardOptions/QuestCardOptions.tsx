@@ -24,7 +24,7 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
   const [currentQuest, setCurrentQuest] = useState(quest)
   const [currentTaskItems, setCurrentTaskItems] = useState<optionItem[]>(taskItems)
   const { closing, handleAddButtonClick, handleCloseButtonClick } = useButtonOptions(currentTaskItems, toggleOptionsModal)
-  const { cyclePrevState, cycleNextState } = useCycleState<Quest>(quests, currentQuest, setCurrentQuest)
+  const { cyclePrevState, cycleNextState } = useCycleState(quests, currentQuest, setCurrentQuest)
   const { largeScreen } = useLargeScreen()
   const faction = currentQuest.faction.toLowerCase()
 

@@ -16,8 +16,11 @@ export default function useButtonOptions<T extends Option>(currentData: T[], tog
     const toastItems: (Material | Item)[] = []
 
     currentData.forEach(data => {
-      if (items && 'item' in data) {
-        const item = items.find(item => item.key === data.item || item.inGameName === data.item)
+      if (items) {
+        const item = items.find(item =>{
+          if ('inGameName' in data && (item.key === data.inGameName || item.inGameName === data.inGameName)) return item
+          else if ('item' in data && (item.key === data.item || item.inGameName === data.item)) return item
+        })
         const itemInList = list.items.find(i => i.key === item?.key)
         if (itemInList && item && data.amount) {
           updateItemInList(item, data.amount)

@@ -23,8 +23,12 @@ export default function ToggleListButton({ className, home }: Props) {
       window.addEventListener('resize', handleWindowResize)
       return () => window.removeEventListener('resize', handleWindowResize)
     }
-    else setListClosing(true)
-  }, [home, setHomeList, setListClosing])
+    else {
+      setListClosing(true)
+      const timeout = setTimeout(() => setShowList(false), 250)
+      return () => clearTimeout(timeout)
+    }
+  }, [home, setHomeList, setListClosing, setShowList])
 
   const toggleList = () => {
     // allow time for animation to play on exit

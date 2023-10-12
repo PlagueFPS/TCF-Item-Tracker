@@ -12,8 +12,6 @@ interface Props {
 export default function ListSuggestions({ items, inputValue, setValue }: Props) {
   const { list, addItemToList } = useItemsListContext()
   const { itemToast } = useToastContext()
-  const limit = 5
-  let num = 0
 
   const displayValue = (item: Material) => {
     setValue('')
@@ -31,15 +29,31 @@ export default function ListSuggestions({ items, inputValue, setValue }: Props) 
     return isVisible
   }
 
+  const classSelector = (item: Material) => {
+    switch(item.rarity) {
+      case 'Common':
+          return `${styles.suggestedItem} ${styles.common}`
+        case 'Uncommon':
+          return `${styles.suggestedItem} ${styles.uncommon}`
+        case 'Rare':
+          return `${styles.suggestedItem} ${styles.rare}`
+        case 'Epic':
+          return `${styles.suggestedItem} ${styles.epic}`
+        case 'Exotic':
+          return `${styles.suggestedItem} ${styles.exotic}`
+        case 'Legendary':
+          return `${styles.suggestedItem} ${styles.legendary}`
+    }
+  }
+
   return (
     <>
       { inputValue && 
         <ul className={ styles.suggestionsList }>
           { items.map(item => {
-            if (checkInput(item) && num < limit) {
-              num += 1
+            if (checkInput(item)) {
               return (
-                <li key={ item.key } className={ styles.suggestedItem } onClick={ () => displayValue(item) }>
+                <li key={ item.key } className={ classSelector(item) } onClick={ () => displayValue(item) }>
                   { item.inGameName }
                 </li>
               )

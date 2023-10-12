@@ -9,5 +9,5 @@
 }
 
 .list {
-  @apply absolute top-11 left-0 right-48 bg-primary-800 border border-outline border-t-0 rounded z-50 list-none max-h-60 overflow-auto
+  @apply absolute top-11 left-0 right-48 bg-primary-800 border border-outline border-t-0 rounded z-50 list-none max-h-56 overflow-auto
 }

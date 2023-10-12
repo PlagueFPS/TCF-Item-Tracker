@@ -1,8 +1,33 @@
 .suggestionsList {
-  @apply absolute left-0 top-9 right-20 lg:right-48 bg-secondary-500 rounded z-10 list-none
+  @apply absolute left-0 top-11 right-20 lg:right-48 bg-primary-800 border border-outline rounded z-10 list-none
+  overflow-auto border-t-0 max-h-56
 }
 
 .suggestedItem {
-  @apply text-primary-800 font-semibold p-2 m-1 rounded cursor-pointer hover:text-secondary-400
-  hover:bg-primary-800
+  @apply text-secondary-400 font-semibold p-2 m-1 rounded cursor-pointer hover:text-secondary-400
+  hover:bg-primary-600
+}
+
+.suggestedItem.exotic {
+  @apply text-exoticText
+}
+
+.suggestedItem.legendary {
+  @apply text-legendaryText
+}
+
+.suggestedItem.epic {
+  @apply text-epicText
+}
+
+.suggestedItem.rare {
+  @apply text-rareText
+}
+
+.suggestedItem.uncommon {
+  @apply text-uncommonText
+}
+
+.suggestedItem.common {
+  @apply text-commonText
 }

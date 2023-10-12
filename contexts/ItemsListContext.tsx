@@ -87,12 +87,10 @@ export default function ItemsListContextProvider({ children }: Props) {
     setList(prevList => ({
       ...prevList,
       items: prevList.items.map(listItem => {
-        let newItem: (Material | Item) = {...listItem}
         if (listItem.key === item.key && listItem.amount) {
-          newItem = {...listItem, amount: listItem.amount += updateAmount}
+          return {...listItem, amount: listItem.amount + updateAmount}
         }
-
-        return newItem
+        else return listItem
       })
     }))
   }

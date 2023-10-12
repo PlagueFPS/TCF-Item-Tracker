@@ -1,6 +1,6 @@
 .container {
   @apply relative flex flex-col-reverse lg:flex-row w-full bg-primary-900 border-t-2 border-outline
-  overflow-x-hidden transition-all
+  overflow-x-clip transition-all
 }
 
 .contentContainer {

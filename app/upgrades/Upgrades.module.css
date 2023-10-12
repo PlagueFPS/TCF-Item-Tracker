@@ -1,5 +1,5 @@
 .container {
-  @apply relative flex w-full bg-primary-900 border border-outline overflow-x-hidden
+  @apply relative flex w-full bg-primary-900 border border-outline overflow-x-clip
 }
 
 .contentContainer {

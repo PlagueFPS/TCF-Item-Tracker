@@ -1,5 +1,5 @@
 .container {
-  @apply relative flex flex-col-reverse lg:flex-row w-full bg-primary-900 overflow-x-hidden
+  @apply relative flex flex-col-reverse lg:flex-row w-full bg-primary-900 overflow-x-clip
 }
 
 .contentContainer {

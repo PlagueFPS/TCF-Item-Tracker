@@ -8,6 +8,7 @@ import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from '@/hooks/useLargeScreen'
 import { getCosts, getItemImage } from '@/utils/GameUtils'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
+import CopyButton from '@/components/CopyButton/CopyButton'
 import Link from 'next/link'
 
 interface Props {
@@ -54,6 +55,7 @@ export default function ForgeCardOptions({ recipe, recipes, items, toggleOptions
     <div className={ styles.container }>
       <div className={ styles.blur } />
       <div className={ closing ? `${styles.content} ${styles.closing}` : styles.content }>
+        <CopyButton className={ styles.copy } title='Copy Link To Recipe' link={ `/forge/${recipe.key}` } />
         <button className={ styles.prevBtn } onClick={ cyclePrevState }>
          { largeScreen ? <FaAngleLeft /> : <FaAngleUp /> }
         </button>

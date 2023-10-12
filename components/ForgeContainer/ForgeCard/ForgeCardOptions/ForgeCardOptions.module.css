@@ -17,6 +17,11 @@
   @apply animate-bounceOut
 }
 
+.copy {
+  @apply absolute top-2 right-2 text-4xl bg-primary-900 text-secondary-400 border border-outline p-2 rounded cursor-pointer z-50
+  hover:bg-transparent transition-all
+}
+
 .prevBtn, 
 .nextBtn {
   @apply absolute bg-transparent border-none text-common text-7xl cursor-pointer

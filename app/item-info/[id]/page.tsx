@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { calcRepPerWeight, calcValuePerWeight, getLink, itemAmountNeeded } from '@/functions/GlobalFunctions'
 import Header from "@/components/Header/Header"
 import Link from 'next/link'
+import CopyButton from '@/components/CopyButton/CopyButton'
 
 interface Props {
   params: {
@@ -106,6 +107,7 @@ export default async function ItemDetails({ params }: Props) {
       />
       <div className={ classSelector() }>
         <section className={ styles.itemContainer }>
+          <CopyButton className={ styles.copy } title='Copy Link To Item' link={ `/item-info/${item.key}` } />
           <picture className={ styles.imageContainer }>
             <div className={ styles.itemFrame } />
             <source srcSet={ itemImageAVIF } type='image/avif' />

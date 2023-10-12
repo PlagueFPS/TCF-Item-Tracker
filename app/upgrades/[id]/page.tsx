@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getCosts, getItemImage } from "@/utils/GameUtils"
 import { dataTimes } from '@/functions/GlobalFunctions'
+import CopyButton from '@/components/CopyButton/CopyButton'
 
 interface Props {
   params: { id: string }
@@ -49,6 +50,7 @@ export default async function UpgradeDetails({ params }: Props) {
   return (
     <div className={ styles.container }>
       <div className={ styles.upgradeContainer }>
+        <CopyButton className={ styles.copy } title='Copy Link To Upgrade' link={ `/upgrades/${upgrade.inGameName.replace(/\s/g, '')}` } />
         <h1 className={ styles.title }>{ upgrade.inGameName }</h1>
       </div>
       { 'upgradesRequired' in upgrade &&

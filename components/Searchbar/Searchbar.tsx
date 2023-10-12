@@ -38,7 +38,7 @@ export default function Searchbar({ data, dataType, placeholder }: Props) {
         break
       case 'upgrade':
         const upgradeData = data as Quarters[]
-        const upgrade = upgradeData.find(upgrade => upgrade.inGameName.toLowerCase().replace(/\s/g, '') === value)
+        const upgrade = upgradeData.find(upgrade => upgrade.inGameName.replace(/\s/g, '') === dataKey || upgrade.inGameName.toLowerCase().replace(/\s/g, '') === value)
         if (upgrade) url = `/upgrades/${upgrade.inGameName.replace(/\s/g, '')}`
         break
       case 'craft':

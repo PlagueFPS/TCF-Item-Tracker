@@ -16,6 +16,11 @@
   @apply animate-bounceOut
 }
 
+.copy {
+  @apply absolute top-2 right-2 text-4xl bg-primary-900 text-secondary-400 border border-outline p-2 rounded cursor-pointer z-50
+  hover:bg-transparent transition-all
+}
+
 .prevBtn {
   @apply absolute -top-7 left-0 mx-auto hover:-translate-y-[1%] md:top-0 md:bottom-0 md:-left-16 md:my-auto md:hover:-translate-x-[5%] 
   bg-transparent border-none w-fit h-fit text-common text-7xl cursor-pointer transition-all

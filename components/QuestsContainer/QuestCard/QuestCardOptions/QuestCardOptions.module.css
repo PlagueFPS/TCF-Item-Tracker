@@ -33,6 +33,11 @@
   @apply border-t-uncommon bg-itemuncommon
 }
 
+.copy {
+  @apply absolute top-3 right-4 text-4xl bg-primary-900 text-secondary-400 border border-outline p-2 rounded cursor-pointer z-50
+  hover:bg-transparent transition-all
+}
+
 .prevBtn, 
 .nextBtn {
   @apply absolute bg-transparent border-none text-common text-7xl cursor-pointer
@@ -67,36 +72,33 @@
   @apply text-uncommon
 }
 
-.partContainer {
-  @apply absolute top-0 right-0 bg-primary-600 text-secondary-400 bg-opacity-50 rounded-bl p-2
+.copy {
+  @apply absolute top-2 right-3 text-4xl bg-primary-900 text-secondary-400 border border-outline p-2 rounded cursor-pointer z-50
+  hover:bg-transparent transition-all
 }
 
-.badum .partContainer {
+.badum .copy {
   @apply text-epicText
 }
 
-.korolev .partContainer {
+.korolev .copy {
   @apply text-legendaryText
 }
 
-.ica .partContainer {
+.ica .copy {
   @apply text-rareText
 }
 
-.osiris .partContainer {
+.osiris .copy {
   @apply text-uncommonText
 }
 
-.part {
-  @apply text-lg font-normal
-}
-
 .factionContainer {
-  @apply absolute top-2 left-2
+  @apply absolute top-2 left-3
 }
 
 .faction {
-  @apply h-7 w-full
+  @apply h-8 w-full
 }
 
 .titleContainer {

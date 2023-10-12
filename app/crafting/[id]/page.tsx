@@ -5,6 +5,7 @@ import { getCraftCosts, getItemImage } from "@/utils/GameUtils"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { dataTimes } from '@/functions/GlobalFunctions'
+import CopyButton from '@/components/CopyButton/CopyButton'
 
 interface Props {
   params: { id: string }
@@ -69,6 +70,7 @@ export default async function CraftDetails({ params }: Props) {
   return (
     <div className={ classSelector() }>
       <div className={ styles.craftContainer }>
+        <CopyButton className={ styles.copy } title='Copy Link To Craft' link={ `/crafting/${craft.key}` } />
         <picture className={ styles.imageContainer }>
           <div className={ styles.itemFrame } />
           <source srcSet={ `${await getItemImage(craft.inGameName)}.avif` } type='image/avif' />

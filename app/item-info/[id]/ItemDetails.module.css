@@ -26,6 +26,11 @@
   @apply bg-itemexotic border-t-exotic
 }
 
+.copy {
+  @apply absolute top-4 right-4 lg:right-1/3 text-4xl bg-primary-900 text-secondary-400 border border-outline p-2 rounded cursor-pointer z-50
+  hover:bg-transparent transition-all
+}
+
 .itemContainer {
   @apply relative flex flex-col gap-8 items-center w-full
 }
@@ -46,27 +51,33 @@
   @apply relative text-secondary-400 text-center flex justify-center items-center text-3xl font-bold
 }
 
-.commonContainer .title {
+.commonContainer .title,
+.commonContainer .copy {
   @apply text-commonText
 }
 
-.uncommonContainer .title {
+.uncommonContainer .title,
+.uncommonContainer .copy {
   @apply text-uncommonText
 }
 
-.rareContainer .title {
+.rareContainer .title,
+.rareContainer .copy {
   @apply text-rareText
 }
 
-.epicContainer .title {
+.epicContainer .title,
+.epicContainer .copy {
   @apply text-epicText
 }
 
-.exoticContainer .title {
+.exoticContainer .title,
+.exoticContainer .copy {
   @apply text-exoticText
 }
 
-.legendaryContainer .title {
+.legendaryContainer .title,
+.legendaryContainer .copy {
   @apply text-legendaryText
 }
 

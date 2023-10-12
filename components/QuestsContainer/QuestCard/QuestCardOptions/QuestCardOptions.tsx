@@ -8,6 +8,7 @@ import useLargeScreen from "@/hooks/useLargeScreen"
 import { getItemImage, getTaskItems } from "@/utils/GameUtils"
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import Link from 'next/link'
+import CopyButton from '@/components/CopyButton/CopyButton'
 
 interface Props {
   quest: Quest
@@ -59,15 +60,13 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
     <div className={ styles.container }>
       <div className={ styles.blur } />
       <div className={ classSelector() }>
+        <CopyButton className={ styles.copy } title='Copy Link To Quest' link={ `/quests/${currentQuest.key}` } />
         <button className={ styles.prevBtn } onClick={ cyclePrevState }>
-          { largeScreen ? <FaAngleLeft /> : <FaAngleDown /> }
+          { largeScreen ? <FaAngleLeft /> : <FaAngleUp /> }
         </button>
         <button className={ styles.nextBtn } onClick={ cycleNextState }>
-          { largeScreen ? <FaAngleRight /> : <FaAngleUp /> }
+          { largeScreen ? <FaAngleRight /> : <FaAngleDown /> }
         </button>
-        <div className={ styles.partContainer } title={ `Part: ${currentQuest.chainPart}` }>
-          <span className={ styles.part }>{ currentQuest.chainPart }</span>
-        </div>
         <picture className={ styles.factionContainer } title={ `Faction: ${currentQuest.faction}` }>
           <source srcSet={ `/images/${faction}reputation.avif` } type='image/avif' />
           <source srcSet={ `/images/${faction}reputation.webp` } type='image/webp' />

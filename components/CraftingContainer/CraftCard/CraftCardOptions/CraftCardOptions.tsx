@@ -7,6 +7,7 @@ import useCycleState from "@/hooks/useCycleState"
 import useLargeScreen from "@/hooks/useLargeScreen"
 import { getCraftCosts, getItemImage } from "@/utils/GameUtils"
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
+import CopyButton from '@/components/CopyButton/CopyButton'
 import Link from 'next/link'
 
 interface Props {
@@ -70,6 +71,7 @@ export default function CraftCardOptions({ craft, crafts, items, toggleOptionsMo
     <div className={ styles.container }>
       <div className={ styles.blur } />
       <div className={ classSelector() }>
+        <CopyButton className={ styles.copy } title='Copy Link To Craft' link={ `/crafting/${currentCraft.key}` } />
         <button className={ styles.prevBtn } onClick={ cyclePrevState }>
           { largeScreen ? <FaAngleLeft /> : <FaAngleUp /> }
         </button>

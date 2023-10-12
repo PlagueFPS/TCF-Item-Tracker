@@ -37,6 +37,11 @@
   @apply bg-itemexotic border-t-exotic
 }
 
+.copy {
+  @apply absolute top-2 right-2 text-4xl bg-primary-900 text-secondary-400 border border-outline p-2 rounded cursor-pointer z-50
+  hover:bg-transparent transition-all
+}
+
 .prevBtn, 
 .nextBtn {
   @apply absolute bg-transparent border-none text-common text-7xl cursor-pointer
@@ -104,23 +109,28 @@
   after:-bottom-1 after:m-auto after:h-[2px] after:w-24 after:bg-secondary-800
 }
 
-.uncommon .title {
+.uncommon .title,
+.uncommon .copy {
   @apply text-uncommonText
 }
 
-.rare .title {
+.rare .title,
+.rare .copy {
   @apply text-rareText
 }
 
-.epic .title {
+.epic .title,
+.epic .copy {
   @apply text-epicText
 }
 
-.exotic .title {
+.exotic .title,
+.exotic .copy {
   @apply text-exoticText
 }
 
-.legendary .title {
+.legendary .title,
+.legendary .copy {
   @apply text-legendaryText
 }
 

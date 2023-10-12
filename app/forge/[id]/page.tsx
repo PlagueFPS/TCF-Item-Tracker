@@ -4,6 +4,7 @@ import { ForgeRecipe } from '@/interfaces/ForgeRecipe'
 import { getCosts, getItemImage } from '@/utils/GameUtils'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import CopyButton from '@/components/CopyButton/CopyButton'
 
 interface Props {
   params: { id: string }
@@ -54,6 +55,7 @@ export default async function PerkDetails({ params }: Props) {
   return (
     <div className={ styles.container }>
       <div className={ styles.recipeContainer }>
+        <CopyButton className={ styles.copy } title='Copy Link To Recipe' link={ `/forge/${recipe.key}` } />
         <picture className={ styles.imageContainer }>
           <div className={ styles.imageFrame } />
           <source srcSet={ `${await getItemImage(recipe.inGameName)}.avif` } type='image/avif' />

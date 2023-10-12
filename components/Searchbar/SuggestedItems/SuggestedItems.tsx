@@ -13,7 +13,7 @@ export default function SuggestedItems({ data, inputValue, handleSubmit }: Props
     if ('key' in data) {
       handleSubmit(e, data.key)
     }
-    else handleSubmit(e)
+    else handleSubmit(e, data.inGameName.replace(/\s/g, ''))
   }
 
   const checkInput = (data: DataTypes) => {

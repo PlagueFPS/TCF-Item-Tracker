@@ -3,7 +3,12 @@
 }
 
 .upgradeContainer {
-  @apply relative flex flex-col justify-center items-center w-full
+  @apply relative mt-4 sm:mt-0 flex flex-col justify-center items-center w-full
+}
+
+.copy {
+  @apply absolute -top-2 sm:top-2 right-2 lg:right-1/3 text-4xl bg-primary-900 text-secondary-400 border border-outline p-2 rounded cursor-pointer z-50
+  hover:bg-transparent transition-all
 }
 
 .title {

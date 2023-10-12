@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getItemImage, getObjectives, getRewards, getTaskItems } from "@/utils/GameUtils"
 import Header from '@/components/Header/Header'
+import CopyButton from '@/components/CopyButton/CopyButton'
 
 interface Props {
   params: { id: string }
@@ -86,6 +87,7 @@ export default async function QuestDetails({ params }: Props) {
       />
       <div className={ classSelector() }>
         <div className={ styles.questContainer }>
+          <CopyButton className={ styles.copy } title='Copy Link To Quest' link={ `/quests/${quest.key}` } />
           <h1 className={ styles.title }>{ quest.inGameName }</h1>
           <p className={ styles.description }>{ quest.description }</p>
         </div>

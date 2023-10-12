@@ -29,7 +29,7 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
   const [activeFilter, setFilter] = useState<Filter>('Quests')
   const [closing, setClosing] = useState(false)
   const { cyclePrevState, cycleNextState } = useCycleState<Item>(items, currentItem, setCurrentItem)
-  const { addItemToList } = useItemsListContext()
+  const { list, addItemToList, updateItemInList } = useItemsListContext()
   const { largeScreen } = useLargeScreen()
   const { itemToast } = useToastContext()
   const inGameName = currentItem.inGameName.toLowerCase().replace(/\s/g, '')
@@ -93,7 +93,10 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
   }, [currentData])
 
   const handleAddToListClick = () => {
-    addItemToList(currentItem)
+    const itemInList = list.items.find(i => i.key === item.key)
+    if (itemInList) updateItemInList(item, 1)
+    else addItemToList(currentItem)
+  
     itemToast(currentItem)
     setClosing(true)
     setTimeout(toggleOptionsModal, 250)

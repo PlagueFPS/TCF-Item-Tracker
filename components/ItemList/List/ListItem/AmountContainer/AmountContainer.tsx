@@ -19,15 +19,12 @@ export default function AmountContainer({ item }: Props) {
   }, [currentItem, setAmount])
 
   useEffect(() => {
-    // keep location of updated item
     if (currentItem && currentItem?.amount) {
       currentItem.amount = amount
-      const index = list.items.indexOf(currentItem)
-      const newItems = list.items.filter(i => i.key !== currentItem?.key)
-      newItems.splice(index, 0, currentItem)
-      localStorage.setItem('list', JSON.stringify({...list, items: [...newItems]}))
-      localStorage.setItem(list.id, JSON.stringify({...list, items: [...newItems]}))
     }
+
+    localStorage.setItem('list', JSON.stringify({...list, items: [...list.items]}))
+    localStorage.setItem(list.id, JSON.stringify({...list, items: [...list.items]}))
   }, [amount, currentItem, list])
 
   const incrementAmount = () => {

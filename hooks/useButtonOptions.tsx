@@ -7,7 +7,7 @@ import { OptionCost, OptionCraftCost, OptionItem } from "@/interfaces/Options";
 
 type Option = OptionItem | OptionCost | OptionCraftCost
 
-export default function useButtonOptions<T extends Option>(currentData: T[], toggleOptionsModal: () => void, items?: Item[]) {
+export default function useButtonOptions<T extends Option>(dataToAdd: T[], toggleOptionsModal: () => void, items?: Item[]) {
   const [closing, setClosing] = useState(false)
   const { list, addItemToList, updateItemInList } = useItemsListContext()
   const { itemToast, itemsToast } = useToastContext()
@@ -15,7 +15,7 @@ export default function useButtonOptions<T extends Option>(currentData: T[], tog
   const handleAddButtonClick = () => {
     const toastItems: (Material | Item)[] = []
 
-    currentData.forEach(data => {
+    dataToAdd.forEach(data => {
       if (items) {
         const item = items.find(item =>{
           if ('inGameName' in data && (item.key === data.inGameName || item.inGameName === data.inGameName)) return item

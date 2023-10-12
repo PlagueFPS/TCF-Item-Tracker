@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function ItemImage({ item, className, clickable }: Props) {
-  const { list, addItemToList, setList } = useItemsListContext()
+  const { list, addItemToList, updateItemInList } = useItemsListContext()
   const { itemToast } = useToastContext()
   const inGameName = item.inGameName.toLowerCase().replaceAll(/\s/g, '')
   const itemImagePNG = `/images/${inGameName}.png`
@@ -19,17 +19,7 @@ export default function ItemImage({ item, className, clickable }: Props) {
   
   const clickHandler = () => {
     const itemInList = list.items.find(i => i.key === item.key)
-    if (itemInList && itemInList.amount) {
-      // keep location of updated item
-      const index = list.items.indexOf(itemInList)
-      const newItems = list.items.filter(i => i.key !== itemInList.key)
-      const newItem = {...itemInList, amount: itemInList.amount += 1 }
-      newItems.splice(index, 0, newItem)
-      setList({
-        ...list,
-        items: [...newItems]
-      })
-    }
+    if (itemInList) updateItemInList(item, 1)
     else if (!itemInList) {
       addItemToList(item)
       itemToast(item)

@@ -11,15 +11,15 @@ export default function Navbar() {
       <nav className={ styles.navbar } id='top'>
         <Link href='/' className='flex justify-center items-center gap-3 mr-auto'>
           <picture>
-            <source srcSet='/images/wikilogowithtext.avif' type="image/avif" />
-            <source srcSet='/images/wikilogowithtext.webp' type="image/webp" />
-            <source srcSet='/images/wikilogowithtext.png' type="image/png" />
+            <source srcSet='/images/favicon.avif' type="image/avif" />
+            <source srcSet='/images/favicon.webp' type="image/webp" />
+            <source srcSet='/images/favicon.png' type="image/png" />
             <img 
-              src='/images/wikilogowithtext.png' 
+              src='/images/favicon.png' 
               alt='Site Logo'
               width={ 500 }
               height={ 500 }
-              className='h-24 w-full'
+              className='h-20 w-full'
             />
           </picture>
           <h2 className={ styles.title }>TCF Items Tracker</h2>

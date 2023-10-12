@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function SuggestedItems({ data, inputValue, handleSubmit }: Props) {
-
   const displayValue = (data: DataTypes, e: FormEvent<HTMLFormElement>| MouseEvent<HTMLLIElement>) => {
     if ('key' in data) {
       handleSubmit(e, data.key)

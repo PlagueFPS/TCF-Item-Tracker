@@ -6,6 +6,7 @@ import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from "@/contexts/ToastContext"
 import { Forge, Item } from "@/interfaces/Item"
 import { getLink } from "@/functions/GlobalFunctions"
+import CopyButton from '@/components/CopyButton/CopyButton'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import Link from 'next/link'
 
@@ -134,6 +135,7 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
     <div className={ styles.container }>
       <div className={ styles.blur } />
       <div className={ classSelector() }>
+        <CopyButton className={ styles.copy } title='Copy Link To Item' link={ `/item-info/${currentItem.key}` } />
         <button className={ styles.prevBtn } onClick={ cyclePrevState }>
           { largeScreen ? <FaAngleLeft /> : <FaAngleUp /> }
         </button>

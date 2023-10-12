@@ -52,20 +52,24 @@ export default function ItemsListContextProvider({ children }: Props) {
   
   useEffect(() => {
     const loadList = () => {
-      if (!localStorage.getItem('itemslist')) {
+      const storedItemList = localStorage.getItem('itemslist')
+      const storedList = localStorage.getItem('list')
+      const storedListSize = localStorage.getItem('listSize')
+      const storedNamesEnabled = localStorage.getItem('namesEnabled')
+      if (!storedItemList) {
         localStorage.setItem('itemslist', JSON.stringify(itemsList))
       }
-      if (localStorage.getItem('list')) {
-        const storedList = localStorage.getItem('list')
-        storedList ? setList(JSON.parse(storedList)) : null
+      if (storedList) {
+        const list: List = JSON.parse(storedList)
+        setList({...list})
       }
-      if (localStorage.getItem('listSize')) {
-        const storedListSize = localStorage.getItem('listSize')
-        storedListSize ? setListSize(JSON.parse(storedListSize)) : null
+      if (storedListSize) {
+        const listSize: number = JSON.parse(storedListSize)
+        setListSize(listSize)
       }
-      if (localStorage.getItem('namesEnabled')) {
-        const storedValue = localStorage.getItem('namesEnabled')
-        storedValue ? setNamesEnabled(JSON.parse(storedValue)) : null
+      if (storedNamesEnabled) {
+        const namesEnabled: boolean = JSON.parse(storedNamesEnabled)
+        setNamesEnabled(namesEnabled)
       }
     }
 

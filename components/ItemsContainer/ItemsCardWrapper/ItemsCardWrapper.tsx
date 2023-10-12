@@ -3,6 +3,7 @@ import styles from '../ItemCard/ItemCard.module.css'
 import { Item } from "@/interfaces/Item"
 import useToggleOptions from '@/hooks/useToggleOptions'
 import ItemCardOptions from '../ItemCard/ItemCardOptions/ItemCardOptions'
+import FavoriteButton from '../ItemCard/FavoriteButton/FavoriteButton'
 
 interface Props {
   children: React.ReactNode
@@ -34,6 +35,7 @@ export default function ItemsCardWrapper({ children, item, items }: Props) {
     <>
       { showOptions && <ItemCardOptions item={ item } items={ items } toggleOptionsModal={ toggleOptionsModal } /> }
       <div className={ classSelector() } onClick={ toggleOptionsModal }>
+        <FavoriteButton className={ styles.favorite } item={ item } />
         { children }
       </div>
     </>

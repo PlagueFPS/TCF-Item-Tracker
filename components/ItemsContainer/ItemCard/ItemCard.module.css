@@ -28,8 +28,8 @@
   @apply bg-itemexotic border-t-exotic
 }
 
-.favoriteIcon {
-  @apply absolute top-3 right-4 flex justify-center items-center z-50 bg-orange-400
+.favorite {
+  @apply absolute top-3 right-4 z-50 text-secondary-500
 }
 
 .imageContainer {
@@ -54,27 +54,33 @@
   after:absolute after:-bottom-1 after:m-auto after:h-[2px] after:w-24 after:bg-common
 }
 
-.commonContainer .title {
+.commonContainer .title,
+.commonContainer .favorite {
   @apply text-commonText
 }
 
-.uncommonContainer .title {
+.uncommonContainer .title,
+.uncommonContainer .favorite {
   @apply text-uncommonText
 }
 
-.rareContainer .title {
+.rareContainer .title,
+.rareContainer .favorite {
   @apply text-rareText
 }
 
-.epicContainer .title {
+.epicContainer .title,
+.epicContainer .favorite {
   @apply text-epicText
 }
 
-.exoticContainer .title {
+.exoticContainer .title,
+.exoticContainer .favorite {
   @apply text-exoticText
 }
 
-.legendaryContainer .title {
+.legendaryContainer .title,
+.legendaryContainer .favorite {
   @apply text-legendaryText
 }
 

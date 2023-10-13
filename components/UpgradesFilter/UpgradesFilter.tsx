@@ -24,11 +24,11 @@ const UpgradesFilter = () => {
       <NavLink href='/upgrades/generators' arialabel='Generators'>
         <div className={ styles.filterBtn }>
         <picture className={ styles.filterImage_Container }>
-          <source srcSet='/images/Generator.avif' type='image/avif' />
-          <source srcSet='/images/Generator.webp' type='image/webp' />
-          <source srcSet='/images/Generator.png' type='image/png' />
+          <source srcSet='/images/generator.avif' type='image/avif' />
+          <source srcSet='/images/generator.webp' type='image/webp' />
+          <source srcSet='/images/generator.png' type='image/png' />
           <img 
-            src="/images/Generator.png" 
+            src="/images/generator.png" 
             alt="Generators" 
             className={ styles.filterImage }
             width={ 30 }
@@ -41,11 +41,11 @@ const UpgradesFilter = () => {
       <NavLink href='/upgrades/inventory' arialabel='Inventory'>
         <div className={ styles.filterBtn }>
         <picture className={ styles.filterImage_Container }>
-          <source srcSet='/images/Inventory.avif' type='image/avif' />
-          <source srcSet='/images/Inventory.webp' type='image/webp' />
-          <source srcSet='/images/Inventory.png' type='image/png' />
+          <source srcSet='/images/inventory.avif' type='image/avif' />
+          <source srcSet='/images/inventory.webp' type='image/webp' />
+          <source srcSet='/images/inventory.png' type='image/png' />
           <img 
-            src="/images/Inventory.png" 
+            src="/images/inventory.png" 
             alt="Inventory" 
             className={ styles.filterImage }
             width={ 30 }
@@ -58,11 +58,11 @@ const UpgradesFilter = () => {
       <NavLink href='/upgrades/workbench' arialabel='Workbench'>
         <div className={ styles.filterBtn }>
         <picture className={ styles.filterImage_Container }>
-          <source srcSet='/images/Workbench.avif' type='image/avif' />
-          <source srcSet='/images/Workbench.webp' type='image/webp' />
-          <source srcSet='/images/Workbench.png' type='image/png' />
+          <source srcSet='/images/workbench.avif' type='image/avif' />
+          <source srcSet='/images/workbench.webp' type='image/webp' />
+          <source srcSet='/images/workbench.png' type='image/png' />
           <img 
-            src="/images/Workbench.png" 
+            src="/images/workbench.png" 
             alt="Workbench" 
             className={ styles.filterImage }
             width={ 30 }

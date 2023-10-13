@@ -14,7 +14,7 @@ export default async function ForgeLayout({ children }: Props) {
   return (
     <>
       <Header 
-        bannerImage="S3_background"
+        bannerImage="S3_Background"
         width={ 3840 }
         height={ 2160 }
         opacity={ 0.65 }

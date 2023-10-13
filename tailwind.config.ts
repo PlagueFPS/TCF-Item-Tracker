@@ -13,6 +13,7 @@ const config: Config = {
       },
       colors: {
         primary: {
+          950: 'hsl(0, 0%, 5%)',
           900: 'hsl(225, 8%, 9%)',
           800: 'hsl(0, 0% 13%)',
           700: 'hsl(0, 0%, 15%)',

@@ -7,10 +7,18 @@
   p-4 w-[80ch] border-2 border-outline
 }
 
-.title {
-  @apply text-secondary-400 text-3xl p-2 border-b border-secondary-400
+.updateContainer .title {
+  @apply text-secondary-400 text-3xl p-2 border-b border-secondary-400 font-bold
 }
 
 .updateContainer ul {
   @apply flex flex-col gap-2 list-disc text-secondary-500 text-xl pt-4 px-8
+}
+
+.updateContainer blockquote {
+  @apply text-secondary-400 bg-primary-950 p-2 border border-outline mt-4 rounded italic
+}
+
+.updateContainer h2 {
+  @apply text-secondary-400 text-2xl font-bold mt-4 pl-2
 }

@@ -178,7 +178,7 @@ export default function Footer() {
               <span className={ styles.copyright }>
                 Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.
               </span>
-                <Link href='/updates' aria-label='Updates' className={ styles.updateLogLink }>Version - 4.0.0 Update Log</Link>
+                <Link href='/updates' aria-label='Updates' className={ styles.updateLogLink }>Version - 4.1.0 Update Log</Link>
               </div> 
           </div>
         </div>

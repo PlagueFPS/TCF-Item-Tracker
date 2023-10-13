@@ -1,9 +1,8 @@
 import styles from './ItemCardOptions.module.css'
 import { useEffect, useState, useCallback } from "react"
+import useButtonOptions from '@/hooks/useButtonOptions'
 import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from '@/hooks/useLargeScreen'
-import { useItemsListContext } from "@/contexts/ItemsListContext"
-import { useToastContext } from "@/contexts/ToastContext"
 import { Forge, Item } from "@/interfaces/Item"
 import { getLink } from "@/functions/GlobalFunctions"
 import CopyButton from '@/components/CopyButton/CopyButton'
@@ -28,11 +27,9 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
   const [currentData, setCurrentData] = useState<Forge[]>([])
   const [currentLinks, setCurrentLinks] = useState<Link[]>([])
   const [activeFilter, setFilter] = useState<Filter>('Quests')
-  const [closing, setClosing] = useState(false)
-  const { cyclePrevState, cycleNextState } = useCycleState<Item>(items, currentItem, setCurrentItem)
-  const { list, addItemToList, updateItemInList } = useItemsListContext()
+  const { closing, handleAddButtonClick, handleCloseButtonClick } = useButtonOptions(currentItem, toggleOptionsModal)
+  const { cyclePrevState, cycleNextState } = useCycleState(items, currentItem, setCurrentItem)
   const { largeScreen } = useLargeScreen()
-  const { itemToast } = useToastContext()
   const inGameName = currentItem.inGameName.toLowerCase().replace(/\s/g, '')
   const itemImageAVIF = `/images/${inGameName}.avif`
   const itemImageWEBP = `/images/${inGameName}.webp`
@@ -92,21 +89,6 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
 
     getCurrentLinks()
   }, [currentData])
-
-  const handleAddToListClick = () => {
-    const itemInList = list.items.find(i => i.key === item.key)
-    if (itemInList) updateItemInList(item, 1)
-    else addItemToList(currentItem)
-  
-    itemToast(currentItem)
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
-
-  const handleCloseClick = () => {
-    setClosing(true)
-    setTimeout(toggleOptionsModal, 250)
-  }
 
   const classSelector = () => {
     switch(currentItem.rarity) {
@@ -173,10 +155,10 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
           ))}
         </dl>
         <div className={ styles.btnContainer }>
-          <button className={ styles.btn } onClick={ handleAddToListClick }>
+          <button className={ styles.btn } onClick={ handleAddButtonClick }>
             <span className={ styles.btnText }>Add Item To List</span>
           </button>
-          <button className={ `${styles.btn} ${styles.btnDecline}` } onClick={ handleCloseClick }>
+          <button className={ `${styles.btn} ${styles.btnDecline}` } onClick={ handleCloseButtonClick }>
             <span className={ styles.btnText }>Close</span>
           </button>
         </div>

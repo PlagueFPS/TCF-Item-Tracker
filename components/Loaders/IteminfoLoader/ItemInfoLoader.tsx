@@ -1,4 +1,4 @@
-import styles from './ItemInfoLoader.module.css'
+import styles from './IteminfoLoader.module.css'
 import HeaderLoader from '../HeaderLoader/HeaderLoader'
 import CardLoader from '../CardLoader/CardLoader'
 

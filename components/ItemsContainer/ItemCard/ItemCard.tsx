@@ -2,8 +2,8 @@ import styles from './ItemCard.module.css'
 import { Item } from "@/interfaces/Item"
 import useToggleOptions from '@/hooks/useToggleOptions'
 import ItemCardOptions from './ItemCardOptions/ItemCardOptions'
-import { calcValuePerWeight, itemAmountNeeded } from '@/functions/GlobalFunctions'
 import FavoriteButton from './FavoriteButton/FavoriteButton'
+import { calcValuePerWeight, itemAmountNeeded } from '@/functions/GlobalFunctions'
 
 interface Props {
   item: Item

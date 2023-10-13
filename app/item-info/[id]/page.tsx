@@ -33,10 +33,10 @@ export const generateMetadata = async ({ params }: Props) => {
       title: title,
       description: item?.description,
       url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/item-info/${item.key}`,
+      siteName: 'The Cycle: Frontier Items Tracker',
+      type: 'website',
       images: [{
         url: `/images/${item.inGameName.toLowerCase().replace(/\s/g, '')}.png`,
-        width: 256,
-        height: 256
       }]
     },
     twitter: {

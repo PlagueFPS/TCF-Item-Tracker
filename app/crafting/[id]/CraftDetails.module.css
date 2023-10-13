@@ -36,7 +36,7 @@
 }
 
 .image {
-  @apply h-36 md:h-64 w-full transition-all
+  @apply h-36 md:h-64 w-auto transition-all
 }
 
 .itemFrame {
@@ -144,7 +144,7 @@
 }
 
 .costImage {
-  @apply h-16 w-full
+  @apply h-16 w-auto
 }
 
 .costAmount {

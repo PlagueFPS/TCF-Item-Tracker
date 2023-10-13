@@ -111,7 +111,7 @@
 }
 
 .title {
-  @apply relative mb-0 ml-auto mr-8 text-xl font-medium transition-all
+  @apply relative mb-0 ml-auto text-center md:mr-8 text-xl font-medium transition-all
 }
 
 .favoritesListItem > .title {

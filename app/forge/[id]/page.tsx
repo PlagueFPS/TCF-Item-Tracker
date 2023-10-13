@@ -31,10 +31,10 @@ export const generateMetadata = async ({ params }: Props) => {
       title: title,
       description: description,
       url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/forge/${recipe.key}`,
+      type: 'website',
+      siteName: 'The Cycle: Frontier Items Tracker',
       images: [{
         url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${image}.png`,
-        width: 144,
-        height: 144,
       }]
     },
     twitter: {

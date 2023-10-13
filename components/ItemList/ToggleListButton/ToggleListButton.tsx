@@ -26,7 +26,10 @@ export default function ToggleListButton({ className, home }: Props) {
     else {
       setListClosing(true)
       const timeout = setTimeout(() => setShowList(false), 250)
-      return () => clearTimeout(timeout)
+      return () => {
+        clearTimeout(timeout)
+        setListClosing(false)
+      }
     }
   }, [home, setHomeList, setListClosing, setShowList])
 

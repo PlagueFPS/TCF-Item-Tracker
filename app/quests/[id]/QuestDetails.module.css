@@ -139,7 +139,7 @@
 }
 
 .taskItemImage {
-  @apply h-24 w-full
+  @apply h-24 w-auto
 }
 
 .taskItemAmount {
@@ -164,7 +164,7 @@
 }
 
 .rewardImage {
-  @apply h-16 w-full
+  @apply h-16 w-auto
 }
 
 .rewardAmount {

@@ -27,9 +27,14 @@ export const generateMetadata = async ({ params }: Props) => {
     title: title,
     description: quest.description,
     openGraph: {
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/quests/${quest.key}`,
+      siteName: 'The Cycle: Frontier Items Tracker',
+      type: 'website',
       title: title,
       description: quest.description,
-      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/quests/${quest.key}`
+      images: [{
+        url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/images/favicon.png`,
+      }]
     },
     twitter: {
       title: title,

@@ -51,7 +51,7 @@
 }
 
 .costImage {
-  @apply h-16 w-full
+  @apply h-16 w-auto
 }
 
 .costAmount {

@@ -23,20 +23,6 @@ export const metadata: Metadata = {
     icon: '/images/favicon.png',
     shortcut: '/images/favicon.png',
     apple: '/images/favicon.png'
-  },
-  openGraph: {
-    siteName: 'The Cycle: Frontier Items Tracker',
-    type: 'website',
-    images: [
-      {
-        url: '/images/favicon.png',
-        width: 300,
-        height: 300
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary',
   }
 }
 

@@ -29,11 +29,11 @@
 }
 
 .prevBtn {
-  @apply -top-28 hover:-translate-y-[1%] md:top-0 md:bottom-0 md:my-auto md:-left-16 md:hover:-translate-x-[5%]
+  @apply -top-24 hover:-translate-y-[1%] md:top-0 md:bottom-0 md:my-auto md:-left-16 md:hover:-translate-x-[5%]
 }
 
 .nextBtn {
-  @apply -bottom-28 hover:translate-y-[1%] md:bottom-0 md:top-0 md:my-auto md:-right-16 md:hover:translate-x-[5%]
+  @apply -bottom-24 hover:translate-y-[1%] md:bottom-0 md:top-0 md:my-auto md:-right-16 md:hover:translate-x-[5%]
 }
 
 .imageContainer {
@@ -46,7 +46,7 @@
 }
 
 .image {
-  @apply h-24 p-2
+  @apply h-24 w-auto p-2
 }
 
 .titleContainer {
@@ -80,7 +80,7 @@
 }
 
 .costImage {
-  @apply h-14 w-full
+  @apply h-14 w-auto
 }
 
 .costAmount {

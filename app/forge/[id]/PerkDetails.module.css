@@ -17,7 +17,7 @@
 }
 
 .image {
-  @apply h-24 md:h-32 w-full
+  @apply h-24 md:h-32 w-auto
 }
 
 .imageFrame {
@@ -75,7 +75,7 @@
 }
 
 .costImage {
-  @apply h-16
+  @apply h-16 w-auto
 }
 
 .costAmount {

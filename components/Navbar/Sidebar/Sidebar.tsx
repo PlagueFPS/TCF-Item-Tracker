@@ -20,7 +20,7 @@ export default function Sidebar() {
                 alt='Site Logo'
                 width={ 500 }
                 height={ 500 }
-                className='h-14 w-full'
+                className='h-14 w-auto'
               />
             </picture>
             <h2 className='font-bold text-2xl'>TCF Item Tracker</h2>

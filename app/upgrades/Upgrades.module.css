@@ -7,10 +7,10 @@
 }
 
 .button {
-  @apply fixed top-2 z-[998] md:absolute md:top-16 md:z-0 m-auto bg-secondary-500 text-primary-900 font-semibold text-xl
+  @apply fixed top-4 z-[998] md:absolute md:top-16 md:z-0 m-auto bg-secondary-500 text-primary-900 font-semibold text-xl
   capitalize rounded py-2 px-3 cursor-pointer transition-all hover:bg-secondary-700
 }
 
 .button.genButton {
-  @apply top-28
+  @apply top-4 md:top-28
 }

@@ -1,5 +1,5 @@
 .itemsList {
-  @apply mt-4 list-none
+  @apply mt-4 list-none overflow-auto max-h-[60vh] md:max-h-[75vh]
 }
 
 .favoritesList {

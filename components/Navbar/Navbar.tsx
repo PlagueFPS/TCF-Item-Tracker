@@ -19,7 +19,7 @@ export default function Navbar() {
               alt='Site Logo'
               width={ 500 }
               height={ 500 }
-              className='h-20 w-full'
+              className='h-20 w-auto'
             />
           </picture>
           <h2 className={ styles.title }>TCF Items Tracker</h2>

@@ -31,10 +31,10 @@ export const generateMetadata = async ({ params }: Props) => {
       title: title,
       description: craft.description,
       url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/crafting/${craft.key}`,
+      type: 'website',
+      siteName: 'The Cycle: Frontier Items Tracker',
       images: [{
         url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${image}.png`,
-        width: 256,
-        height: 256
       }]
     },
     twitter: {

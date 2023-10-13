@@ -44,7 +44,7 @@
 }
 
 .upgradeCostImage {
-  @apply h-10 w-full
+  @apply h-10 w-auto
 }
 
 .upgradeCostAmount {

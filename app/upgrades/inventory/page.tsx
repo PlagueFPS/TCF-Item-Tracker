@@ -15,13 +15,18 @@ export const generateMetadata = async () => {
     title: title,
     description: description,
     openGraph: {
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/upgrades/inventory`,
+      siteName: 'The Cycle: Frontier Items Tracker',
+      type: 'website',
       title: title,
       description: description,
-      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/upgrades/inventory`
+      images: [{
+        url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/images/favicon.png`,
+      }]
     },
     twitter: {
       title: title,
-      description: description
+      description: description,
     }
   }
 

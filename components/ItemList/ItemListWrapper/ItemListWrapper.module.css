@@ -1,5 +1,5 @@
 .section {
-  @apply sticky top-0 basis-[30%] max-h-screen overflow-auto px-4 lg:pb-96 text-secondary-400
+  @apply sticky top-0 basis-[30%] max-h-screen px-4 lg:pb-96 text-secondary-400
   bg-primary-800 border-x-2 border-b-2 border-outline transition-all overscroll-none animate-slideIn
 }
 

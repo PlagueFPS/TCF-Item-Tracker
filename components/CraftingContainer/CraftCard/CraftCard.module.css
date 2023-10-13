@@ -33,7 +33,7 @@
 }
 
 .image {
-  @apply h-24 w-full p-2
+  @apply h-24 w-auto p-2
 }
 
 .titleContainer {
@@ -140,7 +140,7 @@
 }
 
 .costImage {
-  @apply h-10 w-full
+  @apply h-10 w-auto
 }
 
 .craftCost {

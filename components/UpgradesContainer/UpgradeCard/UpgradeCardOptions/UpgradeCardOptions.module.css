@@ -22,12 +22,12 @@
 }
 
 .prevBtn {
-  @apply absolute -top-7 left-0 mx-auto hover:-translate-y-[1%] md:top-0 md:bottom-0 md:-left-16 md:my-auto md:hover:-translate-x-[5%] 
+  @apply absolute -top-24 left-0 right-0 mx-auto hover:-translate-y-[1%] md:top-0 md:bottom-0 md:-left-16 md:my-auto md:hover:-translate-x-[5%] 
   bg-transparent border-none w-fit h-fit text-common text-7xl cursor-pointer transition-all
 }
 
 .nextBtn {
-  @apply absolute -bottom-7 right-0 mx-auto hover:translate-y-[1%] md:top-0 md:bottom-0 md:-right-16 md:my-auto md:hover:translate-x-[5%] 
+  @apply absolute -bottom-24 right-0 left-0 mx-auto hover:translate-y-[1%] md:top-0 md:bottom-0 md:-right-16 md:my-auto md:hover:translate-x-[5%] 
   bg-transparent border-none w-fit h-fit text-common text-7xl cursor-pointer transition-all
 }
 
@@ -60,7 +60,7 @@
 }
 
 .costImage {
-  @apply h-14 w-full
+  @apply h-14 w-auto
 }
 
 .costAmount {

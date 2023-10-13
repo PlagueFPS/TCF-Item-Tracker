@@ -98,7 +98,7 @@
 }
 
 .faction {
-  @apply h-8 w-full
+  @apply h-8 w-auto
 }
 
 .titleContainer {

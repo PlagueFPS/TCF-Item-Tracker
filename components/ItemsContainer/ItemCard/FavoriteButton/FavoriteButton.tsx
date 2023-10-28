@@ -78,8 +78,8 @@ export default function FavoriteButton({ item, className }: Props) {
   return (
     <>
       { isFavorited 
-        ? <BsStarFill title='Unfavorite Item' className={ className } onClick={ handleFavorited } /> 
-        : <BsStar title='Favorite Item' className={ className } onClick={ handleFavorited } /> 
+        ? <BsStarFill size={ 18 } title='Unfavorite Item' className={ className } onClick={ handleFavorited } /> 
+        : <BsStar size={ 18 } title='Favorite Item' className={ className } onClick={ handleFavorited } /> 
       }
     </>
   )

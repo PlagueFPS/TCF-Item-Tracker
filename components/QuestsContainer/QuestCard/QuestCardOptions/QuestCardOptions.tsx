@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import useButtonOptions from '@/hooks/useButtonOptions'
 import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from "@/hooks/useLargeScreen"
-import { getItemImage, getTaskItems } from "@/utils/GameUtils"
+import { getTaskItems } from '@/utils/actions'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import Link from 'next/link'
 import CopyButton from '@/components/CopyButton/CopyButton'
@@ -17,7 +17,7 @@ interface Props {
   toggleOptionsModal: () => void
 }
 
-interface optionItem extends Item {
+export interface optionItem extends Item {
   image?: string
 }
 
@@ -31,12 +31,7 @@ export default function QuestCardOptions({ quest, quests, taskItems, toggleOptio
 
   useEffect(() => {
     const getCurrentTaskItems = async () => {
-      const rawTaskItems = await getTaskItems(currentQuest.objectives)
-      const taskItems = await Promise.all(rawTaskItems.map(async (item: optionItem) => {
-        const itemImage = await getItemImage(item.inGameName)
-        return {...item, image: itemImage }
-      }))
-
+      const taskItems = await getTaskItems(currentQuest.objectives)
       setCurrentTaskItems(taskItems)
     }
 

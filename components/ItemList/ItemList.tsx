@@ -1,5 +1,5 @@
 import styles from './ItemList.module.css'
-import getGameData from '@/utils/getGameData'
+import { getGameData } from "@/data/data"
 import { Material } from '@/interfaces/Material'
 import ItemListWrapper from './ItemListWrapper/ItemListWrapper'
 import ListButtons from './ListButtons/ListButtons'

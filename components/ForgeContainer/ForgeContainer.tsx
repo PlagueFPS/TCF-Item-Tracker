@@ -1,4 +1,4 @@
-import getGameData from "@/utils/getGameData"
+import { getGameData } from "@/data/data"
 import { ForgeRecipe } from "@/interfaces/ForgeRecipe"
 import { Item } from "@/interfaces/Item"
 import ForgeCardWrapper from "./ForgeCardWrapper/ForgeCardWrapper"

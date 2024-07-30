@@ -1,6 +1,6 @@
 import { Craft, CraftType } from "@/interfaces/Craft"
 import { Item } from "@/interfaces/Item"
-import getGameData from "@/utils/getGameData"
+import { getGameData } from "@/data/data"
 import { compareCraftRarity } from "@/functions/GlobalFunctions"
 import CraftCardWrapper from "./CraftCardWrapper/CraftCardWrapper"
 import CraftCard from "./CraftCard/CraftCard"

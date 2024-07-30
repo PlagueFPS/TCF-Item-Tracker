@@ -1,7 +1,7 @@
 "use client"
 import { Item } from "@/interfaces/Item"
 import { Material } from "@/interfaces/Material"
-import { useEffect, useState } from "react"
+import { type MouseEvent, useEffect, useState } from "react"
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from "@/contexts/ToastContext"
 import { List } from "@/interfaces/List"
@@ -32,7 +32,7 @@ export default function FavoriteButton({ item, className }: Props) {
     }
   }, [list, item])
 
-  const handleFavorited = (e: MouseEvent) => {
+  const handleFavorited = (e: MouseEvent<SVGElement, globalThis.MouseEvent>) => {
     e.stopPropagation()
     const storedFavoriteList = localStorage.getItem('favoriteslist')
     if (storedFavoriteList) {
@@ -78,8 +78,8 @@ export default function FavoriteButton({ item, className }: Props) {
   return (
     <>
       { isFavorited 
-        ? <BsStarFill size={ 18 } title='Unfavorite Item' className={ className } onClick={ handleFavorited } /> 
-        : <BsStar size={ 18 } title='Favorite Item' className={ className } onClick={ handleFavorited } /> 
+        ? <BsStarFill size={ 18 } title='Unfavorite Item' className={ className } onClick={ (e) => handleFavorited(e) } /> 
+        : <BsStar size={ 18 } title='Favorite Item' className={ className } onClick={ (e) => handleFavorited(e) } /> 
       }
     </>
   )

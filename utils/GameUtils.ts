@@ -2,7 +2,7 @@ import { CraftItem } from "@/interfaces/Craft";
 import { Item } from "@/interfaces/Item";
 import { Faction, MMapName, Objective, Reward } from "@/interfaces/Quest";
 import { UpgradeCost } from "@/interfaces/Upgrade";
-import getGameData from "./getGameData";
+import { getGameData } from "@/data/data";
 import { Location } from "@/interfaces/Location";
 
 interface Cosmetics {

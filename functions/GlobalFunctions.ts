@@ -1,11 +1,9 @@
 import { Craft } from "@/interfaces/Craft";
-import { ForgeRecipe } from "@/interfaces/ForgeRecipe";
 import { Item } from "@/interfaces/Item";
 import { Material } from "@/interfaces/Material";
 import { Quest } from "@/interfaces/Quest";
-import { Quarters } from "@/interfaces/Upgrade";
 import { DataTypes } from "@/types/DataTypes";
-import getGameData from "@/utils/getGameData";
+import { FieldHook } from "payload";
 
 interface CompareValues {
   [key: string]: number
@@ -168,26 +166,6 @@ export const calcValuePerWeight = (item: Item | Material, asString?: boolean) =>
   : Math.round(valuePerWeight)
 }
 
-export const getLink = async (name: string) => {
-  const quests = await getGameData('missions') as Quest[]
-  const upgrades = await getGameData('personalQuarters') as Quarters[]
-  const crafts = await getGameData('printing') as Craft[]
-  const forgeRecipes = await getGameData('forgePerks') as ForgeRecipe[]
-  const items = await getGameData('items', true) as Item[]
-  const quest = quests.find(quest => quest.inGameName === name)
-  const upgrade = upgrades.find(upgrade => upgrade.inGameName === name)
-  const craft = crafts.find(craft => craft.inGameName === name)
-  const recipe = forgeRecipes.find(recipe => recipe.inGameName === name)
-  const item = items.find(item => item.inGameName === name)
-
-  if (quest) return `/quests/${quest.key}`
-  else if (upgrade) return `/upgrades/${upgrade.inGameName.replace(/\s/g, '')}`
-  else if (craft) return `/crafting/${craft.key}`
-  else if (recipe) return `/forge/${recipe.key}`
-  else if (item) return `/item-info/${item.key}`
-  else return '#'
-}
-
 export const dataTimes = (time: number) => {
   let hours = Math.floor(time / 3600)
   let mins = Math.floor(time % 3600 / 60)
@@ -232,4 +210,17 @@ export const itemAmountNeeded = (item: Item, neededFor: "quests" | "upgrades" | 
     case 'forge':
       return forgeAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
   }
+}
+
+export const formatSlug = (fallback: string): FieldHook => ({ value, originalDoc, data }) => {
+  if (typeof value === 'string') {
+    return value.replace(/ /g, '-').replace(/[^\w-/]+/g, '').toLowerCase()
+  }
+  const fallbackData = data?.[fallback] || originalDoc?.[fallback]
+
+  if (fallbackData && typeof fallbackData === 'string') {
+    return fallbackData.replace(/ /g, '-').replace(/[^\w-/]+/g, '').toLowerCase()
+  }
+
+  return value
 }

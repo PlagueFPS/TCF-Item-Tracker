@@ -1,6 +1,6 @@
 import { Quarters } from "@/interfaces/Upgrade"
 import { Item } from "@/interfaces/Item"
-import getGameData from "@/utils/getGameData"
+import { getGameData } from "@/data/data"
 import UpgradeCard from "./UpgradeCard/UpgradeCard"
 import { getCosts } from "@/utils/GameUtils"
 import UpgradeCardWrapper from "./UpgradeCardWrapper/UpgradeCardWrapper"

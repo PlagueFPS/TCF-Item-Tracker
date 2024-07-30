@@ -5,10 +5,10 @@ import { useEffect, useState } from "react"
 import useButtonOptions from '@/hooks/useButtonOptions'
 import useCycleState from "@/hooks/useCycleState"
 import useLargeScreen from "@/hooks/useLargeScreen"
-import { getCraftCosts, getItemImage } from "@/utils/GameUtils"
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import CopyButton from '@/components/CopyButton/CopyButton'
 import Link from 'next/link'
+import { fetchCraftCosts, fetchCurrentImage } from '@/utils/actions'
 
 interface Props {
   craft: Craft
@@ -17,7 +17,7 @@ interface Props {
   toggleOptionsModal: () => void
 }
 
-interface optionCost extends CraftItem {
+export interface optionCost extends CraftItem {
   image?: string
 }
 
@@ -31,18 +31,12 @@ export default function CraftCardOptions({ craft, crafts, items, toggleOptionsMo
 
   useEffect(() => {
     const getCurrentImage = async () => {
-      const image = await getItemImage(currentCraft.inGameName)
+      const image = await fetchCurrentImage(currentCraft.inGameName)
       setCurrentImage(image)
     }
 
     const getCurrentCosts = async () => {
-      const rawCosts = await getCraftCosts(currentCraft.items)
-      const costs = await Promise.all(rawCosts.map(async (cost: optionCost) => {
-        const itemImage = await getItemImage(cost.inGameName)
-        cost.image = itemImage
-        return cost
-      }))
-
+      const costs = await fetchCraftCosts(currentCraft.items)
       setCurrentCosts(costs)
     }
 

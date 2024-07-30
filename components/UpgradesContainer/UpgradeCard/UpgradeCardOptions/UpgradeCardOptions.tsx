@@ -5,10 +5,10 @@ import { useState, useEffect } from 'react'
 import useButtonOptions from '@/hooks/useButtonOptions'
 import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from '@/hooks/useLargeScreen'
-import { getCosts, getItemImage } from '@/utils/GameUtils'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import CopyButton from '@/components/CopyButton/CopyButton'
 import Link from 'next/link'
+import { fetchCurrentCosts } from '@/utils/actions'
 
 interface Props {
   upgrade: Quarters
@@ -18,7 +18,7 @@ interface Props {
   toggleOptionsModal: () => void
 }
 
-interface optionCost extends UpgradeCost {
+export interface optionCost extends UpgradeCost {
   image?: string
 }
 
@@ -31,11 +31,7 @@ export default function UpgradeCardOptions({ upgrade, upgrades, costs, items, to
 
   useEffect(() => {
     const getCurrentCosts = async () => {
-      const rawCosts = await getCosts(currentUpgrade.costs)
-      const costs = await Promise.all(rawCosts.map(async (cost: optionCost) => {
-        const itemImage = await getItemImage(cost.item)
-        return {...cost, image: itemImage}
-      }))
+      const costs = await fetchCurrentCosts(currentUpgrade.costs)
       setCurrentCosts(costs)
     }
 

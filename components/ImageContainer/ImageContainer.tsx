@@ -1,5 +1,5 @@
 import styles from './ImageContainer.module.css'
-import getGameData from "@/utils/getGameData"
+import { getGameData } from "@/data/data"
 import { Material, Rarity } from "@/interfaces/Material"
 import { compareRarity } from '@/functions/GlobalFunctions'
 import ItemImage from './ItemImage/ItemImage'

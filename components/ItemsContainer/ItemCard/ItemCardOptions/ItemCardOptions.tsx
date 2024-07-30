@@ -4,10 +4,10 @@ import useButtonOptions from '@/hooks/useButtonOptions'
 import useCycleState from '@/hooks/useCycleState'
 import useLargeScreen from '@/hooks/useLargeScreen'
 import { Forge, Item } from "@/interfaces/Item"
-import { getLink } from "@/functions/GlobalFunctions"
 import CopyButton from '@/components/CopyButton/CopyButton'
 import { FaAngleDown, FaAngleLeft, FaAngleRight, FaAngleUp } from 'react-icons/fa6'
 import Link from 'next/link'
+import { getLinks } from '@/utils/actions'
 
 interface Props {
   item: Item
@@ -79,11 +79,7 @@ export default function ItemCardOptions({ item, items, toggleOptionsModal }: Pro
 
   useEffect(() => {
     const getCurrentLinks = async () => {
-      const links = await Promise.all(currentData.map(async data => {
-        const link = await getLink(data.inGameName)
-        return { inGameName: data.inGameName, link: link }
-      }))
-
+      const links = await getLinks(currentData)
       setCurrentLinks(links)
     }
 

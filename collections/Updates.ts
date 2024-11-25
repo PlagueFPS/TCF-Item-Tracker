@@ -1,37 +1,28 @@
-import { HTMLConverterFeature, lexicalEditor, lexicalHTML } from '@payloadcms/richtext-lexical'
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from "payload";
 
 export const Updates: CollectionConfig = {
   slug: 'updates',
   admin: {
-    useAsTitle: 'title'
-  },
-  access: {
-    read: () => true,
+    useAsTitle: 'title',
   },
   fields: [
     {
       name: 'title',
+      label: 'Title',
       type: 'text',
       required: true,
-      unique: true,
     },
     {
       name: 'date',
+      label: 'Date',
       type: 'date',
-      required: true
+      required: true,
     },
     {
-      name: 'body',
+      name: 'content',
+      label: 'Content',
       type: 'richText',
       required: true,
-      editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
-          HTMLConverterFeature({})
-        ],
-      })
-    },
-    lexicalHTML('body', { name: 'body_html' })
-  ],
+    }
+  ]
 }

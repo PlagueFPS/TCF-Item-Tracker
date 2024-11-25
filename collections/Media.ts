@@ -7,11 +7,10 @@ export const Media: CollectionConfig = {
   },
   fields: [
     {
-      name: 'description',
+      name: 'alt',
       type: 'text',
-    }
+      required: true,
+    },
   ],
-  upload: {
-    staticDir: '/public/images',
-  },
+  upload: true,
 }

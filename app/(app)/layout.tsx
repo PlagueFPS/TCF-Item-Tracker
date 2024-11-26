@@ -5,6 +5,7 @@ import { NavContextProvider } from '@/contexts/NavContext'
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
 import ItemsListContextProvider from '@/contexts/ItemsListContext'
+import { GLOBAL_OG_PROPS, SITE_DESCRIPTION, SITE_TITLE } from '@/utils/constants'
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -18,7 +19,28 @@ const font = Rajdhani({
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_PUBLIC_WEBSITE_URL}`),
-  creator: 'Plague',
+  title: {
+    template: `%s - ${SITE_TITLE}`,
+    default: SITE_TITLE
+  },
+  description: SITE_DESCRIPTION,
+  creator: 'Angel Pichardo',
+  openGraph: {
+    ...GLOBAL_OG_PROPS,
+    title: {
+      template: `%s - ${SITE_TITLE}`,
+      default: SITE_TITLE
+    },
+    description: SITE_DESCRIPTION,
+    url: '/'
+  },
+  twitter: {
+    title: {
+      template: `%s - ${SITE_TITLE}`,
+      default: SITE_TITLE
+    },
+    description: SITE_DESCRIPTION,
+  },
   icons: {
     icon: '/images/favicon.png',
     shortcut: '/images/favicon.png',

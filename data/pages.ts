@@ -13,13 +13,33 @@ export const getPage = cache(async (slug: string) => {
       slug: {
         equals: slug
       }
+    },
+    select: {
+      content: false
     }
   })
   const image = page.docs[0].featuredImage
-
   return {
     title: page.docs[0].title,
     description: page.docs[0].description,
     image: typeof image === 'number' ? await getMedia(image) : createMediaDTO(image)
   }
+})
+
+export const getPageContent = cache(async (slug: string) => {
+  const payload = await payloadInstance()
+  const page = await payload.find({
+    collection: 'pages',
+    where: {
+      slug: {
+        equals: slug
+      }
+    },
+    select: {
+      content: true
+    }
+  })
+
+  const content = page.docs[0].content
+  return content
 })

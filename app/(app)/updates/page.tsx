@@ -1,12 +1,12 @@
 import styles from './Updates.module.css'
-import { getPage, getUpdates } from '@/data/data'
+import { getPage } from '@/data/pages'
 import { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import serializeLexicalRichText from '@/utils/serializeLexicalRichText'
 
 export const generateMetadata = async () => {
   const page = await getPage('updates')
-  const { title, description } = page.docs[0]
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,

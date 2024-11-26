@@ -1,12 +1,12 @@
 import styles from './Contact.module.css'
-import { getPage } from '@/data/data'
+import { getPage, getPageContent } from '@/data/pages'
 import { Metadata } from "next"
 import Header from "@/components/Header/Header"
 import serializeLexicalRichText from "@/utils/serializeLexicalRichText"
 
 export const generateMetadata = async () => {
   const page = await getPage('contact')
-  const { title, description } = page.docs[0]
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,
@@ -30,13 +30,14 @@ export const generateMetadata = async () => {
 }
 
 export default async function Contact() {
-  const page = await getPage('contact')
-  const { body } = page.docs[0]
+  const pagePromise = getPage('contact')
+  const contentPromise = getPageContent('contact')
+  const [{ image }, content] = await Promise.all([pagePromise, contentPromise])
 
   return (
     <>
       <Header 
-        bannerImage="S3_Background"
+        bannerImage={ image.url }
         width={ 3840 }
         height={ 2160 }
         opacity={ 0.65 }
@@ -45,7 +46,7 @@ export default async function Contact() {
       />
       <div className={ styles.container }>
         <div className={ styles.contactContainer }>
-          { serializeLexicalRichText({ children: body?.root?.children }) }
+          { serializeLexicalRichText({ children: content?.root?.children }) }
         </div>
       </div>
     </>

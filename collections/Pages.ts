@@ -1,3 +1,4 @@
+import { formatSlug, revalidatePage } from "@/utils/payload-utils";
 import type { CollectionConfig } from "payload";
 
 export const Pages: CollectionConfig = {
@@ -11,8 +12,14 @@ export const Pages: CollectionConfig = {
       label: 'Slug',
       type: 'text',
       required: true,
+      access: {
+        update: () => false,
+      },
       admin: {
         position: 'sidebar',
+      },
+      hooks: {
+        beforeValidate: [formatSlug('title')]
       }
     },
     {
@@ -33,6 +40,14 @@ export const Pages: CollectionConfig = {
       type: 'relationship',
       relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'content',
+      label: 'Content',
+      type: 'richText',
     }
-  ]
+  ],
+  hooks: {
+    afterChange: [revalidatePage],
+  }
 }

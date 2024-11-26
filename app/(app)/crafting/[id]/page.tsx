@@ -6,9 +6,10 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { dataTimes } from '@/functions/GlobalFunctions'
 import CopyButton from '@/components/CopyButton/CopyButton'
+import Image from 'next/image'
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export const generateStaticParams = async () => {
@@ -19,8 +20,9 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = async ({ params }: Props) => {
-  const crafts = await getGameData('printing') as Craft[]
-  const craft = crafts.find(craft => craft.key === params.id)
+  const craftsPromise = getGameData('printing') as Promise<Craft[]>
+  const [{ id }, crafts] = await Promise.all([params, craftsPromise])
+  const craft = crafts.find(craft => craft.key === id)
   if (!craft) return
   const title = `${craft.inGameName} | The Cycle: Frontier Items Tracker`
   const image = await getItemImage(craft.inGameName)
@@ -34,7 +36,7 @@ export const generateMetadata = async ({ params }: Props) => {
       type: 'website',
       siteName: 'The Cycle: Frontier Items Tracker',
       images: [{
-        url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${image}.png`,
+        url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}${image}.avif`,
       }]
     },
     twitter: {
@@ -47,8 +49,9 @@ export const generateMetadata = async ({ params }: Props) => {
 }
 
 export default async function CraftDetails({ params }: Props) {
-  const crafts = await getGameData('printing') as Craft[]
-  const craft = crafts.find(craft => craft.key === params.id)
+  const craftsPromise = getGameData('printing') as Promise<Craft[]>
+  const [{ id }, crafts] = await Promise.all([params, craftsPromise])
+  const craft = crafts.find(craft => craft.key === id)
   if (!craft) notFound()
   const costs = await getCraftCosts(craft.items)
 
@@ -71,19 +74,16 @@ export default async function CraftDetails({ params }: Props) {
     <div className={ classSelector() }>
       <div className={ styles.craftContainer }>
         <CopyButton className={ styles.copy } title='Copy Link To Craft' link={ `/crafting/${craft.key}` } />
-        <picture className={ styles.imageContainer }>
+        <figure className={ styles.imageContainer }>
           <div className={ styles.itemFrame } />
-          <source srcSet={ `${await getItemImage(craft.inGameName)}.avif` } type='image/avif' />
-          <source srcSet={ `${await getItemImage(craft.inGameName)}.webp` } type='image/webp' />
-          <source srcSet={ `${await getItemImage(craft.inGameName)}.png` } type='image/png' />
-          <img
-            src={ `${await getItemImage(craft.inGameName)}.png` } 
+          <Image
+            src={ `${await getItemImage(craft.inGameName)}.avif` } 
             alt={ craft.inGameName } 
             width={ 256 }
             height={ 256 }
             className={ styles.image }
           />
-        </picture>
+        </figure>
         <h1 className={ styles.title }>{ craft.inGameName }</h1>
         <p className={ styles.description }>{ craft.description }</p>
       </div>
@@ -124,18 +124,15 @@ export default async function CraftDetails({ params }: Props) {
         <ul className={ styles.costsList }>
           { await Promise.all(costs.map(async (cost, index) => (
             <li key={ `${cost.inGameName}_${index}` } className={ styles.cost }>
-              <picture className={ styles.costImage_Container } title={ cost.inGameName }>
-              <source srcSet={ `${await getItemImage(cost.inGameName)}.avif` } type='image/avif' />
-              <source srcSet={ `${await getItemImage(cost.inGameName)}.webp` } type='image/webp' />
-              <source srcSet={ `${await getItemImage(cost.inGameName)}.png`} type='image/png' />
-              <img 
-                src={ `${await getItemImage(cost.inGameName)}.png` } 
-                alt={ cost.inGameName } 
-                className={ `${styles.costImage } ${ cost.inGameName.toLowerCase().replace(/\s/g, '') }` }
-                height={ 64 }
-                width={ 64 }
-              />
-            </picture>
+              <figure className={ styles.costImage_Container } title={ cost.inGameName }>
+                <Image 
+                  src={ `${await getItemImage(cost.inGameName)}.avif` } 
+                  alt={ cost.inGameName } 
+                  className={ `${styles.costImage } ${ cost.inGameName.toLowerCase().replace(/\s/g, '') }` }
+                  height={ 64 }
+                  width={ 64 }
+                />
+            </figure>
             <p className={ styles.costAmount }>{ cost.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") }</p>
             </li>
           )))}

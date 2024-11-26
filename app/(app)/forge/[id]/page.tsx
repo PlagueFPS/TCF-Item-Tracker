@@ -5,9 +5,10 @@ import { getCosts, getItemImage } from '@/utils/GameUtils'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import CopyButton from '@/components/CopyButton/CopyButton'
+import Image from 'next/image'
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export const generateStaticParams = async () => {
@@ -18,8 +19,9 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = async ({ params }: Props) => {
-  const recipes = await getGameData('forgePerks') as ForgeRecipe[]
-  const recipe = recipes.find(recipe => recipe.key === params.id)
+  const recipesPromise = getGameData('forgePerks') as Promise<ForgeRecipe[]>
+  const [{ id }, recipes] = await Promise.all([params, recipesPromise])
+  const recipe = recipes.find(recipe => recipe.key === id)
   if (!recipe) return
   const title = `${recipe.inGameName} | The Cycle: Frontier Items Tracker`
   const description = `View details for ${recipe.inGameName} recipe`
@@ -47,8 +49,9 @@ export const generateMetadata = async ({ params }: Props) => {
 }
 
 export default async function PerkDetails({ params }: Props) {
-  const recipes = await getGameData('forgePerks') as ForgeRecipe[]
-  const recipe = recipes.find(recipe => recipe.key === params.id)
+  const recipesPromise = getGameData('forgePerks') as Promise<ForgeRecipe[]>
+  const [{ id }, recipes] = await Promise.all([params, recipesPromise])
+  const recipe = recipes.find(recipe => recipe.key === id)
   if (!recipe) notFound()
   const costs = await getCosts(recipe.items)
 
@@ -56,19 +59,16 @@ export default async function PerkDetails({ params }: Props) {
     <div className={ styles.container }>
       <div className={ styles.recipeContainer }>
         <CopyButton className={ styles.copy } title='Copy Link To Recipe' link={ `/forge/${recipe.key}` } />
-        <picture className={ styles.imageContainer }>
+        <figure className={ styles.imageContainer }>
           <div className={ styles.imageFrame } />
-          <source srcSet={ `${await getItemImage(recipe.inGameName)}.avif` } type='image/avif' />
-          <source srcSet={ `${await getItemImage(recipe.inGameName)}.webp` } type='image/webp' />
-          <source srcSet={ `${await getItemImage(recipe.inGameName)}.png` } type='image/png' />
-          <img
-            src={ `${await getItemImage(recipe.inGameName)}.png` } 
+          <Image
+            src={ `${await getItemImage(recipe.inGameName)}.avif` } 
             alt={ recipe.inGameName }
             width={ 256 }
             height={ 256 }
             className={ styles.image }
           />
-        </picture>
+        </figure>
         <h1 className={ styles.title }>{ recipe?.inGameName }</h1>
       </div>
       <div className={ styles.compatabilityContainer }>
@@ -94,18 +94,15 @@ export default async function PerkDetails({ params }: Props) {
         <ul className={ styles.costsList }>
           { await Promise.all(costs.map(async (cost, index) => (
             <li key={ `${cost.item}_${index}` } className={ styles.cost }>
-              <picture className={ styles.costImage_Container } title={ cost.item }>
-                <source srcSet={ `${await getItemImage(cost.item)}.avif` } type='image/avif'/>
-                <source srcSet={ `${await getItemImage(cost.item)}.webp` } type='image/webp'/>
-                <source srcSet={ `${await getItemImage(cost.item)}.png` } type='image/png'/>
-                <img 
-                  src={ `${await getItemImage(cost.item)}.png` } 
+              <figure className={ styles.costImage_Container } title={ cost.item }>
+                <Image 
+                  src={ `${await getItemImage(cost.item)}.avif` } 
                   alt={ cost.item }
                   className={ styles.costImage }
                   height={ 64 }
                   width={ 64 }
                   />
-              </picture>
+              </figure>
               <p className={ styles.costAmount }>{ cost.amount }</p>
             </li>
           )))}

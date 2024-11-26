@@ -3,18 +3,21 @@ import { getGameData } from "@/data/data"
 import { Craft } from "@/interfaces/Craft"
 import Header from "@/components/Header/Header"
 import ItemList from '@/components/ItemList/ItemList'
+import { getPage } from '@/data/pages'
 
 interface Props {
   children: React.ReactNode
 }
 
 export default async function CraftingLayout({ children }: Props) {
-  const crafts = await getGameData('printing') as Craft[]
+  const pagePromise = getPage('crafting')
+  const craftsPromise = getGameData('printing') as Promise<Craft[]>
+  const [{ image }, crafts] = await Promise.all([pagePromise, craftsPromise])
 
   return (
     <>
       <Header 
-        bannerImage="craftingbackground"
+        bannerImage={ image.url }
         width={ 1914 }
         height={ 976 }
         opacity={ 0.65 }

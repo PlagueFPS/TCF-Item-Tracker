@@ -2,11 +2,11 @@ import styles from './Forge.module.css'
 import { Metadata } from "next"
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 import ForgeContainer from '@/components/ForgeContainer/ForgeContainer'
-import { getPage } from '@/data/data'
+import { getPage } from '@/data/pages'
 
 export const generateMetadata = async () => {
   const page = await getPage('forge')
-  const { title, description } = page.docs[0]
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,

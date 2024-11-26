@@ -80,7 +80,9 @@ export default async function UpgradeDetails({ params }: Props) {
             <li key={ `${cost.item}_${index}` } className={ styles.cost }>
               <Image 
                 src={ `${await getItemImage(cost.item)}.avif` } 
-                alt={ cost.item } 
+                alt={ cost.item }
+                height={ 64 }
+                width={ 64 }
                 className={ `${styles.costImage } ${ cost.item.toLowerCase().replace(/\s/g, '') }` } 
               />
               <p className={ styles.costAmount }>{ cost.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") }</p>

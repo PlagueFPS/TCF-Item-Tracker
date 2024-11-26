@@ -24,7 +24,7 @@ export default function Settings() {
 
   const onBlurHandler = () => {
     const inputAmount = amountInputRef.current?.valueAsNumber
-    if (inputAmount) {
+    if (inputAmount && amountInputRef.current) {
       if (inputAmount >= 80) {
         amountInputRef.current.value = "80"
         localStorage.setItem('listSize', JSON.stringify(80))

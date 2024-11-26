@@ -3,7 +3,7 @@ import { List } from "@/interfaces/List"
 import { MouseEvent, useEffect, useState } from "react"
 import { useItemsListContext } from "@/contexts/ItemsListContext"
 import { useToastContext } from '@/contexts/ToastContext'
-import { createErrorMessage, deleteErrorMessage } from '@/utils/constants'
+import { CREATE_ERROR_MESSAGE, DELETE_ERROR_MESSAGE } from '@/utils/constants'
 import { BsClipboard2Plus, BsTrashFill, BsX } from 'react-icons/bs'
 
 interface Props {
@@ -49,7 +49,7 @@ export default function ListSwitcher({ toggleOptionsModal }: Props) {
   const createNewList = (listName: string) => {
     const listID = `${listName.toLowerCase().replace(/\s/g, '')}list`
     const listExists = listNames.find(name => name.toLowerCase().replace(/\s/g, '') === listID)
-    if (listExists) toast(createErrorMessage)
+    if (listExists) toast(CREATE_ERROR_MESSAGE)
     else {
       const newList: List = {
         id: listID,
@@ -67,7 +67,7 @@ export default function ListSwitcher({ toggleOptionsModal }: Props) {
 
   const deleteList = (listID: string, e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
     e.stopPropagation()
-    if (listID === list.id) toast(deleteErrorMessage)
+    if (listID === list.id) toast(DELETE_ERROR_MESSAGE)
     else {
       const listName = listNames.find(name => name.toLowerCase().replace(/\s/g, '') === listID)
       const newListNames = listNames.filter(name => name.toLowerCase().replace(/\s/g, '') !== listID)

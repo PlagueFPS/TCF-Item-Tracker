@@ -4,11 +4,11 @@ import Header from '@/components/Header/Header'
 import ImageContainer from '@/components/ImageContainer/ImageContainer'
 import ItemList from '@/components/ItemList/ItemList'
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
-import { getPage } from '@/data/data'
+import { getPage } from '@/data/pages'
 
 export const generateMetadata = async () => {
   const page = await getPage('home')
-  const { title, description } = page.docs[0]
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,
@@ -33,13 +33,13 @@ export const generateMetadata = async () => {
 
 export default async function Home() {
   const page = await getPage('home')
-  const { title } = page.docs[0]
+  const { title, image } = page
 
   return (
     <>
       <Header 
         title={ title }
-        bannerImage='S3_Background'
+        bannerImage={ image.url }
         width={ 3840 }
         height={ 2160 }
         opacity={ 0.65 }

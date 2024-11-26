@@ -37,30 +37,6 @@ const tagsToExclude = [
   'Equipment.Consumables',
   'Weapon.Category.Launcher'
 ]
-const payload = getPayload({ config: configPromise })
-
-export const getPage = async (slug: string) => {
-  const page = (await payload).find({
-    collection: 'pages',
-    where: {
-      slug: {
-        equals: slug
-      }
-    },
-  })
-
-  return page
-}
-
-export const getUpdates = async () => {
-  const updates = (await payload).find({
-    collection: 'updates',
-    sort: '-date',
-    limit: 0
-  })
-
-  return updates
-}
 
 export const getGameData = cache(async (filename: DataStrings, filtered?: boolean): Promise<DataTypes[] | Location | Cosmetic> => {
   const data = await fetch(`https://raw.githubusercontent.com/TCF-Wiki/TCF-Information/main/array/${filename}.json`)

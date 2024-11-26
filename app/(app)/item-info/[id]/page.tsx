@@ -11,11 +11,13 @@ import { Quest } from '@/interfaces/Quest'
 import { Quarters } from '@/interfaces/Upgrade'
 import { Craft } from '@/interfaces/Craft'
 import { ForgeRecipe } from '@/interfaces/ForgeRecipe'
+import Image from 'next/image'
+import { getPage } from '@/data/pages'
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export const generateStaticParams = async () => {
@@ -26,8 +28,9 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = async ({ params }: Props) => {
-  const items = await getGameData('items', true) as Item[]
-  const item = items.find(item => item.key === params.id)
+  const itemsPromise = getGameData('items', true) as Promise<Item[]>
+  const [{ id }, items] = await Promise.all([params, itemsPromise])
+  const item = items.find(item => item.key === id)
   if (!item) return
   const title = `${item.inGameName} | The Cycle: Frontier Items Tracker`
   const metadata: Metadata = {
@@ -53,13 +56,13 @@ export const generateMetadata = async ({ params }: Props) => {
 } 
 
 export default async function ItemDetails({ params }: Props) {
-  const items = await getGameData('items', true) as Item[]
-  const item = items.find(item => item.key === params.id)
+  const pagePromise = await getPage('item-info')
+  const itemsPromise = getGameData('items', true) as Promise<Item[]>
+  const [{ id }, items, { image }] = await Promise.all([params, itemsPromise, pagePromise])
+  const item = items.find(item => item.key === id)
   if (!item) notFound()
   const inGameName = item.inGameName.toLowerCase().replace(/\s/g, '')
   const itemImageAVIF = `/images/${inGameName}.avif`
-  const itemImageWEBP = `/images/${inGameName}.webp`
-  const itemImagePNG = `/images/${inGameName}.png`
   const quests: Forge[] = []
   const upgrades: Forge[] = []
   const crafts: Forge[] = []
@@ -126,7 +129,7 @@ export default async function ItemDetails({ params }: Props) {
   return (
     <>
       <Header 
-        bannerImage="iteminfobackground"
+        bannerImage={ image.url }
         height={ 1488 }
         width={ 970 }
         opacity={ 0.65 }
@@ -137,19 +140,16 @@ export default async function ItemDetails({ params }: Props) {
       <div className={ classSelector() }>
         <section className={ styles.itemContainer }>
           <CopyButton className={ styles.copy } title='Copy Link To Item' link={ `/item-info/${item.key}` } />
-          <picture className={ styles.imageContainer }>
+          <figure className={ styles.imageContainer }>
             <div className={ styles.itemFrame } />
-            <source srcSet={ itemImageAVIF } type='image/avif' />
-            <source srcSet={ itemImageWEBP } type='image/webp' />
-            <source srcSet={ itemImagePNG } type='image/png' />
-            <img
-              src={ itemImagePNG }
+            <Image
+              src={ itemImageAVIF }
               alt={ item.inGameName ?? '' }
               width={ 256 }
               height={ 256 }
               className={ styles.image }
               />
-          </picture>
+          </figure>
           <h1 className={ styles.title }>{ item.inGameName }</h1>
           <p className={ styles.description }>{ item.description }</p>
         </section>

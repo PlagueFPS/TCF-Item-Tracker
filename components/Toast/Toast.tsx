@@ -1,6 +1,6 @@
 import styles from './Toast.module.css'
 import { useToastContext } from "@/contexts/ToastContext"
-import { createErrorMessage, deleteErrorMessage } from "@/utils/constants"
+import { CREATE_ERROR_MESSAGE, DELETE_ERROR_MESSAGE } from "@/utils/constants"
 import { BsCheck, BsXCircleFill } from 'react-icons/bs'
 import ToastImage from './ToastImage/ToastImage'
 
@@ -10,7 +10,7 @@ interface Props {
 
 export default function Toast({ closing }: Props) {
   const { toastItems, toastAction } = useToastContext()
-  const listCondition = toastAction === deleteErrorMessage || toastAction === createErrorMessage
+  const listCondition = toastAction === DELETE_ERROR_MESSAGE || toastAction === CREATE_ERROR_MESSAGE
 
   const classSelector = (className: "Container" | "Info") => {
     switch(className) {

@@ -8,11 +8,11 @@ import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListB
 import ItemList from '@/components/ItemList/ItemList'
 import ItemsContainer from '@/components/ItemsContainer/ItemsContainer'
 import { compareRarity } from '@/functions/GlobalFunctions'
-import { getPage } from '@/data/data'
+import { getPage } from '@/data/pages'
 
 export const generateMetadata = async () => {
   const page = await getPage('item-info')
-  const { title, description } = page.docs[0]
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,
@@ -36,13 +36,15 @@ export const generateMetadata = async () => {
 }
 
 export default async function ItemInfo() {
-  const materials = await getGameData('materials') as Material[]
-  const items = await getGameData('items', true) as Item[]
+  const pagePromise = getPage('item-info')
+  const materialsPromise = getGameData('materials') as Promise<Material[]>
+  const itemsPromise = getGameData('items', true) as Promise<Item[]>
+  const [{ image }, materials, items] = await Promise.all([pagePromise, materialsPromise, itemsPromise])
 
   return (
     <>
       <Header 
-        bannerImage='iteminfobackground'
+        bannerImage={ image.url }
         width={ 1488 }
         height={ 970 }
         opacity={ 0.65 }

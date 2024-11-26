@@ -8,11 +8,11 @@ import QuestsFilter from '@/components/QuestsFilter/QuestsFilter'
 import ToggleListButton from '@/components/ItemList/ToggleListButton/ToggleListButton'
 import QuestsContainer from '@/components/QuestsContainer/QuestsContainer'
 import ItemList from '@/components/ItemList/ItemList'
-import { getPage } from '@/data/data'
+import { getPage } from '@/data/pages'
 
 export const generateMetadata = async () => {
-  const page = await getPage('quests-korolev')
-  const { title, description } = page.docs[0]
+  const page = await getPage('korolev')
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,
@@ -36,13 +36,15 @@ export const generateMetadata = async () => {
 }
 
 export default async function KorolevQuests() {
-  const quests = await getGameData('missions') as Quest[]
+  const pagePromise = getPage('korolev')
+  const questsPromise = getGameData('missions') as Promise<Quest[]>
+  const [{ image }, quests] = await Promise.all([pagePromise, questsPromise])
   const korolevQuests = quests.filter(quest => quest.faction === 'Korolev').sort(compareKorolevChainName)
 
   return (
     <>
       <Header 
-        bannerImage='korolevbanner'
+        bannerImage={ image.url }
         width={ 1920 }
         height={ 692 }
         opacity={ 0.65 }

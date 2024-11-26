@@ -20,6 +20,8 @@
     "@payloadcms/richtext-lexical": "latest",
     "@payloadcms/storage-uploadthing": "^3.1.0",
     "@t3-oss/env-nextjs": "^0.11.1",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/speed-insights": "^1.1.0",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "next": "15.0.4-canary.27",

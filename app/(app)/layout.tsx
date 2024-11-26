@@ -6,6 +6,8 @@ import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
 import ItemsListContextProvider from '@/contexts/ItemsListContext'
 import { GLOBAL_OG_PROPS, SITE_DESCRIPTION, SITE_TITLE } from '@/utils/constants'
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -61,6 +63,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </ItemsListContextProvider>
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

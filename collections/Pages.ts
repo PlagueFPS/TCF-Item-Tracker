@@ -1,4 +1,4 @@
-import { formatSlug, revalidatePage } from "@/utils/payload-utils";
+import { formatSlug } from "@/utils/payload-utils";
 import type { CollectionConfig } from "payload";
 
 export const Pages: CollectionConfig = {
@@ -47,7 +47,4 @@ export const Pages: CollectionConfig = {
       type: 'richText',
     }
   ],
-  hooks: {
-    afterChange: [revalidatePage],
-  }
 }

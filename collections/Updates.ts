@@ -1,4 +1,3 @@
-import { revalidatePage } from "@/utils/payload-utils";
 import type { CollectionConfig } from "payload";
 
 export const Updates: CollectionConfig = {
@@ -26,7 +25,4 @@ export const Updates: CollectionConfig = {
       required: true
     }
   ],
-  hooks: {
-    afterChange: [revalidatePage]
-  }
 }

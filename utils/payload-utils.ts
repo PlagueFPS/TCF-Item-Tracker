@@ -25,11 +25,3 @@ export const formatSlug = (fallback: string): FieldHook => ({ data, operation, o
 
   return value
 }
-
-export const revalidatePage: CollectionAfterChangeHook = async ({ doc, req: { payload }}) => {
-  const path = `/${doc.slug}`
-  payload.logger.info('Revalidating:', path)
-
-  expirePath(path)
-  return doc
-}

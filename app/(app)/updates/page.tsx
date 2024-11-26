@@ -3,6 +3,7 @@ import { getPage } from '@/data/pages'
 import { Metadata } from 'next'
 import Header from '@/components/Header/Header'
 import serializeLexicalRichText from '@/utils/serializeLexicalRichText'
+import { getUpdates } from '@/data/updates'
 
 export const generateMetadata = async () => {
   const page = await getPage('updates')
@@ -30,13 +31,15 @@ export const generateMetadata = async () => {
 }
 
 export default async function Updates() {
-  const updates = await getUpdates()
+  const pagePromise = getPage('updates')
+  const updatesPromise = getUpdates()
+  const [{ image }, updates] = await Promise.all([pagePromise, updatesPromise])
   const options: Intl.DateTimeFormatOptions = { year: 'numeric', day: 'numeric', month: 'long' }
 
   return (
     <>
       <Header 
-        bannerImage='S3_Background'
+        bannerImage={ image.url }
         width={ 3840 }
         height={ 2160 }
         opacity={ 0.65 }
@@ -44,12 +47,12 @@ export default async function Updates() {
         position='bottom'
       />
       <div className={ styles.container }>
-        { updates.docs.map(update => (
+        { updates.map(update => (
           <div key={ update.id } className={ styles.updateContainer }>
             <h2 className={ styles.title }>
               { `${update.title} | ${new Date(update.date).toLocaleDateString(undefined, options)}` }
             </h2>
-            { serializeLexicalRichText({ children: update.body.root.children }) }
+            { serializeLexicalRichText({ children: update.content.root.children }) }
           </div>
         ))}
       </div>

@@ -6,9 +6,10 @@ import { notFound } from "next/navigation"
 import { getCosts, getItemImage } from "@/utils/GameUtils"
 import { dataTimes } from '@/functions/GlobalFunctions'
 import CopyButton from '@/components/CopyButton/CopyButton'
+import Image from 'next/image'
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export const generateStaticParams = async () => {
@@ -19,8 +20,9 @@ export const generateStaticParams = async () => {
 }
 
 export const generateMetadata = async ({ params }: Props) => {
-  const upgrades = await getGameData('personalQuarters') as Quarters[]
-  const upgrade = upgrades.find(upgrade => upgrade.inGameName.replace(/\s/g, '') === params.id)
+  const upgradesPromise = getGameData('personalQuarters') as Promise<Quarters[]>
+  const [{ id }, upgrades] = await Promise.all([params, upgradesPromise])
+  const upgrade = upgrades.find(upgrade => upgrade.inGameName.replace(/\s/g, '') === id)
   if (!upgrade) return
   const title = `${upgrade.inGameName} | The Cycle: Frontier Items Tracker`
   const description = `View details on requirements for ${upgrade.inGameName}`
@@ -42,8 +44,9 @@ export const generateMetadata = async ({ params }: Props) => {
 }
 
 export default async function UpgradeDetails({ params }: Props) {
-  const upgrades = await getGameData('personalQuarters') as Quarters[]
-  const upgrade = upgrades.find(upgrade => upgrade.inGameName.replace(/\s/g, '') === params.id)
+  const upgradesPromise = getGameData('personalQuarters') as Promise<Quarters[]>
+  const [{ id }, upgrades] = await Promise.all([params, upgradesPromise])
+  const upgrade = upgrades.find(upgrade => upgrade.inGameName.replace(/\s/g, '') === id)
   if (!upgrade) notFound()
   const costs = await getCosts(upgrade.costs)
 
@@ -75,17 +78,11 @@ export default async function UpgradeDetails({ params }: Props) {
         <ul className={ styles.costsList }>
           { await Promise.all(costs.map(async (cost, index) => (
             <li key={ `${cost.item}_${index}` } className={ styles.cost }>
-              <picture>
-                <source srcSet={ `${await getItemImage(cost.item)}.avif` } type='image/avif' />
-                <source srcSet={ `${await getItemImage(cost.item)}.webp` } type='image/webp' />
-                <source srcSet={ `${await getItemImage(cost.item)}.png` } type='image/png' />
-                <img 
-                src={ `${await getItemImage(cost.item)}.png` } 
+              <Image 
+                src={ `${await getItemImage(cost.item)}.avif` } 
                 alt={ cost.item } 
                 className={ `${styles.costImage } ${ cost.item.toLowerCase().replace(/\s/g, '') }` } 
-                loading="lazy"
-                />
-              </picture>
+              />
               <p className={ styles.costAmount }>{ cost.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",") }</p>
             </li>
           ))) }

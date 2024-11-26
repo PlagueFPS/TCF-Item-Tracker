@@ -5,11 +5,11 @@ import { getGameData } from "@/data/data"
 import UpgradesFilter from '@/components/UpgradesFilter/UpgradesFilter'
 import ToggleListButton from "@/components/ItemList/ToggleListButton/ToggleListButton"
 import UpgradesContainer from "@/components/UpgradesContainer/UpgradesContainer"
-import { getPage } from '@/data/data'
+import { getPage } from '@/data/pages'
 
 export const generateMetadata = async () => {
-  const page = await getPage('upgrades-inventory')
-  const { title, description } = page.docs[0]
+  const page = await getPage('inventory')
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,

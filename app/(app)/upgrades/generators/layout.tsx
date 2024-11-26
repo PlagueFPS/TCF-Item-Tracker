@@ -3,15 +3,15 @@ import { Metadata } from "next"
 import UpgradesFilter from '@/components/UpgradesFilter/UpgradesFilter'
 import UpgradesSubFilter from '@/components/UpgradesFilter/UpgradesSubFilter/UpgradesSubFilter'
 import ToggleListButton from "@/components/ItemList/ToggleListButton/ToggleListButton"
-import { getPage } from '@/data/data'
+import { getPage } from '@/data/pages'
 
 interface Props {
   children: React.ReactNode
 }
 
 export const generateMetadata = async () => {
-  const page = await getPage('upgrades-generators')
-  const { title, description } = page.docs[0]
+  const page = await getPage('generators')
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,

@@ -4,7 +4,7 @@ import { getGameData } from "@/data/data"
 import { Quarters } from "@/interfaces/Upgrade"
 import Header from "@/components/Header/Header"
 import ItemList from '@/components/ItemList/ItemList'
-import { getPage } from '@/data/data'
+import { getPage } from '@/data/pages'
 
 interface Props {
   children: React.ReactNode
@@ -12,7 +12,7 @@ interface Props {
 
 export const generateMetadata = async () => {
   const page = await getPage('upgrades')
-  const { title, description } = page.docs[0]
+  const { title, description } = page
   const metadata: Metadata = {
     title: title,
     description: description,
@@ -36,12 +36,14 @@ export const generateMetadata = async () => {
 }
 
 export default async function UpgradesLayout({ children }: Props) {
-  const upgrades = await getGameData('personalQuarters') as Quarters[]
+  const pagePromise = getPage('upgrades')
+  const upgradesPromise = getGameData('personalQuarters') as Promise<Quarters[]>
+  const [{ image }, upgrades] = await Promise.all([pagePromise, upgradesPromise])
 
   return (
     <>
       <Header 
-        bannerImage="upgradesbackground"
+        bannerImage={ image.url }
         width={ 1918 }
         height={ 966 }
         opacity={ 0.65 }
